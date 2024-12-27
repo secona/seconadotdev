@@ -3,26 +3,34 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout>
-  <h1 class="text-3xl">Hello World! My name is Secona.</h1>
+  <section class="border border-2 border-black px-6 py-4 mx-auto max-w-96 mb-20 bg-white rounded-lg shadow-hard">
+    <p>Hello, World! My name is</p>
+    <h1 class="text-3xl">Vito Secona</h1>
+    <p>Software Engineering</p>
+  </section>
 
-  <section class="max-w-96">
-    <h1>About Me</h1>
-    <p>
-      I’m a Computer Science student at Universitas Indonesia, where I began on
-      my journey in 2023. I’m passionate about software engineering, with a keen
-      focus on designing fast and high-performance solutions.
-    </p>
-    <br>
-    <p>
-      My interests include artificial intelligence, computer systems, compiler
-      development, and building performance-intensive applications. I also enjoy
-      participating in Capture The Flag (CTF) competitions, specializing in web
-      exploitation and forensics.
-    </p>
-    <br>
-    <p>
-      I thrive on tackling new challenges, collaborating with like-minded
-      individuals, and turning creative ideas into impactful solutions.
-    </p>
+  <section class="max-w-96 border border-2 border-black mx-auto bg-white rounded-lg shadow-hard">
+    <div class="flex justify-between py-2 px-4 border-b-2 border-black">
+      <h1>About Me</h1>
+      <span>ooo</span>
+    </div>
+    <div class="px-6 py-4">
+      <p>
+        I’m a Computer Science student at Universitas Indonesia, where I began on
+        my journey in 2023. I’m passionate about software engineering, with a keen
+        focus on designing fast and high-performance solutions.
+      </p>
+      <br>
+      <p>
+        My interests include <a href="/projects" class="font-bold underline">artificial intelligence</a> and systems programming. I
+        also enjoy participating in Capture The Flag (CTF) competitions,
+        specializing in web exploitation and forensics.
+      </p>
+      <br>
+      <p>
+        I thrive on tackling new challenges, collaborating with like-minded
+        individuals, and turning creative ideas into impactful solutions.
+      </p>
+    </div>
   </section>
 </Layout>
