@@ -1,7 +1,56 @@
 ---
 import NavbarLayout from '../layouts/NavbarLayout.astro';
+import Card from "../components/Card.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import { GithubIcon } from "astro-feather";
 ---
 
 <NavbarLayout>
-  <h1>My Personal Projects</h1>
+  <section class="flex flex-col xl:flex-row [&>*]:basis-full [&>*]:py-20 xl:[&>*]:py-24 [&>*]:px-16 xl:[&>*]:px-20 min-h-screen max-xl:divide-y-2 xl:divide-x-2 divide-black">
+    <div class="flex flex-col justify-start max-h-screen xl:sticky top-0 bg-yellow-300">
+      <Card title="My Projects">
+        <p>
+          Here’s a glimpse into the projects I’ve built, focusing primarily
+          on <strong>systems programming</strong> and
+          <strong>web development</strong>. From compilers to shells, these
+          creations showcase my passion for designing efficient and reliable
+          software solutions.
+        </p>
+        <br />
+        <p>
+          Each project represents a challenge I’ve tackled, blending
+          innovation with performance. Dive in and discover the work that
+          drives my passion for systems development!
+        </p>
+      </Card>
+    </div>
+    <div class="flex flex-col gap-4 bg-gray-100 bg-dotted bg-[length:40px_40px]">
+      <ProjectCard
+        name="secona/belalang"
+        description="Belalang is a simple interpreted language written in The Rust Programming Language"
+        tags={["Rust", "Compiler", "Virtual Machine"]}
+        links={[
+          { icon: GithubIcon, href: "https://github.com/secona/belalang" }
+        ]}
+      />
+      <ProjectCard
+        name="secona/kerang"
+        description="Kerang is a toy shell written in C++"
+        tags={["C++", "Shell", "Linux"]}
+        links={[
+          { icon: GithubIcon, href: "https://github.com/secona/kerang" }
+        ]}
+      />
+      <ProjectCard
+        name="OH-Fasilkom-UI/oh24-backend"
+        description="This is the backend for Open House Fasilkom UI 2024 event. It handled 800+ registrants"
+        tags={["Typescript", "Bun", "Hono", "Docker", "Prisma"]}
+      />
+      <ProjectCard
+        name="OH-Fasilkom-UI/oh24-frontend"
+        description="This is the frontend for Open House Fasilkom UI 2024 event. It handled 800+ registrants"
+        tags={["React", "Next.js", "Typescript", "shadcn/ui"]}
+      />
+    </div>
+  </section>
 </NavbarLayout>
