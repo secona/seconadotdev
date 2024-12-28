@@ -5,7 +5,10 @@ export default {
     extend: {
       boxShadow: {
         hard: "0.2rem 0.2rem 0px 0px black",
-      }
+      },
+      backgroundImage: {
+        dotted: "radial-gradient(black 1px, transparent 0)",
+      },
     },
   },
   plugins: [],

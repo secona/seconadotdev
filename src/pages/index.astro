@@ -1,36 +1,60 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<Layout>
-  <section class="border border-2 border-black px-6 py-4 mx-auto max-w-96 mb-20 bg-white rounded-lg shadow-hard">
-    <p>Hello, World! My name is</p>
-    <h1 class="text-3xl">Vito Secona</h1>
-    <p>Software Engineering</p>
+<BaseLayout>
+  <section class="min-h-screen flex justify-center items-center bg-gray-100 border-b-2 border-black bg-dotted bg-[length:40px_40px]">
+    <div  class="shadow-hard rounded-lg">
+      <div class="flex justify-between py-2 px-4 border-2 border-black bg-orange-400 rounded-t-lg">
+        <h1>Hello, World!</h1>
+        <span>ooo</span>
+      </div>
+      <div class="px-6 pt-4 pb-6 rounded-y-lg rounded-b-lg bg-white border-x-2 border-b-2 border-black">
+        <p>My name is</p>
+        <h1 class="text-5xl">Vito Secona</h1>
+        <p>Software Engineer</p>
+      </div>
+    </div>
   </section>
 
-  <section class="max-w-96 border border-2 border-black mx-auto bg-white rounded-lg shadow-hard">
-    <div class="flex justify-between py-2 px-4 border-b-2 border-black">
-      <h1>About Me</h1>
-      <span>ooo</span>
+  <section class="grid grid-cols-1 xl:grid-cols-2 [&>*]:py-24 [&>*]:px-20 bg-yellow-300">
+    <div class="flex flex-col justify-center">
+      <div  class="shadow-hard rounded-lg">
+        <div class="flex justify-between py-2 px-4 border-2 border-black bg-orange-400 rounded-t-lg">
+          <h1>About Me</h1>
+          <span>ooo</span>
+        </div>
+        <div class="px-6 pt-4 pb-6 rounded-y-lg rounded-b-lg bg-white border-x-2 border-b-2 border-black">
+          <p>
+            I’m a Computer Science student at Universitas Indonesia, where I began on
+            my journey in 2023. I’m passionate about software engineering, with a keen
+            focus on designing fast and high-performance solutions.
+          </p>
+          <br>
+          <p>
+            My interests include systems programming, artificial intelligence, and
+            web development. I also enjoy participating in Capture The Flag (CTF)
+            competitions, specializing in web exploitation and forensics.
+          </p>
+          <br>
+          <p>
+            I thrive on tackling new challenges, collaborating with like-minded
+            individuals, and turning creative ideas into impactful solutions.
+          </p>
+        </div>
+      </div>
     </div>
-    <div class="px-6 py-4">
-      <p>
-        I’m a Computer Science student at Universitas Indonesia, where I began on
-        my journey in 2023. I’m passionate about software engineering, with a keen
-        focus on designing fast and high-performance solutions.
-      </p>
-      <br>
-      <p>
-        My interests include <a href="/projects" class="font-bold underline">artificial intelligence</a> and systems programming. I
-        also enjoy participating in Capture The Flag (CTF) competitions,
-        specializing in web exploitation and forensics.
-      </p>
-      <br>
-      <p>
-        I thrive on tackling new challenges, collaborating with like-minded
-        individuals, and turning creative ideas into impactful solutions.
-      </p>
+    <div class="flex flex-col gap-2">
+      <h1 class="text-3xl mb-3">Explore More!</h1>
+      <a href="/experiences" class="underline bg-white border-2 border-black rounded-lg shadow-hard px-6 py-2">
+        My Experiences
+      </a>
+      <a href="/projects" class="underline bg-white border-2 border-black rounded-lg shadow-hard px-6 py-2">
+        My Projects
+      </a>
+      <a href="/contacts" class="underline bg-white border-2 border-black rounded-lg shadow-hard px-6 py-2">
+        My Contacts
+      </a>
     </div>
   </section>
-</Layout>
+</BaseLayout>
