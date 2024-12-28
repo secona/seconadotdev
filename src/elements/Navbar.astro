@@ -1,6 +1,24 @@
-<nav class="bg-white border-2 border-black rounded-lg shadow-hard px-6 py-2 fixed left-2 right-2 top-2">
-  <a href="/"><strong>secona.dev</strong></a> &mdash;
-  <a href="/experiences" class="underline">Experiences</a> &mdash;
-  <a href="/projects" class="underline">Projects</a> &mdash;
-  <a href="/contacts" class="underline">Contacts</a>
+---
+import { GithubIcon, LinkedinIcon, TwitterIcon } from "astro-feather";
+---
+
+<nav class="flex justify-between items-center bg-white border-2 border-black rounded-lg shadow-hard px-6 py-2 fixed left-2 right-2 top-2">
+  <div>
+    <a href="/"><strong>secona.dev</strong></a> &mdash;
+    <a href="/experiences" class="underline">Experiences</a> &mdash;
+    <a href="/projects" class="underline">Projects</a> &mdash;
+    <a href="/contacts" class="underline">Contacts</a>
+  </div>
+
+  <div class="flex items-center gap-4">
+    <a href="https://github.com/secona" target="_blank" rel="noopener noreferrer">
+      <GithubIcon size={18} />
+    </a>
+    <a href="https://linkedin.com/in/secona" target="_blank" rel="noopener noreferrer">
+      <LinkedinIcon size={18} />
+    </a>
+    <a href="https://x.com/bahasakarat" target="_blank" rel="noopener noreferrer">
+      <TwitterIcon size={18} />
+    </a>
+  </div>
 </nav>
