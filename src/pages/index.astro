@@ -1,8 +1,9 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import NavbarLayout from '../layouts/NavbarLayout.astro';
+import Footer from '../elements/Footer.astro';
 ---
 
-<BaseLayout>
+<NavbarLayout>
   <section class="min-h-screen flex justify-center items-center bg-gray-100 border-b-2 border-black bg-dotted bg-[length:40px_40px]">
     <div  class="shadow-hard rounded-lg">
       <div class="flex justify-between py-2 px-4 border-2 border-black bg-orange-400 rounded-t-lg">
@@ -17,7 +18,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </section>
 
-  <section class="grid grid-cols-1 xl:grid-cols-2 [&>*]:py-24 [&>*]:px-20 bg-yellow-300">
+  <section class="grid grid-cols-1 xl:grid-cols-2 [&>*]:py-20 xl:[&>*]:py-24 [&>*]:px-16 xl:[&>*]:px-20 bg-yellow-300">
     <div class="flex flex-col justify-center">
       <div  class="shadow-hard rounded-lg">
         <div class="flex justify-between py-2 px-4 border-2 border-black bg-orange-400 rounded-t-lg">
@@ -57,4 +58,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </a>
     </div>
   </section>
-</BaseLayout>
+
+  <Footer />
+</NavbarLayout>
