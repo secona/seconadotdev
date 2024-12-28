@@ -1,16 +1,19 @@
 ---
-import { GithubIcon, LinkedinIcon, TwitterIcon } from "astro-feather";
+import { GithubIcon, LinkedinIcon, TwitterIcon, MenuIcon } from "astro-feather";
 ---
 
 <nav class="flex justify-between items-center bg-white border-2 border-black rounded-lg shadow-hard px-6 py-2 fixed left-2 right-2 top-2">
   <div>
-    <a href="/"><strong>secona.dev</strong></a> &mdash;
-    <a href="/experiences" class="underline">Experiences</a> &mdash;
-    <a href="/projects" class="underline">Projects</a> &mdash;
-    <a href="/contacts" class="underline">Contacts</a>
+    <a href="/"><strong>secona.dev</strong></a>
+    <div class="max-md:hidden inline">
+      &mdash;
+      <a href="/experiences" class="underline">Experiences</a> &mdash;
+      <a href="/projects" class="underline">Projects</a> &mdash;
+      <a href="/contacts" class="underline">Contacts</a>
+    </div>
   </div>
 
-  <div class="flex items-center gap-4">
+  <div class="flex items-center gap-4 max-md:hidden">
     <a href="https://github.com/secona" target="_blank" rel="noopener noreferrer">
       <GithubIcon size={18} />
     </a>
@@ -21,4 +24,45 @@ import { GithubIcon, LinkedinIcon, TwitterIcon } from "astro-feather";
       <TwitterIcon size={18} />
     </a>
   </div>
+
+  <button id="open-menu-button" class="md:hidden">
+    <MenuIcon size={18} />
+  </button>
+
+  <div id="menu" class="hidden md:hidden absolute top-12 left-0 right-0 px-4 py-2 bg-white border-2 border-black shadow-hard rounded-lg">
+    <div class="flex flex-col mb-4">
+      <a href="/experiences">My Experiences</a>
+      <a href="/projects">My Projects</a>
+      <a href="/contacts">My Contacts</a>
+    </div>
+    <div class="flex flex-col">
+      <a href="https://github.com/secona" target="_blank" rel="noopener noreferrer">
+        GitHub
+      </a>
+      <a href="https://linkedin.com/in/secona" target="_blank" rel="noopener noreferrer">
+        LinkedIn
+      </a>
+      <a href="https://x.com/bahasakarat" target="_blank" rel="noopener noreferrer">
+        Twitter
+      </a>
+    </div>
+  </div>
 </nav>
+
+<script>
+  const menu = document.getElementById("menu");
+
+  function openMenu() {
+    menu?.classList.add("hidden");
+  }
+
+  function closeMenu() {
+    menu?.classList.remove("hidden");
+  }
+
+  function toggleMenu() {
+    menu?.classList.toggle("hidden")
+  }
+
+  document.getElementById("open-menu-button")?.addEventListener("click", toggleMenu)
+</script>
