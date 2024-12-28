@@ -1,7 +1,34 @@
 ---
 import NavbarLayout from '../layouts/NavbarLayout.astro';
+import Card from '../components/Card.astro';
+import { GithubIcon, LinkedinIcon, TwitterIcon } from 'astro-feather';
 ---
 
 <NavbarLayout>
-  <h1>Ways to contact me</h1>
+  <section class="min-h-screen grid place-items-center bg-gray-100 bg-dotted bg-[length:40px_40px] px-6">
+    <div class="flex flex-col md:flex-row items-stretch md:items-start gap-4">
+      <Card title="My Socials">
+        <p class="max-w-96">
+          You can connect with me on these platforms. I'm most active on
+          Twitter (X), where I share insights on tech, explore new concepts,
+          and document what I'm currently learning. Give me a follow if you're
+          curious about the topics I dive into!
+        </p>
+      </Card>
+      <div class="flex flex-col gap-2">
+        <a href="https://github.com/secona" class="flex flex-row gap-4 text-white bg-[#333333] border-2 border-black rounded-lg shadow-hard px-6 py-2">
+          <GithubIcon />
+          <p>@secona</p>
+        </a>
+        <a href="https://github.com/secona" class="flex flex-row gap-4 text-white bg-[#0077b5] border-2 border-black rounded-lg shadow-hard px-6 py-2">
+          <LinkedinIcon />
+          <p>@secona</p>
+        </a>
+        <a href="https://github.com/secona" class="flex flex-row gap-4 text-white bg-[#1DA1F2] border-2 border-black rounded-lg shadow-hard px-6 py-2">
+          <TwitterIcon />
+          <p>@bahasakarat</p>
+        </a>
+      </div>
+    </div>
+  </section>
 </NavbarLayout>
