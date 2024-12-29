@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://secona.dev/sitemap-index.xml

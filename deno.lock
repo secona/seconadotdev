@@ -980,6 +980,7 @@
     "packageJson": {
       "dependencies": [
         "npm:@astrojs/check@~0.9.4",
+        "npm:@astrojs/sitemap@^3.2.1",
         "npm:@astrojs/tailwind@5.1.4",
         "npm:astro-feather@1",
         "npm:astro@5.1.1",
