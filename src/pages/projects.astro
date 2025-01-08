@@ -3,6 +3,43 @@ import NavbarLayout from '../layouts/NavbarLayout.astro';
 import Card from "../components/Card.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 import { GithubIcon } from "astro-feather";
+
+const data = [
+  {
+    name: "secona/belalang",
+    description: "Belalang is a simple interpreted language written in The Rust Programming Language",
+    tags: ["Rust", "Compiler", "Virtual Machine"],
+    links: [
+      {
+        icon: GithubIcon,
+        href: "https://github.com/secona/belalang",
+        label: "Belalang GitHub Repository"
+      }
+    ]
+  },
+  {
+    name: "secona/kerang",
+    description: "Kerang is a toy shell written in C++",
+    tags: ["C++", "Shell", "Linux"],
+    links: [
+      {
+        icon: GithubIcon,
+        href: "https://github.com/secona/kerang",
+        label: "Kerang GitHub Repository"
+      }
+    ]
+  },
+  {
+    name: "OH-Fasilkom-UI/oh24-backend",
+    description: "This is the backend for the Open House Fasilkom UI 2024 event, successfully handling over 800 registrants",
+    tags: ["Typescript", "Bun", "Hono", "Docker", "Prisma"]
+  },
+  {
+    name: "OH-Fasilkom-UI/oh24-frontend",
+    description: "This is the frontend for the Open House Fasilkom UI 2024 event, successfully handling over 800 registrants",
+    tags: ["React", "Next.js", "Typescript", "shadcn/ui"]
+  }
+];
 ---
 
 <NavbarLayout>
@@ -25,40 +62,16 @@ import { GithubIcon } from "astro-feather";
       </Card>
     </div>
     <div class="flex flex-col gap-4 bg-gray-100 bg-dotted bg-[length:40px_40px]">
-      <ProjectCard
-        name="secona/belalang"
-        description="Belalang is a simple interpreted language written in The Rust Programming Language"
-        tags={["Rust", "Compiler", "Virtual Machine"]}
-        links={[
-          {
-            icon: GithubIcon,
-            href: "https://github.com/secona/belalang",
-            label: "Belalang GitHub Repository",
-          },
-        ]}
-      />
-      <ProjectCard
-        name="secona/kerang"
-        description="Kerang is a toy shell written in C++"
-        tags={["C++", "Shell", "Linux"]}
-        links={[
-          {
-            icon: GithubIcon,
-            href: "https://github.com/secona/kerang",
-            label: "Kerang GitHub Repository",
-          },
-        ]}
-      />
-      <ProjectCard
-        name="OH-Fasilkom-UI/oh24-backend"
-        description="This is the backend for the Open House Fasilkom UI 2024 event, successfully handling over 800 registrants"
-        tags={["Typescript", "Bun", "Hono", "Docker", "Prisma"]}
-      />
-      <ProjectCard
-        name="OH-Fasilkom-UI/oh24-frontend"
-        description="This is the frontend for the Open House Fasilkom UI 2024 event, successfully handling over 800 registrants"
-        tags={["React", "Next.js", "Typescript", "shadcn/ui"]}
-      />
+      {
+        data.map((d) => (
+          <ProjectCard
+            name={d.name}
+            description={d.description}
+            tags={d.tags}
+            links={d.links}
+          />
+        ))
+      }
     </div>
   </section>
 </NavbarLayout>

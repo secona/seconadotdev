@@ -2,6 +2,58 @@
 import NavbarLayout from '../layouts/NavbarLayout.astro';
 import ExperienceCard from '../components/ExperienceCard.astro';
 import Card from '../components/Card.astro';
+
+const data = [
+  {
+    title: "PIC of IT Development",
+    at: "Open House Fasilkom UI 2024",
+    time: "Jul 2024 - Present",
+    description: [
+      "Lead a team of 6 people to develop the Open House Fasilkom UI Website, including participant registration, ambassador registration."
+    ]
+  },
+  {
+    title: "Software Engineer Staff",
+    at: "Business and Partnerships BEM Fasilkom UI",
+    time: "Jun 2024 - Present",
+    description: [
+      "Software engineering mentor at SBF (Sekolah BEM Fasilkom)."
+    ]
+  },
+  {
+    title: "Backend Developer Staff",
+    at: "Green Welfare Indonesia",
+    time: "Jun 2024 - Present",
+    description: [
+      "Work in a team to develop the backend for Green Welfare Indonesia using Go, Gin, and Gorm."
+    ]
+  },
+  {
+    title: "Software Engineering Academy Expert Staff",
+    at: "COMPFEST 16",
+    time: "Feb 2024 - Present",
+    description: [
+      "Help PIC and VPIC run the Academy.",
+      "Write the selection task for participants."
+    ]
+  },
+  {
+    title: "Web Developer Staff",
+    at: "Pesta Rakyat Komputer 2024",
+    time: "Dec 2023 - May 2024",
+    description: [
+      "Work in a team to develop the PERAK website using Next.js, TailwindCSS, and TypeScript."
+    ]
+  },
+  {
+    title: "IT Development Staff",
+    at: "Open House Fasilkom UI 2023",
+    time: "Aug 2023 - Nov 2023",
+    description: [
+      "Work in a team to develop the Open House Fasilkom UI 2023 website using Next.js, TailwindCSS, and TypeScript."
+    ]
+  }
+]
 ---
 
 <NavbarLayout>
@@ -12,55 +64,16 @@ import Card from '../components/Card.astro';
       </Card>
     </div>
     <div class="flex flex-col gap-4 bg-gray-100 bg-dotted bg-[length:40px_40px]">
-      <ExperienceCard
-        title="PIC of IT Development"
-        at="Open House Fasilkom UI 2024"
-        time="Jul 2024 Present"
-        description={[
-          "Lead a team of 6 people to develop the Open House Fasilkom UI Website, including participant registration, ambassador registration."
-        ]}
-      />
-      <ExperienceCard
-        title="Software Engineer Staff"
-        at="Business and Partnerships BEM Fasilkom UI"
-        time="Jun 2024 - Present"
-        description={[
-          "Software engineering mentor at SBF (Sekolah BEM Fasilkom)."
-        ]}
-      />
-      <ExperienceCard
-        title="Backend Developer Staff"
-        at="Green Welfare Indonesia"
-        time="Jun 2024 - Present"
-        description={[
-          "Work in a team to develop the backend for Green Welfare Indonesia using Go, Gin, and Gorm."
-        ]}
-      />
-      <ExperienceCard
-        title="Software Engineering Academy Expert Staff"
-        at="COMPFEST 16"
-        time="Feb 2024 - Present"
-        description={[
-          "Help PIC and VPIC run the Academy.",
-          "Write the selection task for participants.",
-        ]}
-      />
-      <ExperienceCard
-        title="Web Developer Staff"
-        at="Pesta Rakyat Komputer 2024"
-        time="Dec 2023 - May 2024"
-        description={[
-          "Work in a team to develop the PERAK website using Next.js, TailwindCSS, and TypeScript."
-        ]}
-      />
-      <ExperienceCard
-        title="IT Development Staff"
-        at="Open House Fasilkom UI 2023"
-        time="Aug 2023 - Nov 2023"
-        description={[
-          "Work in a team to develop the Open House Fasilkom UI 2023 website using Next.js, TailwindCSS, and TypeScript."
-        ]}
-      />
+      {
+        data.map((d) => (
+          <ExperienceCard
+            title={d.title}
+            at={d.at}
+            time={d.time}
+            description={d.description}
+          />
+        ))
+      }
     </div>
   </section>
 </NavbarLayout>
