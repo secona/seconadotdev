@@ -11,7 +11,7 @@
       };
     in {
       devShells.default = pkgs.mkShell {
-        buildInputs = with pkgs; [deno];
+        buildInputs = with pkgs; [nodejs nodePackages.pnpm];
       };
     });
 }
