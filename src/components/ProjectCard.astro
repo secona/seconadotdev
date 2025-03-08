@@ -14,20 +14,19 @@ const { name, description, tags, links } = Astro.props;
 <div class="shadow-hard rounded-lg break-inside-avoid">
   <div class="flex justify-between py-2 px-4 border-2 border-black bg-orange-400 rounded-t-lg">
     <h1>{name}</h1>
-    <span>ooo</span>
-  </div>
-  <div class="px-6 pt-4 pb-6 rounded-y-lg rounded-b-lg bg-white border-x-2 border-b-2 border-black flex flex-col gap-2">
-    <p>{description}</p>
-    <div class="flex flex-wrap gap-2">
-      {tags.map((tag) => (
-        <p class="text-sm border-2 border-black rounded-lg px-2 bg-blue-400">{tag}</p>
-      ))}
-    </div>
     <div class="flex justify-end">
       {links?.map((link) => (
         <a href={link.href} target="_blank" rel="noopener noreferrer" aria-label={link.label}>
           <link.icon />
         </a>
+      ))}
+    </div>
+  </div>
+  <div class="px-6 pt-4 pb-6 rounded-y-lg rounded-b-lg bg-white border-x-2 border-b-2 border-black flex flex-col gap-2">
+    <p>{description}</p>
+    <div class="flex flex-wrap gap-2 mt-2">
+      {tags.map((tag) => (
+        <p class="text-sm border-2 border-black rounded-lg px-3 py-1 bg-red-300">{tag}</p>
       ))}
     </div>
   </div>

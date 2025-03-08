@@ -1,70 +1,20 @@
 ---
 import NavbarLayout from '../layouts/NavbarLayout.astro';
 import Footer from '../elements/Footer.astro';
-import Card from '../components/Card.astro';
+
+import Hero from "../sections/Hero.astro";
+import Introduction from "../sections/Introduction.astro";
+import Experiences from "../sections/Experiences.astro";
+import Projects from "../sections/Projects.astro";
+import Contacts from "../sections/Contacts.astro";
 ---
 
 <NavbarLayout>
-  <section class="flex flex-col justify-center items-center min-h-screen bg-gray-100 border-b-2 border-black bg-dotted bg-[length:40px_40px] px-4">
-    <div class="flex flex-col md:flex-row gap-10 justify-center items-center md:items-start">
-      <div class="flex flex-col gap-4">
-        <Card title="Hello, World!">
-          <p>My name is</p>
-          <h1 class="text-3xl sm:text-5xl">Vito Secona</h1>
-        </Card>
-        <p class="px-4 py-2 bg-white border-2 border-black shadow-hard rounded-lg">
-          Software Engineer
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section class="grid grid-cols-1 xl:grid-cols-2 [&>*]:py-6 sm:[&>*]:py-20 xl:[&>*]:py-24 [&>*]:px-4 sm:[&>*]:px-16 xl:[&>*]:px-20 bg-yellow-300">
-    <div class="flex flex-col justify-center">
-      <Card title="About Me">
-        <p>
-          I’m a Computer Science student at Universitas Indonesia, where I began on
-          my journey in 2023. I’m passionate about software engineering, with a keen
-          focus on designing fast and high-performance solutions.
-        </p>
-        <br>
-        <p>
-          My interests include systems programming, artificial intelligence, and
-          web development. I also enjoy participating in Capture The Flag (CTF)
-          competitions, specializing in web exploitation and forensics.
-        </p>
-        <br>
-        <p>
-          I thrive on tackling new challenges, collaborating with like-minded
-          individuals, and turning creative ideas into impactful solutions.
-        </p>
-      </Card>
-    </div>
-    <div class="flex flex-col gap-2">
-      <h1 class="text-3xl mb-3">Explore More!</h1>
-      <a
-        href="/experiences"
-        class="underline bg-white border-2 border-black rounded-lg shadow-hard px-6 py-2"
-        aria-label="Experiences Page"
-      >
-        My Experiences
-      </a>
-      <a
-        href="/projects"
-        class="underline bg-white border-2 border-black rounded-lg shadow-hard px-6 py-2"
-        aria-label="Projects Page"
-      >
-        My Projects
-      </a>
-      <a
-        href="/contacts"
-        class="underline bg-white border-2 border-black rounded-lg shadow-hard px-6 py-2"
-        aria-label="Contact Page"
-      >
-        My Contacts
-      </a>
-    </div>
-  </section>
+  <Hero />
+  <Introduction />
+  <Experiences />
+  <Projects />
+  <Contacts />
 
   <Footer />
 </NavbarLayout>

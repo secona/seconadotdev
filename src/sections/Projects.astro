@@ -1,0 +1,61 @@
+---
+import Card from "../components/Card.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import { GithubIcon } from "astro-feather";
+
+const data = [
+  {
+    name: "secona/belalang",
+    description: 
+      "Belalang is a simple interpreted language written in The Rust Programming Language. " +
+      "Its architecture includes a compiler and a custom-built bytecode stack-based virtual machine. " +
+      "Belalang's syntax is inspired by Go and Python, designed to be easy to understand by a beginner coder.",
+    tags: ["Rust", "Compiler", "Virtual Machine"],
+    links: [
+      {
+        icon: GithubIcon,
+        href: "https://github.com/secona/belalang",
+        label: "Belalang GitHub Repository"
+      }
+    ]
+  },
+  {
+    name: "secona/kerang",
+    description:
+      "Kerang is a toy shell written in C. " +
+      "The goal of Kerang is for me to understand how shells work under the hood and deepen my C and Linux syscalls knowledge",
+    tags: ["C", "Shell", "Linux"],
+    links: [
+      {
+        icon: GithubIcon,
+        href: "https://github.com/secona/kerang",
+        label: "Kerang GitHub Repository"
+      }
+    ]
+  },
+];
+---
+
+<section id="projects" class="grid grid-cols-1 xl:grid-cols-[1fr_2fr] xl:grid-cols-[1fr_2fr] [&>*]:py-20 xl:[&>*]:py-24 [&>*]:px-4 sm:[&>*]:px-16 md:[&>*]:px-28 xl:[&>*]:px-20 min-h-screen xl:divide-x-2 divide-black">
+  <div class="flex flex-col justify-start max-h-screen xl:sticky top-0 bg-red-300 border-y-2 border-black">
+    <Card title="My Projects">
+      <p>
+        Here's a sneak peek into some of my open source projects that I've
+        built! I have a strong interest in systems programming and programming
+        language theory.
+      </p>
+    </Card>
+  </div>
+  <div class="flex flex-col gap-4">
+    {
+      data.map((d) => (
+        <ProjectCard
+          name={d.name}
+          description={d.description}
+          tags={d.tags}
+          links={d.links}
+        />
+      ))
+    }
+  </div>
+</section>
