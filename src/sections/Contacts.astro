@@ -1,6 +1,7 @@
 ---
 import Card from '../components/Card.astro';
 import { GithubIcon, LinkedinIcon, TwitterIcon } from 'astro-feather';
+import BlueskyIcon from '../components/BlueskyIcon.astro';
 ---
 
 <section id="contacts" class="min-h-screen grid place-items-center bg-transparent px-6">
@@ -9,7 +10,7 @@ import { GithubIcon, LinkedinIcon, TwitterIcon } from 'astro-feather';
       <p class="max-w-96">
         Let's connect! You can find me on these platforms, but I am most active
         on my Twitter (X) account where I share insights on tech, my projects,
-        and what I’m currently working on. Feel free to reach out!
+        and what I'm currently working on. Feel free to reach out!
       </p>
     </Card>
     <div class="flex flex-col gap-2">
@@ -24,6 +25,10 @@ import { GithubIcon, LinkedinIcon, TwitterIcon } from 'astro-feather';
       <a href="https://x.com/bahasakarat" target="_blank" rel="noopener noreferrer" class="flex flex-row gap-4 text-white bg-[#1DA1F2] border-2 border-black rounded-lg shadow-hard px-6 py-2">
         <TwitterIcon />
         <p>@bahasakarat</p>
+      </a>
+      <a href="https://bsky.app/profile/secona.dev" target="_blank" rel="noopener noreferrer" class="flex flex-row gap-4 text-white bg-[#0085ff] border-2 border-black rounded-lg shadow-hard px-6 py-2">
+        <BlueskyIcon />
+        <p>@secona.dev</p>
       </a>
     </div>
   </div>
