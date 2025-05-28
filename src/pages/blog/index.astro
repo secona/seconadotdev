@@ -1,26 +1,38 @@
 ---
 import { getCollection } from "astro:content";
-import BaseLayout from "../../layouts/BaseLayout.astro";
+import NavbarLayout from "../../layouts/NavbarLayout.astro";
 import Card from "../../components/Card.astro";
 
 const blogs = await getCollection("blog");
 ---
 
-<BaseLayout>
-  <div class="flex flex-col max-w-screen-lg mx-auto">
-    <h1 class="text-xl">Blog</h1>
-    {blogs.map(blog => (
-      <Card titleless>
-        <h1 class="text-xl">
-          <a href={`/blog/${blog.id}`}>{blog.data.title}</a>
-        </h1>
-
-        {blog.data.description}
-
-        <div>
-          {new Date(blog.data.publishedAt).toLocaleDateString("us")}
-        </div>
+<NavbarLayout>
+  <main
+    class:list={[
+      "grid grid-cols-1 xl:grid-cols-[1fr_2fr]",
+      "[&>*]:py-2 [&>*]:px-4",
+      "py-20 xl:py-24 px-6 sm:px-18 md:px-24 xl:px-36 max-w-screen-xl mx-auto"
+    ]}
+  >
+    <div class="flex flex-col justify-start max-h-screen xl:sticky top-0">
+      <Card title="Blog">
+        Here are some of my blogs! I mostly write about Rust and my journey with in the software engineering world.
       </Card>
-    ))}
-  </div>
-</BaseLayout>
+    </div>
+    <div class="flex flex-col gap-4">
+      {blogs.map(blog => (
+        <Card titleless>
+          <h1 class="text-xl">
+            <a href={`/blog/${blog.id}`}>{blog.data.title}</a>
+          </h1>
+
+          {blog.data.description}
+
+          <div>
+            {new Date(blog.data.publishedAt).toLocaleDateString("us")}
+          </div>
+        </Card>
+      ))}
+    </div>
+  </main>
+</NavbarLayout>
