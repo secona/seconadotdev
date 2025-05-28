@@ -1,5 +1,7 @@
 ---
 import { getCollection, getEntry, render } from "astro:content";
+import NavbarLayout from "../../layouts/NavbarLayout.astro";
+import Card from "../../components/Card.astro";
 
 export async function getStaticPaths() {
   const blogs = await getCollection("blog");
@@ -14,5 +16,14 @@ if (!entry) throw new Error("blog not found");
 const { Content } = await render(entry);
 ---
 
-<h1>{entry.data.title}</h1>
-<Content />
+<NavbarLayout>
+  <main class="max-w-screen-xl py-24 mx-auto flex flex-col gap-4">
+    <Card titleless>
+      <h1 class="text-4xl">{entry.data.title}</h1>
+      <p>{entry.data.description}</p>
+    </Card>
+    <Card titleless>
+      <Content />
+    </Card>
+  </main>
+</NavbarLayout>
