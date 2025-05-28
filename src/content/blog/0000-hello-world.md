@@ -6,6 +6,4 @@ tags: []
 slug: "hello-world"
 ---
 
-# Hello, World!
-
 A start of something big.

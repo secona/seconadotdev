@@ -1,0 +1,26 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Card from "../../components/Card.astro";
+
+const blogs = await getCollection("blog");
+---
+
+<BaseLayout>
+  <div class="flex flex-col max-w-screen-lg mx-auto">
+    <h1 class="text-xl">Blog</h1>
+    {blogs.map(blog => (
+      <Card titleless>
+        <h1 class="text-xl">
+          <a href={`/blog/${blog.id}`}>{blog.data.title}</a>
+        </h1>
+
+        {blog.data.description}
+
+        <div>
+          {new Date(blog.data.publishedAt).toLocaleDateString("us")}
+        </div>
+      </Card>
+    ))}
+  </div>
+</BaseLayout>

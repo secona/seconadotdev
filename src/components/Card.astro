@@ -1,17 +1,20 @@
 ---
 interface Props {
   title?: string;
+  titleless?: boolean;
 }
 
-const { title = "" } = Astro.props;
+const { title = "", titleless } = Astro.props;
 ---
 
 <div  class="shadow-hard rounded-lg">
+  {!titleless && (
   <div class="flex justify-between py-2 px-4 border-2 border-black bg-orange-400 rounded-t-lg">
     <h1>{title}</h1>
     <span>ooo</span>
   </div>
-  <div class="px-6 pt-4 pb-6 rounded-y-lg rounded-b-lg bg-white border-x-2 border-b-2 border-black">
+  )}
+  <div class:list={["px-6 pt-4 pb-6 rounded-y-lg rounded-b-lg bg-white border-x-2 border-b-2 border-black", { "border-t-2 rounded-t-lg": titleless }]}>
     <slot />
   </div>
 </div>
