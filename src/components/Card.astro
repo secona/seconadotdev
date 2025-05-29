@@ -6,7 +6,7 @@ interface Props {
 const { title = "" } = Astro.props;
 ---
 
-<div  class="shadow-hard rounded-lg">
+<div id="container" class="shadow-hard rounded-lg">
   <div class="flex justify-between py-2 px-4 border-2 border-black bg-orange-400 rounded-t-lg">
     <h1>{title}</h1>
     <span>ooo</span>
@@ -15,3 +15,9 @@ const { title = "" } = Astro.props;
     <slot />
   </div>
 </div>
+
+<style>
+div#container {
+  box-shadow: var(--hard-shadow);
+}
+</style>

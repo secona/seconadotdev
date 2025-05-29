@@ -3,8 +3,8 @@ import { ExternalLinkIcon } from "astro-feather"
 import Card from "../components/Card.astro"
 ---
 
-<section class="grid grid-cols-1 place-items-center [&>*]:py-20 xl:[&>*]:py-24 [&>*]:px-6 sm:[&>*]:px-16 md:[&>*]:px-28 xl:[&>*]:px-20 bg-yellow-300 border-y-2 border-black">
-  <div class="flex flex-col gap-2 justify-center items-end max-w-5xl">
+<section class="[&>*]:py-20 xl:[&>*]:py-24 [&>*]:px-6 sm:[&>*]:px-16 md:[&>*]:px-28 xl:[&>*]:px-20">
+  <div>
     <Card title="Introduction">
       <p>
         Hello, everyone! My name is Vito. I am a second-year undergraduate student at
@@ -18,8 +18,45 @@ import Card from "../components/Card.astro"
         engineering career, focusing on systems development and compiler development.
       </p>
     </Card>
-    <a href="/secona-cv.pdf" target="_blank" rel="noopener noreferrer" class="flex flex-row items-center gap-2 px-4 py-2 bg-white border-2 border-black shadow-hard rounded-lg">
+    <a href="/secona-cv.pdf" target="_blank" rel="noopener noreferrer">
       <span>View My CV</span> <ExternalLinkIcon />
     </a>
   </div>
 </section>
+
+<style>
+section {
+  background-color: var(--yellow-300);
+
+  display: grid;
+  grid-template-columns: 1fr;
+  place-items: center;
+
+  border-width: 2px 0;
+  border-color: black;
+}
+
+section > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: flex-end;
+  max-width: 64rem;
+}
+
+a {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+
+  background-color: white;
+  box-shadow: var(--hard-shadow);
+
+  border-width: 2px;
+  border-color: black;
+  border-radius: 0.5rem;
+}
+</style>
