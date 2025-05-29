@@ -24,7 +24,7 @@ import Card from "../components/Card.astro"
   </div>
 </section>
 
-<style>
+<style lang="scss">
 section {
   background-color: var(--yellow-300);
 
@@ -34,29 +34,29 @@ section {
 
   border-width: 2px 0;
   border-color: black;
-}
 
-section > div {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  justify-content: center;
-  align-items: flex-end;
-  max-width: 64rem;
-}
+  & > div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: flex-end;
+    max-width: 64rem;
+  }
 
-a {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
+  & a {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
 
-  background-color: white;
-  box-shadow: var(--hard-shadow);
+    background-color: white;
+    box-shadow: var(--hard-shadow);
 
-  border-width: 2px;
-  border-color: black;
-  border-radius: 0.5rem;
+    border-width: 2px;
+    border-color: black;
+    border-radius: 0.5rem;
+  }
 }
 </style>
