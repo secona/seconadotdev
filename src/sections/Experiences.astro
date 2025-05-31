@@ -68,15 +68,15 @@ const data = [
 ]
 ---
 
-<section id="experiences" class="grid grid-cols-1 xl:grid-cols-[1fr_2fr] [&>*]:py-20 xl:[&>*]:py-24 [&>*]:px-6 sm:[&>*]:px-16 md:[&>*]:px-28 xl:[&>*]:px-20 min-h-screen xl:divide-x-2 divide-black">
-  <div class="flex flex-col justify-start max-h-screen xl:sticky top-0 bg-blue-300 max-xl:border-b-2 border-black">
+<section id="experiences">
+  <div class="experiences-sidebar">
     <Card title="My Experiences">
       Here's a sneak peek into my journey! I've been involved in many
       student-led organization and events. Beyond that, I've played a role in
       education as a teaching assistant for some CS courses at campus.
     </Card>
   </div>
-  <div class="flex flex-col gap-4">
+  <div class="experiences-list">
     {
       data.map((d) => (
         <ExperienceCard
@@ -90,3 +90,71 @@ const data = [
     }
   </div>
 </section>
+
+<style>
+#experiences {
+  display: grid;
+  grid-template-columns: 1fr;
+  min-height: 100vh;
+
+  @media (min-width: 1280px) {
+    grid-template-columns: 1fr 2fr;
+  }
+
+  .experiences-sidebar {
+    background-color: var(--blue-300);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    max-height: 100vh;
+    top: 0;
+
+    border-bottom-width: 2px;
+    border-style: solid;
+    border-color: black;
+
+    @media (max-width: 1280px) {
+      border-right: none;
+    }
+
+    @media (min-width: 1280px) {
+      position: sticky;
+      border-right: 2px solid black;
+    }
+  }
+
+  .experiences-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  & > :not(:last-child) {
+    border-inline-start-width: 0px;
+    border-inline-end-width: 2px;
+    border-color: black;
+  }
+
+  & > * {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+
+    @media (min-width: 1280px) {
+      padding-top: 6rem;
+      padding-bottom: 6rem;
+      padding-left: 5rem;
+      padding-right: 5rem;
+    }
+    @media (min-width: 640px) {
+      padding-left: 4rem;
+      padding-right: 4rem;
+    }
+    @media (min-width: 768px) {
+      padding-left: 7rem;
+      padding-right: 7rem;
+    }
+  }
+}
+</style>

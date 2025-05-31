@@ -2,10 +2,10 @@
 import { GithubIcon, LinkedinIcon, TwitterIcon, MenuIcon } from "astro-feather";
 ---
 
-<nav class="flex justify-between items-center bg-white border-2 border-black rounded-lg shadow-hard px-6 py-2 fixed left-2 right-2 top-2 z-50">
+<nav id="container">
   <div>
     <a href="/"><strong>secona.dev</strong></a>
-    <div class="max-md:hidden inline">
+    <div class="links desktop">
       &mdash;
       <a href="#experiences" class="underline">Experiences</a> &mdash;
       <a href="#projects" class="underline">Projects</a> &mdash;
@@ -13,7 +13,7 @@ import { GithubIcon, LinkedinIcon, TwitterIcon, MenuIcon } from "astro-feather";
     </div>
   </div>
 
-  <div class="flex items-center gap-4 max-md:hidden">
+  <div class="links-external desktop">
     <a aria-label="GitHub Profile" href="https://github.com/secona" target="_blank" rel="noopener noreferrer">
       <GithubIcon size={18} />
     </a>
@@ -25,17 +25,17 @@ import { GithubIcon, LinkedinIcon, TwitterIcon, MenuIcon } from "astro-feather";
     </a>
   </div>
 
-  <button id="open-menu-button" class="md:hidden">
+  <button id="open-menu-button" class="mobile">
     <MenuIcon size={18} />
   </button>
 
-  <div id="menu" class="hidden md:hidden absolute top-12 left-0 right-0 px-4 py-2 bg-white border-2 border-black shadow-hard rounded-lg">
-    <div class="flex flex-col mb-4">
+  <div id="links-dropdown">
+    <div id="links-internal">
       <a href="#experiences">Experiences</a>
       <a href="#projects">Projects</a>
       <a href="#contacts">Contacts</a>
     </div>
-    <div class="flex flex-col">
+    <div id="links-external">
       <a href="https://github.com/secona" target="_blank" rel="noopener noreferrer">
         GitHub
       </a>
@@ -49,20 +49,70 @@ import { GithubIcon, LinkedinIcon, TwitterIcon, MenuIcon } from "astro-feather";
   </div>
 </nav>
 
-<script>
-  const menu = document.getElementById("menu");
+<style lang="scss">
+#container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: var(--rounded);
+  box-shadow: var(--hard-shadow);
+  padding: 0.5rem 1.5rem;
 
-  function openMenu() {
-    menu?.classList.add("hidden");
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  left: 1rem;
+
+  z-index: 50;
+
+  .links {
+    display: inline;
   }
 
-  function closeMenu() {
-    menu?.classList.remove("hidden");
+  .links-external {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
   }
 
-  function toggleMenu() {
-    menu?.classList.toggle("hidden")
+  #links-dropdown {
+    display: none;
+
+    position: absolute;
+    top: 4rem;
+    left: 0;
+    right: 0;
+    padding: 1rem 1.5rem;
+
+    background: white;
+    border: 2px solid black;
+    border-radius: var(--rounded);
+    box-shadow: var(--hard-shadow);
+
+    > #links-internal {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 2rem;
+    }
+
+    > #links-external {
+      display: flex;
+      flex-direction: column;
+    }
   }
 
-  document.getElementById("open-menu-button")?.addEventListener("click", toggleMenu)
-</script>
+  .desktop {
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  .mobile {
+    @media (min-width: 768px) {
+      display: none;
+    }
+  }
+}
+</style>
