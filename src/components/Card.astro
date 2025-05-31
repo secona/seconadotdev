@@ -6,7 +6,7 @@ interface Props {
 const { title = "" } = Astro.props;
 ---
 
-<div id="container">
+<div id="card-container">
   <div id="titlebar">
     <h1>{title}</h1>
     <span>ooo</span>
@@ -17,7 +17,7 @@ const { title = "" } = Astro.props;
 </div>
 
 <style>
-div#container {
+div#card-container {
   box-shadow: var(--hard-shadow);
   border-radius: var(--rounded);
 
