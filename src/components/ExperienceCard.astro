@@ -10,10 +10,37 @@ interface Props {
 const { title, at, atLink = '#', time, description } = Astro.props;
 ---
 
-<div class="bg-white border-2 border-black rounded-lg shadow-hard px-6 py-2">
-  <p class="text-gray-500 text-sm">{time}</p>
-  <h1>{title} @ <a class="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer" href={atLink}>{at}</a></h1>
-  <ul class="list-disc list-outside ml-5">
+<div id="container">
+  <p id="duration">{time}</p>
+  <h1>{title} @ <a target="_blank" rel="noopener noreferrer" href={atLink}>{at}</a></h1>
+  <ul id="list">
     {description.map((des) => <li>{des}</li>)}
   </ul>
 </div>
+
+<style lang="scss">
+@use '../styles/mixins' as *;
+
+div#container {
+  background-color: white;
+  box-shadow: var(--hard-shadow);
+  padding: 0.5rem 1.5rem;
+
+  border-width: 2px;
+  border-color: black;
+  border-radius: var(--rounded);
+
+  & > #duration {
+    color: var(--gray-500);
+    @include font-size(sm);
+  }
+
+  a {
+    color: var(--blue-600);
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+</style>

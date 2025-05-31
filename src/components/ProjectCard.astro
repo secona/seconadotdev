@@ -11,10 +11,10 @@ interface Props {
 const { name, description, tags, links } = Astro.props;
 ---
 
-<div class="shadow-hard rounded-lg break-inside-avoid">
-  <div class="flex justify-between py-2 px-4 border-2 border-black bg-orange-400 rounded-t-lg">
+<div id="container">
+  <div id="titlebar">
     <h1>{name}</h1>
-    <div class="flex justify-end">
+    <div id="links">
       {links?.map((link) => (
         <a href={link.href} target="_blank" rel="noopener noreferrer" aria-label={link.label}>
           <link.icon />
@@ -22,12 +22,64 @@ const { name, description, tags, links } = Astro.props;
       ))}
     </div>
   </div>
-  <div class="px-6 pt-4 pb-6 rounded-y-lg rounded-b-lg bg-white border-x-2 border-b-2 border-black flex flex-col gap-2">
+  <div id="content">
     <p>{description}</p>
-    <div class="flex flex-wrap gap-2 mt-2">
+    <div class="tags">
       {tags.map((tag) => (
-        <p class="text-sm border-2 border-black rounded-lg px-3 py-1 bg-red-300">{tag}</p>
+        <p class="tags-content">{tag}</p>
       ))}
     </div>
   </div>
 </div>
+
+<style lang="scss">
+@use '../styles/mixins' as *;
+
+div#container {
+  box-shadow: var(--hard-shadow);
+  border-radius: var(--rounded);
+
+  & > div#titlebar {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+
+    background-color: var(--orange-400);
+
+    border-color: black;
+    border-width: 2px;
+    border-radius: var(--rounded) var(--rounded) 0 0;
+    
+    & > div#links {
+      display: flex;
+      justify-content: end;
+    }
+  }
+
+  & > div#content {
+    padding: 1rem 1.5rem 1.5rem 1.5rem;
+
+    background-color: white;
+
+    border-bottom-left-radius: var(--rounded);
+    border-bottom-right-radius: var(--rounded);
+    border-width: 0 2px 2px 2px;
+    border-color: black;
+
+    & > div.tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+
+      & > .tags-content {
+        @include font-size(sm);
+        border: 2px solid black;
+        border-radius: var(--rounded);
+        padding: 0.25rem 1rem;
+        background-color: var(--red-300);
+      }
+    }
+  }
+}
+</style>

@@ -63,8 +63,8 @@ const data = [
 ];
 ---
 
-<section id="projects" class="grid grid-cols-1 xl:grid-cols-[1fr_2fr] xl:grid-cols-[1fr_2fr] [&>*]:py-20 xl:[&>*]:py-24 [&>*]:px-4 sm:[&>*]:px-16 md:[&>*]:px-28 xl:[&>*]:px-20 min-h-screen xl:divide-x-2 divide-black">
-  <div class="flex flex-col justify-start max-h-screen xl:sticky top-0 bg-red-300 border-y-2 border-black">
+<section id="projects">
+  <div class="projects-sidebar">
     <Card title="My Projects">
       <p>
         Here's a sneak peek into some of my open source projects that I've
@@ -73,7 +73,7 @@ const data = [
       </p>
     </Card>
   </div>
-  <div class="flex flex-col gap-4">
+  <div class="projects-list">
     {
       data.map((d) => (
         <ProjectCard
@@ -86,3 +86,68 @@ const data = [
     }
   </div>
 </section>
+
+<style>
+#projects {
+  display: grid;
+  grid-template-columns: 1fr;
+  min-height: 100vh;
+
+  @media (min-width: 1280px) {
+    grid-template-columns: 1fr 2fr;
+  }
+
+  .projects-sidebar {
+    background-color: var(--red-300);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    max-height: 100vh;
+    top: 0;
+
+    border-bottom-width: 2px;
+    border-style: solid;
+    border-color: black;
+
+    @media (max-width: 1280px) {
+      border-top: 2px solid black;
+      border-right: none;
+    }
+
+    @media (min-width: 1280px) {
+      position: sticky;
+      border-right: 2px solid black;
+    }
+  }
+
+  .projects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  & > :not(:last-child) {
+    border-inline-start-width: 0px;
+    border-inline-end-width: 2px;
+    border-color: black;
+  }
+
+  & > * {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+
+    @media (min-width: 1280px) {
+      padding-top: 6rem;
+      padding-bottom: 6rem;
+      padding-left: 5rem;
+      padding-right: 5rem;
+    }
+    @media (min-width: 640px) {
+      padding-left: 4rem;
+      padding-right: 4rem;
+    }
+  }
+}
+</style>
