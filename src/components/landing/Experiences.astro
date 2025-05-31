@@ -1,71 +1,8 @@
 ---
-import ExperienceCard from '../../components/ExperienceCard.astro';
 import Card from '../../components/Card.astro';
+import { getCollection } from 'astro:content';
 
-const data = [
-  {
-    title: "Teaching Assistant",
-    at: "Fasilkom UI",
-    atLink: "https://cs.ui.ac.id",
-    time: "Jul 2024 - Present",
-    description: [
-      "Assisted in Programming Basics 2 using Java course, helping students understand OOP concepts and problem solving skills.",
-      "Assisted in Introduction to Digital Systems course, helping students understand logic circuits and digital design.",
-    ]
-  },
-  {
-    title: "PIC of IT Development",
-    at: "Open House Fasilkom UI 2024",
-    atLink: "https://oh.cs.ui.ac.id",
-    time: "Jul 2024 - Nov 2024",
-    description: [
-      "Led the development of a web platform that handled 2000+ users with 1000+ online tickets registrations.",
-      "Optimized service to handle 70+ concurrent users, ensuring user experience.",
-      "Developed participant and ambassador registration systems with an efficient workflow.",
-    ]
-  },
-  {
-    title: "Software Engineer Staff",
-    at: "Business and Partnerships BEM Fasilkom UI",
-    atLink: "https://bem.cs.ui.ac.id",
-    time: "Jun 2024 - Jan 2025",
-    description: [
-      "Mentored 6 students at SBF (Sekolah BEM Fasilkom) in software engineering.",
-      "Guided students in real world software engineering challenges, including version control and collaboration workflows."
-    ]
-  },
-  {
-    title: "Backend Developer Staff",
-    at: "Green Welfare Indonesia",
-    atLink: "https://www.greenwelfare.org",
-    time: "Jun 2024 - Jan 2025",
-    description: [
-      "Developed the backend infrastructure using Go, Gin, and Gorm.",
-    ]
-  },
-  {
-    title: "Software Engineering Academy Expert Staff",
-    at: "COMPFEST 16",
-    atLink: "https://compfest.id",
-    time: "Feb 2024 - Sep 2024",
-    description: [
-      "Assisted in organizing and executing the Software Engineering Academy (SEA).",
-      "Contributed to SEA's curriculum development to improve participants' technical skills.",
-      "Designed and evaluated selection tasks to assess participants' proficiency in software engineering.",
-      "Developed the final project task, challenging participants to apply their knowledge to solve real-world problems.",
-    ]
-  },
-  {
-    title: "IT Development Staff",
-    at: "Open House Fasilkom UI 2023",
-    atLink: "https://oh.cs.ui.ac.id",
-    time: "Aug 2023 - Nov 2023",
-    description: [
-      "Implemented a responsive design using Next.js and TailwindCSS.",
-      "Collaborated in developing the Open House Fasilkom UI 2023 website.",
-    ]
-  }
-]
+const data = await getCollection("experiences");
 ---
 
 <section id="experiences">
@@ -78,20 +15,45 @@ const data = [
   </div>
   <div class="experiences-list">
     {
-      data.map((d) => (
-        <ExperienceCard
-          title={d.title}
-          at={d.at}
-          atLink={d.atLink}
-          time={d.time}
-          description={d.description}
-        />
+      data.map(({ data: { time, title, description, at, atLink }}) => (
+        <div id="container">
+          <p id="duration">{time}</p>
+          <h1>{title} @ <a target="_blank" rel="noopener noreferrer" href={atLink}>{at}</a></h1>
+          <ul id="list">
+            {description.map((des) => <li>{des}</li>)}
+          </ul>
+        </div>
       ))
     }
   </div>
 </section>
 
-<style>
+<style lang="scss">
+@use '../../styles/mixins' as *;
+
+div#container {
+  background-color: white;
+  box-shadow: var(--hard-shadow);
+  padding: .5rem 1.25rem;
+
+  border-width: 2px;
+  border-color: black;
+  border-radius: var(--rounded);
+
+  & > #duration {
+    color: var(--gray-500);
+    @include font-size(sm);
+  }
+
+  a {
+    color: var(--blue-600);
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
 #experiences {
   display: grid;
   grid-template-columns: 1fr;

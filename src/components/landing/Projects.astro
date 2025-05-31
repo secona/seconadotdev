@@ -1,66 +1,9 @@
 ---
-import Card from "../../components/Card.astro";
-import ProjectCard from "../../components/ProjectCard.astro";
+import { getCollection } from "astro:content";
 import { GithubIcon } from "astro-feather";
+import Card from "../../components/Card.astro";
 
-const data = [
-  {
-    name: "secona/belalang",
-    description: 
-      "Belalang is a simple interpreted language written in The Rust Programming Language. " +
-      "Its architecture includes a compiler and a custom-built bytecode stack-based virtual machine. " +
-      "Belalang's syntax is inspired by Go and Python, designed to be easy to understand by a beginner coder.",
-    tags: ["Rust", "Compiler", "Virtual Machine"],
-    links: [
-      {
-        icon: GithubIcon,
-        href: "https://github.com/secona/belalang",
-        label: "Belalang GitHub Repository"
-      }
-    ]
-  },
-  {
-    name: "secona/kflap",
-    description:
-      "(Work in Progress) KFLAP is a JFLAP clone written in C++. " +
-      "KFLAP aims to be fully compatible with the JFLAP format, ensuring backward compatibility while providing a modern and efficient user experience.",
-    tags: ["C/C++", "Meson", "Nix", "Formal Language & Automata Theory"],
-    links: [
-      {
-        icon: GithubIcon,
-        href: "https://github.com/secona/kflap",
-        label: "KFLAP GitHub Repository"
-      }
-    ]
-  },
-  {
-    name: "secona/neoman",
-    description:
-      "(Work in Progress) Neoman is an API testing tool similar to Postman, but in the terminal.",
-    tags: ["Rust", "Postman", "TUI", "CLI"],
-    links: [
-      {
-        icon: GithubIcon,
-        href: "https://github.com/secona/kflap",
-        label: "KFLAP GitHub Repository"
-      }
-    ]
-  },
-  {
-    name: "secona/kerang",
-    description:
-      "Kerang is a toy shell written in C. " +
-      "The goal of Kerang is for me to understand how shells work under the hood and deepen my C and Linux syscalls knowledge",
-    tags: ["C", "Shell", "Linux"],
-    links: [
-      {
-        icon: GithubIcon,
-        href: "https://github.com/secona/kerang",
-        label: "Kerang GitHub Repository"
-      }
-    ]
-  },
-];
+const data = await getCollection("projects");
 ---
 
 <section id="projects">
@@ -76,18 +19,80 @@ const data = [
   <div class="projects-list">
     {
       data.map((d) => (
-        <ProjectCard
-          name={d.name}
-          description={d.description}
-          tags={d.tags}
-          links={d.links}
-        />
+        <div id="container">
+          <div id="titlebar">
+            <h1>{d.id}</h1>
+            <div id="links">
+              {d.data.links.map((link) => (
+                <a href={link.href} target="_blank" rel="noopener noreferrer" aria-label={link.label}>
+                  <GithubIcon />
+                </a>
+              ))}
+            </div>
+          </div>
+          <div id="content">
+            <p>{d.data.description}</p>
+            <div class="tags">
+              {d.data.tags.map((tag) => <p class="tags-content">{tag}</p>)}
+            </div>
+          </div>
+        </div>
       ))
     }
   </div>
 </section>
 
 <style>
+@use '../styles/mixins' as *;
+
+div#container {
+  box-shadow: var(--hard-shadow);
+  border-radius: var(--rounded);
+
+  & > div#titlebar {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+
+    background-color: var(--orange-400);
+
+    border-color: black;
+    border-width: 2px;
+    border-radius: var(--rounded) var(--rounded) 0 0;
+    
+    & > div#links {
+      display: flex;
+      justify-content: end;
+    }
+  }
+
+  & > div#content {
+    padding: 1rem 1.5rem 1.5rem 1.5rem;
+
+    background-color: white;
+
+    border-bottom-left-radius: var(--rounded);
+    border-bottom-right-radius: var(--rounded);
+    border-width: 0 2px 2px 2px;
+    border-color: black;
+
+    & > div.tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+
+      & > .tags-content {
+        @include font-size(sm);
+        border: 2px solid black;
+        border-radius: var(--rounded);
+        padding: 0.25rem 1rem;
+        background-color: var(--red-300);
+      }
+    }
+  }
+}
+
 #projects {
   display: grid;
   grid-template-columns: 1fr;
