@@ -1,17 +1,22 @@
 ---
 interface Props {
   title?: string;
+  disableTitlebar?: boolean;
 }
 
-const { title = "" } = Astro.props;
+const { title = "", disableTitlebar = false } = Astro.props;
 ---
 
 <div id="card-container">
-  <div id="titlebar">
-    <h1>{title}</h1>
-    <span>ooo</span>
-  </div>
-  <div id="content">
+  {!disableTitlebar && (
+    <div id="titlebar">
+      <slot name="titlebar">
+        <h1>{title}</h1>
+        <span>ooo</span>
+      </slot>
+    </div>
+  )}
+  <div id="content" class:list={{ disableTitlebar }}>
     <slot />
   </div>
 </div>
@@ -24,6 +29,7 @@ div#card-container {
   & > div#titlebar {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 0.5rem 1rem;
 
     background-color: var(--orange-400);
@@ -42,6 +48,13 @@ div#card-container {
     border-bottom-right-radius: var(--rounded);
     border-width: 0 2px 2px 2px;
     border-color: black;
+
+    &.disableTitlebar {
+      border-top-right-radius: var(--rounded);
+      border-top-left-radius: var(--rounded);
+      border-top-width: 2px;
+      padding: 1rem 1.5rem !important;
+    }
   }
 }
 </style>

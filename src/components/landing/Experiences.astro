@@ -16,13 +16,13 @@ const data = await getCollection("experiences");
   <div class="experiences-list">
     {
       data.map(({ data: { time, title, description, at, atLink }}) => (
-        <div id="container">
-          <p id="duration">{time}</p>
+        <Card disableTitlebar>
           <h1>{title} @ <a target="_blank" rel="noopener noreferrer" href={atLink}>{at}</a></h1>
+          <p id="duration">{time}</p>
           <ul id="list">
             {description.map((des) => <li>{des}</li>)}
           </ul>
-        </div>
+        </Card>
       ))
     }
   </div>
@@ -31,26 +31,16 @@ const data = await getCollection("experiences");
 <style lang="scss">
 @use '../../styles/mixins' as *;
 
-div#container {
-  background-color: white;
-  box-shadow: var(--hard-shadow);
-  padding: .5rem 1.25rem;
+#duration {
+  color: var(--gray-500);
+  @include font-size(sm);
+}
 
-  border-width: 2px;
-  border-color: black;
-  border-radius: var(--rounded);
+a {
+  color: var(--blue-600);
 
-  & > #duration {
-    color: var(--gray-500);
-    @include font-size(sm);
-  }
-
-  a {
-    color: var(--blue-600);
-
-    &:hover {
-      text-decoration: underline;
-    }
+  &:hover {
+    text-decoration: underline;
   }
 }
 

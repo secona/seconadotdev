@@ -1,6 +1,5 @@
 ---
 import { getCollection } from "astro:content";
-import { GithubIcon } from "astro-feather";
 import Card from "../../components/Card.astro";
 
 const data = await getCollection("projects");
@@ -19,77 +18,49 @@ const data = await getCollection("projects");
   <div class="projects-list">
     {
       data.map((d) => (
-        <div id="container">
-          <div id="titlebar">
-            <h1>{d.id}</h1>
-            <div id="links">
-              {d.data.links.map((link) => (
-                <a href={link.href} target="_blank" rel="noopener noreferrer" aria-label={link.label}>
-                  <GithubIcon />
-                </a>
-              ))}
-            </div>
+        <Card disableTitlebar>
+          <h1 class="project-title">
+            <a href={d.data.links[0].href} target="_blank" rel="noopener noreferrer">
+              {d.id}
+            </a>
+          </h1>
+          <p>{d.data.description}</p>
+          <div class="tags">
+            {d.data.tags.map((tag) => <p class="tags-content">{tag}</p>)}
           </div>
-          <div id="content">
-            <p>{d.data.description}</p>
-            <div class="tags">
-              {d.data.tags.map((tag) => <p class="tags-content">{tag}</p>)}
-            </div>
-          </div>
-        </div>
+        </Card>
       ))
     }
   </div>
 </section>
 
-<style>
-@use '../styles/mixins' as *;
+<style lang="scss">
+@use '../../styles/mixins' as *;
 
-div#container {
-  box-shadow: var(--hard-shadow);
-  border-radius: var(--rounded);
+.project-title {
+  margin-bottom: 0.5rem;
+}
 
-  & > div#titlebar {
-    display: flex;
-    justify-content: space-between;
-    padding: 0.5rem 1rem;
+a {
+  color: var(--blue-600);
 
-    background-color: var(--orange-400);
-
-    border-color: black;
-    border-width: 2px;
-    border-radius: var(--rounded) var(--rounded) 0 0;
-    
-    & > div#links {
-      display: flex;
-      justify-content: end;
-    }
+  &:hover {
+    text-decoration: underline;
   }
+}
 
-  & > div#content {
-    padding: 1rem 1.5rem 1.5rem 1.5rem;
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
 
-    background-color: white;
-
-    border-bottom-left-radius: var(--rounded);
-    border-bottom-right-radius: var(--rounded);
-    border-width: 0 2px 2px 2px;
-    border-color: black;
-
-    & > div.tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-top: 1rem;
-
-      & > .tags-content {
-        @include font-size(sm);
-        border: 2px solid black;
-        border-radius: var(--rounded);
-        padding: 0.25rem 1rem;
-        background-color: var(--red-300);
-      }
-    }
+  .tags-content {
+    @include font-size(sm);
+    border: 2px solid black;
+    border-radius: var(--rounded);
+    padding: 0.25rem 0.5rem;
+    background-color: var(--red-300);
   }
 }
 
