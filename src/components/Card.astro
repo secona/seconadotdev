@@ -1,20 +1,60 @@
 ---
 interface Props {
   title?: string;
-  titleless?: boolean;
+  disableTitlebar?: boolean;
 }
 
-const { title = "", titleless } = Astro.props;
+const { title = "", disableTitlebar = false } = Astro.props;
 ---
 
-<div  class="shadow-hard rounded-lg">
-  {!titleless && (
-  <div class="flex justify-between py-2 px-4 border-2 border-black bg-orange-400 rounded-t-lg">
-    <h1>{title}</h1>
-    <span>ooo</span>
-  </div>
+<div id="card-container">
+  {!disableTitlebar && (
+    <div id="titlebar">
+      <slot name="titlebar">
+        <h1>{title}</h1>
+        <span>ooo</span>
+      </slot>
+    </div>
   )}
-  <div class:list={["px-6 pt-4 pb-6 rounded-y-lg rounded-b-lg bg-white border-x-2 border-b-2 border-black", { "border-t-2 rounded-t-lg": titleless }]}>
+  <div id="content" class:list={{ disableTitlebar }}>
     <slot />
   </div>
 </div>
+
+<style>
+div#card-container {
+  box-shadow: var(--hard-shadow);
+  border-radius: var(--rounded);
+
+  & > div#titlebar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+
+    background-color: var(--orange-400);
+
+    border-color: black;
+    border-width: 2px;
+    border-radius: var(--rounded) var(--rounded) 0 0;
+  }
+
+  & > div#content {
+    padding: 1rem 1.5rem 1.5rem 1.5rem;
+
+    background-color: white;
+
+    border-bottom-left-radius: var(--rounded);
+    border-bottom-right-radius: var(--rounded);
+    border-width: 0 2px 2px 2px;
+    border-color: black;
+
+    &.disableTitlebar {
+      border-top-right-radius: var(--rounded);
+      border-top-left-radius: var(--rounded);
+      border-top-width: 2px;
+      padding: 1rem 1.5rem !important;
+    }
+  }
+}
+</style>

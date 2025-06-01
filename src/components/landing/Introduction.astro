@@ -1,0 +1,84 @@
+---
+import { ExternalLinkIcon } from "astro-feather"
+import Card from "../../components/Card.astro"
+---
+
+<section id="introduction">
+  <div>
+    <Card title="Introduction">
+      <p>
+        Hello, everyone! My name is Vito. I am a second-year undergraduate student at
+        Universitas Indonesia. I have a strong interest in systems programming and
+        software engineering research.
+      </p>
+      <br />
+      <p>
+        I have been programming using Rust, JS/TS, Python, and Go. While I have most
+        experiences in web development, I have made Rust my main focus in my software
+        engineering career, focusing on systems development and compiler development.
+      </p>
+    </Card>
+    <a href="/secona-cv.pdf" target="_blank" rel="noopener noreferrer">
+      <span>View My CV</span> <ExternalLinkIcon />
+    </a>
+  </div>
+</section>
+
+<style lang="scss">
+section {
+  background-color: var(--yellow-300);
+
+  display: grid;
+  grid-template-columns: 1fr;
+  place-items: center;
+
+  border-width: 2px 0;
+  border-color: black;
+
+  & > div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: flex-end;
+    max-width: 64rem;
+  }
+
+  & a {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+
+    background-color: white;
+    box-shadow: var(--hard-shadow);
+
+    border-width: 2px;
+    border-color: black;
+    border-radius: 0.5rem;
+  }
+
+  & > * {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+
+    @media (min-width: 1280px) {
+      padding-top: 6rem;
+      padding-bottom: 6rem;
+      padding-left: 5rem;
+      padding-right: 5rem;
+    }
+    @media (min-width: 640px) {
+      padding-left: 4rem;
+      padding-right: 4rem;
+    }
+    @media (min-width: 768px) {
+      padding-left: 7rem;
+      padding-right: 7rem;
+    }
+  }
+}
+</style>

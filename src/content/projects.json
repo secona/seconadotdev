@@ -1,0 +1,64 @@
+[
+  {
+    "slug": "secona/belalang",
+    "description": "Belalang is a simple interpreted language written in The Rust Programming Language. Its architecture includes a compiler and a custom-built bytecode stack-based virtual machine. Belalang's syntax is inspired by Go and Python, designed to be easy to understand by a beginner coder.\n",
+    "tags": [
+      "Rust",
+      "Compiler",
+      "Virtual Machine"
+    ],
+    "links": [
+      {
+        "href": "https://github.com/secona/belalang",
+        "label": "Belalang GitHub Repository"
+      }
+    ]
+  },
+  {
+    "slug": "secona/kflap",
+    "description": "(Work in Progress) KFLAP is a JFLAP clone written in C++. KFLAP aims to be fully compatible with the JFLAP format, ensuring backward compatibility while providing a modern and efficient user experience.\n",
+    "tags": [
+      "C/C++",
+      "Meson",
+      "Nix",
+      "Formal Language & Automata Theory"
+    ],
+    "links": [
+      {
+        "href": "https://github.com/secona/kflap",
+        "label": "KFLAP GitHub Repository"
+      }
+    ]
+  },
+  {
+    "slug": "secona/neoman",
+    "description": "(Work in Progress) Neoman is an API testing tool similar to Postman, but in the terminal.\n",
+    "tags": [
+      "Rust",
+      "Postman",
+      "TUI",
+      "CLI"
+    ],
+    "links": [
+      {
+        "href": "https://github.com/secona/kflap",
+        "label": "KFLAP GitHub Repository"
+      }
+    ]
+  },
+  {
+    "slug": "secona/kerang",
+    "description": "Kerang is a toy shell written in C. The goal of Kerang is for me to understand how shells work under the hood and deepen my C and Linux syscalls knowledge\n",
+    "tags": [
+      "C",
+      "Shell",
+      "Linux"
+    ],
+    "links": [
+      {
+        "href": "https://github.com/secona/kerang",
+        "label": "Kerang GitHub Repository"
+      }
+    ]
+  }
+]

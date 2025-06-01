@@ -1,0 +1,129 @@
+---
+import { getCollection } from "astro:content";
+import Card from "../../components/Card.astro";
+
+const data = await getCollection("projects");
+---
+
+<section id="projects">
+  <div class="projects-sidebar">
+    <Card title="My Projects">
+      <p>
+        Here's a sneak peek into some of my open source projects that I've
+        built! I have a strong interest in systems programming and programming
+        language theory.
+      </p>
+    </Card>
+  </div>
+  <div class="projects-list">
+    {
+      data.map((d) => (
+        <Card disableTitlebar>
+          <h1 class="project-title">
+            <a href={d.data.links[0].href} target="_blank" rel="noopener noreferrer">
+              {d.id}
+            </a>
+          </h1>
+          <p>{d.data.description}</p>
+          <div class="tags">
+            {d.data.tags.map((tag) => <p class="tags-content">{tag}</p>)}
+          </div>
+        </Card>
+      ))
+    }
+  </div>
+</section>
+
+<style lang="scss">
+@use '../../styles/mixins' as *;
+
+.project-title {
+  margin-bottom: 0.5rem;
+}
+
+a {
+  color: var(--blue-600);
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+
+  .tags-content {
+    @include font-size(sm);
+    border: 2px solid black;
+    border-radius: var(--rounded);
+    padding: 0.25rem 0.5rem;
+    background-color: var(--red-300);
+  }
+}
+
+#projects {
+  display: grid;
+  grid-template-columns: 1fr;
+  min-height: 100vh;
+
+  @media (min-width: 1280px) {
+    grid-template-columns: 1fr 2fr;
+  }
+
+  .projects-sidebar {
+    background-color: var(--red-300);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    max-height: 100vh;
+    top: 0;
+
+    border-bottom-width: 2px;
+    border-style: solid;
+    border-color: black;
+
+    @media (max-width: 1280px) {
+      border-top: 2px solid black;
+      border-right: none;
+    }
+
+    @media (min-width: 1280px) {
+      position: sticky;
+      border-right: 2px solid black;
+    }
+  }
+
+  .projects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  & > :not(:last-child) {
+    border-inline-start-width: 0px;
+    border-inline-end-width: 2px;
+    border-color: black;
+  }
+
+  & > * {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+
+    @media (min-width: 1280px) {
+      padding-top: 6rem;
+      padding-bottom: 6rem;
+      padding-left: 5rem;
+      padding-right: 5rem;
+    }
+    @media (min-width: 640px) {
+      padding-left: 4rem;
+      padding-right: 4rem;
+    }
+  }
+}
+</style>
