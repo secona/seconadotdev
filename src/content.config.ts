@@ -33,6 +33,7 @@ const blogs = defineCollection({
     description: z.string(),
     publishedAt: z.string().date(),
     tags: z.array(z.string()),
+    show: z.boolean(),
   })
 })
 

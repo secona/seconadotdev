@@ -5,13 +5,15 @@ import Card from "../../components/Card.astro";
 
 export async function getStaticPaths() {
   const blogs = await getCollection("blogs");
-  return blogs.map(blog => ({ params: { slug: blog.id } }))
+  return blogs
+    .filter(blog => blog.data.show)
+    .map(blog => ({ params: { slug: blog.id } }))
 }
 
 const { slug } = Astro.params;
 const entry = await getEntry('blogs', slug);
 
-if (!entry) throw new Error("blog not found");
+if (!entry || !entry.data.show) throw new Error("blog not found");
 
 const { Content } = await render(entry);
 ---

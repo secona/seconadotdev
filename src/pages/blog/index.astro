@@ -4,7 +4,9 @@ import NavbarLayout from "../../layouts/NavbarLayout.astro";
 import Card from "../../components/Card.astro";
 
 const blogs = await getCollection("blogs");
-const sortedBlogs = blogs.sort((a, b) => new Date(b.data.publishedAt).getTime() - new Date(a.data.publishedAt).getTime());
+const sortedBlogs = blogs
+  .filter((blog) => blog.data.show)
+  .sort((a, b) => new Date(b.data.publishedAt).getTime() - new Date(a.data.publishedAt).getTime());
 ---
 
 <NavbarLayout pageTitle="Vito Secona's Blog">
@@ -18,7 +20,7 @@ const sortedBlogs = blogs.sort((a, b) => new Date(b.data.publishedAt).getTime() 
         </p>
         <div class="blog-stats">
           <p class="stats-text">
-            <strong>{blogs.length}</strong> {blogs.length === 1 ? 'post' : 'posts'} published
+            <strong>{sortedBlogs.length}</strong> {blogs.length === 1 ? 'post' : 'posts'} published
           </p>
         </div>
       </Card>
