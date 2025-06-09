@@ -1,9 +1,15 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 import Navbar from '../components/Navbar.astro';
+
+interface Props {
+  pageTitle?: string;
+}
+
+const { pageTitle = "Vito Secona | Software Engineer" } = Astro.props;
 ---
 
-<BaseLayout>
+<BaseLayout pageTitle={pageTitle}>
   <Navbar />
   <slot />
 </BaseLayout>

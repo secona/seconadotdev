@@ -16,7 +16,7 @@ if (!entry) throw new Error("blog not found");
 const { Content } = await render(entry);
 ---
 
-<NavbarLayout>
+<NavbarLayout pageTitle={entry.data.title + "| Vito Secona"}>
   <main class="blog-main">
     <Card disableTitlebar>
       <h1 class="blog-title">{entry.data.title}</h1>
