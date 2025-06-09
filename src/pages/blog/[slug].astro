@@ -2,6 +2,7 @@
 import { getCollection, getEntry, render } from "astro:content";
 import NavbarLayout from "../../layouts/NavbarLayout.astro";
 import Card from "../../components/Card.astro";
+import { ArrowLeftIcon } from "astro-feather";
 
 export async function getStaticPaths() {
   const blogs = await getCollection("blogs");
@@ -18,13 +19,15 @@ if (!entry || !entry.data.show) throw new Error("blog not found");
 const { Content } = await render(entry);
 ---
 
-<NavbarLayout pageTitle={entry.data.title + "| Vito Secona"}>
+<NavbarLayout pageTitle={entry.data.title + " | Vito Secona"}>
   <main class="blog-main">
+    <a class="blog-back" href="/blog">
+      <ArrowLeftIcon />
+      <span>Back to Blogs</span>
+    </a>
     <Card disableTitlebar>
       <div class="title-card">
-        <a class="blog-back" href="/blog">Back to blogs</a>
         <h1 class="blog-title">{entry.data.title}</h1>
-        <p class="blog-description">{entry.data.description}</p>
         <div class="blog-meta">
           <time class="blog-date">
             {new Date(entry.data.publishedAt).toLocaleDateString("en-US", {
@@ -65,12 +68,14 @@ const { Content } = await render(entry);
   --red-600: rgb(220 38 38);
   --blue-600: rgb(37 99 235); 
   --orange-400: rgb(251 146 60); 
-  --yellow-300: rgb(253 230 138); 
 }
 
 .blog-back {
   color: var(--blue-600);
   text-decoration: underline;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .blog-main {
@@ -99,7 +104,6 @@ const { Content } = await render(entry);
 .blog-description {
   color: var(--gray-700); 
   margin-bottom: 1.5rem; 
-  @include font-size(lg); 
 }
 
 .blog-meta {
@@ -111,9 +115,6 @@ const { Content } = await render(entry);
 
 .blog-date {
   @include font-size(sm);
-  color: var(--gray-600); 
-  font-style: normal; 
-  font-weight: 500;
 }
 
 .tags {
@@ -133,7 +134,6 @@ const { Content } = await render(entry);
 
 .blog-content {
   line-height: 1.7;
-  
   
   h1 {
     @include font-size(3xl);
@@ -384,10 +384,7 @@ const { Content } = await render(entry);
   a {
     color: var(--blue-600);
     text-decoration: none;
-    
-    &:hover {
-      text-decoration: underline;
-    }
+    text-decoration: underline;
   }
 
   
