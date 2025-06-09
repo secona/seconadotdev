@@ -1,86 +1,546 @@
 ---
-title: "Hello, World!"
-description: "The first blog post on secona.dev/blog"
-publishedAt: "2025-05-28"
-tags: []
+title: "Complete Markdown Style Test Suite"
+description: "A comprehensive test of all markdown features and styling elements supported in the blog layout"
+publishedAt: "2025-06-09"
+tags: ["markdown", "styling", "test", "comprehensive"]
 slug: "hello-world"
 ---
 
-# My Markdown Feature Test Blog 📝
+# Complete Markdown Style Test Suite 🎨
 
-Welcome to my **Markdown** feature test! This blog post demonstrates all supported syntax elements in one file. Enjoy!
+Welcome to the most comprehensive markdown test suite for our blog styling system! This document contains extensive examples of every supported markdown feature, from basic text formatting to complex nested structures. The purpose is to ensure that all styling elements work correctly and look visually appealing across different content types.
 
----
-
-## Headers
-
-# H1
-## H2
-### H3
-#### H4
-##### H5
-###### H6
+This opening paragraph is intentionally long to test how extended prose appears in our blog layout. It should demonstrate proper line height, font family selection, and color choices. The text should be readable and comfortable for extended reading sessions, with appropriate spacing between lines and proper contrast against the background.
 
 ---
 
-## Emphasis
+## All Header Levels Demonstrated
 
-*Italic*  
-_Also italic_  
+The following section showcases all six header levels with substantial content under each to demonstrate the visual hierarchy and spacing.
 
-**Bold**  
-__Also bold__  
+# First Level Header - The Foundation
 
-***Bold and italic***  
+This is content under an H1 header. In most markdown processors, H1 headers are reserved for the main title, but they can also be used for major section breaks. This paragraph tests how content flows after the largest header size. The styling should be bold and prominent, clearly establishing this as a primary section divider.
 
-~~Strikethrough~~
+The H1 header should have a distinctive underline border that sets it apart from other headers. This second paragraph under the H1 continues to test the spacing and readability of content in this section.
 
----
+## Second Level Header - Major Sections
 
-## Paragraphs and Line Breaks
+H2 headers typically represent major sections within a document. This content tests the visual relationship between H2 headers and their associated content. The font size should be noticeably smaller than H1 but still prominent enough to clearly indicate a new major section.
 
-This is a paragraph.  
-Here is a line break using two spaces at the end.  
-Like this.
+This paragraph continues under the H2 to ensure proper spacing and visual flow. The header styling should maintain the monospace font family while being clearly distinguishable from body text.
 
----
+### Third Level Header - Subsections
 
-## Blockquotes
+H3 headers are perfect for subsections and more detailed topic divisions. This content appears under an H3 to test the progressive size reduction and visual hierarchy. The styling should maintain consistency with other headers while being appropriately sized for tertiary content organization.
 
-> Markdown is great for writing documentation.
->> Nested blockquote!
+#### Fourth Level Header - Detailed Topics
 
----
+H4 headers handle more granular content organization. This text tests how well the styling works for detailed topic headers that aren't quite as prominent as the larger headers but still need to stand out from regular paragraph text.
 
-## Lists
+##### Fifth Level Header - Fine Details
 
-### Unordered list
+H5 headers are used for very specific subsections and detailed breakdowns. This content tests the smaller header sizes and ensures they remain readable and purposeful even at reduced sizes.
 
-- Item 1
-- Item 2
-  - Subitem 2.1
-  - Subitem 2.2
-- Item 3
+###### Sixth Level Header - Micro Sections
 
-### Ordered list
-
-1. First
-2. Second
-   1. Sub-second
-   2. Sub-sub
-3. Third
+H6 headers represent the smallest header level and are often used for micro-sections or specialized formatting. This text should appear under a header that's distinct from body text but appropriately sized for minor section divisions.
 
 ---
 
-## Code
+## Comprehensive Text Emphasis Testing
 
-### Inline code
+This section thoroughly tests all forms of text emphasis and formatting options available in markdown.
 
-Here is some `inline code`.
+### Basic Emphasis Styles
 
-### Code block (indented)
+Here we test *italic text using asterisks* and _italic text using underscores_. Both should render identically with proper italic styling that maintains readability while providing visual emphasis.
 
-    def hello():
-        print("Hello, world!")
+**Bold text using double asterisks** and __bold text using double underscores__ should both render with strong font weight. The bold styling should be prominent without being overwhelming.
 
-### Fenced code block
+***Triple asterisks create bold italic text*** which combines both emphasis styles. This should be clearly distinguishable from either bold or italic alone.
+
+### Advanced Text Formatting
+
+~~Strikethrough text~~ should have a clear line through it, useful for showing deleted or deprecated content. The strikethrough should be visible but not interfere with text readability.
+
+This paragraph contains `inline code formatting` which should stand out from regular text with a different background color, monospace font, and subtle padding. The inline code should be easily distinguishable but not disruptive to the reading flow.
+
+### Mixed Formatting in Context
+
+In real-world usage, text formatting often appears mixed within paragraphs. For example, you might have **important bold concepts** alongside *emphasized terms* and `technical code references` all within the same sentence. This paragraph tests how these different formatting styles work together harmoniously.
+
+Sometimes you need to reference **bold important concepts** while also noting that *certain terms deserve emphasis* and `specific code elements` require highlighting. The visual hierarchy should remain clear even when multiple formatting types appear in close proximity.
+
+---
+
+## Extensive Blockquote Testing
+
+Blockquotes are essential for highlighting important information, quotes, and nested content. This section tests various blockquote scenarios.
+
+> This is a standard blockquote that should have distinctive styling including background color, border, and special formatting. The text within should remain readable while clearly indicating that this is quoted or highlighted content.
+>
+> Blockquotes can contain multiple paragraphs, and each paragraph should maintain proper spacing and formatting within the blockquote context. This second paragraph tests multi-paragraph blockquote behavior.
+
+> Blockquotes often contain **bold text**, *italic text*, and `inline code` formatting. All of these emphasis styles should work correctly within the blockquote context while maintaining the blockquote's distinctive appearance.
+
+> Here's a blockquote that contains a longer passage of text to test how extensive quoted content appears. Sometimes quotes or highlighted sections contain substantial amounts of information that need to remain readable and well-formatted. The blockquote styling should enhance readability rather than interfere with it.
+>
+>> This is a nested blockquote within another blockquote. The styling should clearly indicate the nesting level while maintaining readability. Nested blockquotes often use different background colors or styling to show the hierarchy.
+>>
+>> This second paragraph in the nested blockquote tests multi-paragraph behavior within nested quotes. The visual distinction should be clear and aesthetically pleasing.
+
+> After the nested blockquote, we return to the first level. This tests how the styling transitions between different nesting levels and ensures proper visual hierarchy throughout the blockquote structure.
+
+---
+
+## Comprehensive List Testing
+
+Lists are fundamental to organizing information. This section tests various list types and nesting scenarios.
+
+### Unordered Lists
+
+- This is the first item in an unordered list
+- Second item with more substantial content to test how longer list items appear and wrap within the list structure
+- Third item containing **bold text**, *italic text*, and `inline code` to test formatting within list items
+- Fourth item that leads into nested lists:
+  - First nested item under the fourth main item
+  - Second nested item with extended content to test nested list formatting and spacing
+  - Third nested item that contains multiple formatting types including **bold**, *italic*, and `code`
+  - Fourth nested item leading to deeper nesting:
+    - Deep nested item level three
+    - Another deep nested item with substantial content to test deep nesting appearance
+    - Final deep nested item completing the three-level nesting test
+
+### Ordered Lists
+
+1. First numbered item with basic content
+2. Second numbered item containing more extensive text to test how numbered lists handle longer content and proper text wrapping within list items
+3. Third numbered item with mixed formatting including **bold text**, *italic text*, and `inline code elements`
+4. Fourth numbered item that introduces nested numbered lists:
+   1. First nested numbered item
+   2. Second nested numbered item with extended content to test nested numbering and spacing
+   3. Third nested numbered item containing formatting like **bold** and *italic* text
+   4. Fourth nested numbered item leading to deeper nesting:
+      1. Deep nested numbered item at level three
+      2. Another deep nested numbered item with substantial content
+      3. Final deep nested numbered item completing the numbering hierarchy test
+
+### Mixed List Types
+
+1. First item in ordered list
+2. Second item leading to unordered nested items:
+   - Unordered item nested under ordered item
+   - Another unordered nested item
+   - Third unordered nested item
+3. Third ordered item continuing the sequence
+4. Fourth ordered item with more nested mixing:
+   - First unordered nested item
+   - Second unordered nested item leading to ordered nesting:
+     1. Ordered item nested under unordered under ordered
+     2. Second deep nested ordered item
+   - Third unordered nested item returning to the middle level
+
+---
+
+## Comprehensive Code Testing
+
+Code formatting is crucial for technical content. This section tests both inline and block code formatting extensively.
+
+### Inline Code in Various Contexts
+
+Regular paragraph text with `simple inline code` should display the code with distinctive styling. Here's a paragraph with multiple `code elements` scattered throughout to test `spacing` and `visual consistency` when code appears frequently.
+
+When writing about programming, you often need to reference `variables`, `function names`, `file paths like /usr/local/bin`, and `command line arguments --verbose --output=file.txt` within regular sentences.
+
+### Basic Code Blocks
+
+Here's a simple code block without syntax highlighting:
+
+```
+function basicExample() {
+    console.log("This is a basic code block");
+    return "testing code block formatting";
+}
+```
+
+### JavaScript Code Block
+
+```javascript
+// JavaScript code block with syntax highlighting
+function comprehensiveExample(param1, param2) {
+    // This function demonstrates various JavaScript features
+    const result = {
+        input: [param1, param2],
+        timestamp: new Date(),
+        processed: false
+    };
+    
+    // Array manipulation
+    const numbers = [1, 2, 3, 4, 5];
+    const doubled = numbers.map(n => n * 2);
+    
+    // Conditional logic
+    if (param1 && param2) {
+        result.processed = true;
+        result.output = `Processed: ${param1} + ${param2}`;
+    } else {
+        throw new Error("Both parameters are required");
+    }
+    
+    return result;
+}
+
+// Class definition
+class DataProcessor {
+    constructor(config) {
+        this.config = config;
+        this.cache = new Map();
+    }
+    
+    async processData(data) {
+        try {
+            const processed = await this.transform(data);
+            this.cache.set(data.id, processed);
+            return processed;
+        } catch (error) {
+            console.error("Processing failed:", error);
+            throw error;
+        }
+    }
+}
+```
+
+### Python Code Block
+
+```python
+# Python code block testing syntax highlighting
+import json
+import asyncio
+from typing import List, Dict, Optional
+
+class DataAnalyzer:
+    """Comprehensive data analysis class for testing code styling."""
+    
+    def __init__(self, config: Dict[str, any]):
+        self.config = config
+        self.results = []
+        
+    def analyze_data(self, dataset: List[Dict]) -> Dict[str, any]:
+        """Analyze dataset and return comprehensive results."""
+        
+        # Data validation
+        if not dataset:
+            raise ValueError("Dataset cannot be empty")
+            
+        # Statistical analysis
+        total_records = len(dataset)
+        numeric_fields = self._identify_numeric_fields(dataset[0])
+        
+        statistics = {}
+        for field in numeric_fields:
+            values = [record.get(field, 0) for record in dataset]
+            statistics[field] = {
+                'mean': sum(values) / len(values),
+                'max': max(values),
+                'min': min(values),
+                'count': len([v for v in values if v is not None])
+            }
+        
+        return {
+            'total_records': total_records,
+            'statistics': statistics,
+            'processed_at': datetime.now().isoformat()
+        }
+    
+    def _identify_numeric_fields(self, sample_record: Dict) -> List[str]:
+        """Identify numeric fields in the dataset."""
+        numeric_fields = []
+        for key, value in sample_record.items():
+            if isinstance(value, (int, float)):
+                numeric_fields.append(key)
+        return numeric_fields
+```
+
+### HTML/CSS Code Block
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Styling Test</title>
+    <style>
+        /* CSS within HTML for comprehensive testing */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: #f8f9fa;
+        }
+        
+        .code-block {
+            background-color: #1e1e1e;
+            color: #ffffff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+        }
+        
+        .syntax-highlight .keyword {
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+        
+        .syntax-highlight .string {
+            color: #51cf66;
+        }
+        
+        .syntax-highlight .comment {
+            color: #6c757d;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Testing HTML Code Block Rendering</h1>
+        <p>This HTML block tests how complex markup appears in code blocks.</p>
+        
+        <pre class="code-block">
+            <code class="syntax-highlight">
+                <!-- HTML comment testing -->
+                <div class="example">
+                    <span class="keyword">Testing</span> content
+                </div>
+            </code>
+        </pre>
+    </div>
+</body>
+</html>
+```
+
+### Shell/Bash Code Block
+
+```bash
+#!/bin/bash
+# Comprehensive shell script for testing code block styling
+
+# Variable definitions
+PROJECT_NAME="markdown-test"
+BUILD_DIR="./build"
+SOURCE_DIR="./src"
+
+# Function definition
+setup_environment() {
+    echo "Setting up environment for $PROJECT_NAME"
+    
+    # Create directories
+    mkdir -p "$BUILD_DIR"
+    mkdir -p "$SOURCE_DIR"
+    
+    # Install dependencies
+    if command -v npm &> /dev/null; then
+        npm install --production
+    elif command -v yarn &> /dev/null; then
+        yarn install --production
+    else
+        echo "Error: Neither npm nor yarn found"
+        exit 1
+    fi
+}
+
+# Main execution
+main() {
+    echo "Starting build process..."
+    
+    # Clean previous builds
+    rm -rf "$BUILD_DIR"/*
+    
+    # Run build commands
+    for file in "$SOURCE_DIR"/*.md; do
+        if [[ -f "$file" ]]; then
+            filename=$(basename "$file" .md)
+            echo "Processing: $filename"
+            pandoc "$file" -o "$BUILD_DIR/$filename.html"
+        fi
+    done
+    
+    echo "Build completed successfully!"
+}
+
+# Execute main function
+main "$@"
+```
+
+---
+
+## Advanced Formatting Combinations
+
+This section tests complex combinations of formatting elements to ensure they work harmoniously together.
+
+### Lists with Code and Emphasis
+
+1. **Setup Phase**: Initialize the project with `npm init -y` command
+   - Install dependencies using `npm install express`
+   - Configure the *main entry point* in `package.json`
+   - Set up **environment variables** in `.env` file
+
+2. **Development Phase**: Write the application code
+   ```javascript
+   const express = require('express');
+   const app = express();
+   const PORT = process.env.PORT || 3000;
+   ```
+   - Implement **error handling** middleware
+   - Add *request logging* functionality
+   - Configure `CORS` settings for API access
+
+3. **Testing Phase**: Ensure code quality and functionality
+   - Write **unit tests** using `jest` framework
+   - Implement *integration tests* for API endpoints
+   - Run `npm test` to execute the test suite
+
+### Blockquotes with Complex Content
+
+> **Important Note**: When working with markdown formatting, it's essential to understand how different elements interact with each other. 
+>
+> Consider this code example within a blockquote:
+> ```javascript
+> function processMarkdown(content) {
+>     return content
+>         .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+>         .replace(/\*(.*?)\*/g, '<em>$1</em>');
+> }
+> ```
+>
+> The function above demonstrates:
+> - **Bold text** processing using regex
+> - *Italic text* handling with replacement
+> - `Code formatting` preservation within quotes
+>
+>> **Nested Information**: Sometimes you need to emphasize important details within already quoted content. This nested blockquote contains `inline code`, **bold emphasis**, and *italic formatting* to test complex nesting scenarios.
+
+### Tables with Formatting
+
+| Feature | Status | Description | Code Example |
+|---------|---------|-------------|--------------|
+| **Headers** | ✅ Complete | All six header levels supported | `# H1` through `###### H6` |
+| *Emphasis* | ✅ Complete | Bold, italic, and combined formatting | `**bold**`, `*italic*` |
+| `Code Blocks` | ✅ Complete | Syntax highlighting for multiple languages | ```javascript function() {} ``` |
+| Lists | ✅ Complete | Ordered, unordered, and nested lists | `1. Item` or `- Item` |
+| **Blockquotes** | ✅ Complete | Single and nested quote support | `> Quote text` |
+| *Links* | 🔄 Testing | Internal and external link handling | `[text](url)` |
+
+---
+
+## Horizontal Rules and Separators
+
+Horizontal rules help divide content into distinct sections. Here are several examples:
+
+---
+
+The line above is a standard horizontal rule created with three dashes.
+
+***
+
+This separator uses three asterisks for the same effect.
+
+___
+
+And this one uses three underscores, also creating a horizontal rule.
+
+---
+
+## Link Testing
+
+Links are fundamental to web content. Here are various link types:
+
+### Basic Links
+
+This paragraph contains a [basic link to example.com](https://example.com) that should be styled appropriately. Here's another [link with descriptive text](https://github.com) that provides more context.
+
+### Links in Different Contexts
+
+- **List item** with an [embedded link](https://stackoverflow.com)
+- *Emphasized text* containing a [link within italics](https://developer.mozilla.org)
+- `Code context` with a [link nearby](https://nodejs.org) for reference
+
+> **Blockquote context**: Sometimes you need [links within quoted content](https://docs.github.com) to provide additional resources or references.
+
+### Technical Links
+
+When documenting technical topics, you often reference:
+- [Official documentation](https://docs.npmjs.com)
+- [API references](https://developer.github.com/v3/)
+- [Tutorial resources](https://javascript.info)
+- [Stack Overflow discussions](https://stackoverflow.com/questions/tagged/javascript)
+
+---
+
+## Final Comprehensive Test
+
+This final section combines multiple elements to test real-world content scenarios where various markdown features appear together naturally.
+
+### Project Setup Guide
+
+To begin working with our **markdown styling system**, follow these comprehensive steps:
+
+1. **Environment Preparation**
+   ```bash
+   git clone https://github.com/example/project.git
+   cd project
+   npm install
+   ```
+
+2. **Configuration Setup**
+   - Create a `.env` file with required variables
+   - Update `config.json` with your *specific settings*
+   - Test the configuration using `npm run test:config`
+
+3. **Development Workflow**
+   > **Important**: Always test your changes in a development environment before deploying to production.
+   
+   The typical workflow involves:
+   - Making changes to source files
+   - Running `npm run build` to compile assets
+   - Testing with `npm run test`
+   - Committing changes with descriptive messages
+
+### Common Issues and Solutions
+
+| Issue | Symptoms | Solution | Code Fix |
+|-------|----------|----------|----------|
+| **Build Failures** | `npm run build` exits with errors | Check dependencies and *Node version* | `npm install && node --version` |
+| *Style Conflicts* | CSS not applying correctly | Clear cache and rebuild | `rm -rf node_modules && npm install` |
+| `Runtime Errors` | Application crashes on startup | Review configuration files | Check `.env` and `config.json` |
+
+### Advanced Customization
+
+For users who need **extensive customization**, consider these approaches:
+
+> **Pro Tip**: Custom styling should extend the base system rather than replace it entirely. This ensures *consistency* and `maintainability`.
+
+```scss
+// Example custom styling extension
+.custom-blog-layout {
+  .blog-content {
+    // Extend existing styles
+    h1 {
+      color: var(--custom-primary);
+      border-bottom-color: var(--custom-accent);
+    }
+    
+    // Add new functionality
+    .custom-callout {
+      background: var(--custom-highlight);
+      padding: 1rem;
+      border-left: 4px solid var(--custom-border);
+    }
+  }
+}
+```
+
+This comprehensive test document should reveal any styling issues and demonstrate the full range of markdown formatting capabilities supported by your blog system. Every element from basic text to complex nested structures has been thoroughly tested with realistic content scenarios.
