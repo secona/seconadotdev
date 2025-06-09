@@ -20,12 +20,19 @@ const { Content } = await render(entry);
   <main class="blog-main">
     <Card disableTitlebar>
       <h1 class="blog-title">{entry.data.title}</h1>
-      <p class="blog-description">{entry.data.description}</p>
       <time class="blog-date">{new Date(entry.data.publishedAt).toLocaleDateString("en-US", { 
         year: 'numeric', 
         month: 'long', 
         day: 'numeric' 
       })}</time>
+      <p class="blog-description">{entry.data.description}</p>
+      {entry.data.tags && entry.data.tags.length > 0 && (
+        <div class="tags">
+          {entry.data.tags.map((tag) => (
+            <span class="tag">{tag}</span>
+          ))}
+        </div>
+      )}
     </Card>
     <Card disableTitlebar>
       <article class="blog-content">
@@ -366,6 +373,21 @@ const { Content } = await render(entry);
     tr:last-child td {
       border-bottom: none;
     }
+  }
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+
+  .tag {
+    @include font-size(sm);
+    border: 2px solid black;
+    border-radius: var(--rounded);
+    padding: 0.25rem 0.5rem;
+    background-color: var(--yellow-300);
+    font-weight: 500;
   }
 }
 </style>
