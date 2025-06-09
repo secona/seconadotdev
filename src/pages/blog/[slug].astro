@@ -18,7 +18,7 @@ if (!entry || !entry.data.show) throw new Error("blog not found");
 const { Content } = await render(entry);
 ---
 
-<NavbarLayout pageTitle={entry.data.title + "| Vito Secona"}>
+<NavbarLayout pageTitle={entry.data.title + " | Vito Secona"}>
   <main class="blog-main">
     <a class="blog-back" href="/blog">Back to blogs</a>
     <Card disableTitlebar>
