@@ -14,8 +14,8 @@ const sortedBlogs = blogs
     <div class="blog-sidebar">
       <Card title="My Blog">
         <p>
-          Here are some of my blogs! I mostly write about Rust and my journey 
-          in the software engineering world. Feel free to explore my thoughts 
+          Here are some of my blogs! I mostly write about Rust and my journey
+          in the software engineering world. Feel free to explore my thoughts
           on programming, systems development, and technology.
         </p>
         <div class="blog-stats">
@@ -35,21 +35,19 @@ const sortedBlogs = blogs
                   {blog.data.title}
                 </a>
               </h1>
-              <p class="blog-date">
-                {new Date(blog.data.publishedAt).toLocaleDateString("en-US", {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric'
-                })}
-              </p>
+              <div class="blog-context">
+                <time>
+                  {new Date(blog.data.publishedAt).toLocaleDateString("en-US", {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                  })}
+                </time>
+                {blog.data.tags.map((tag) => (
+                  <span> &mdash; <a href="#" class="tag">#{tag}</a></span>
+                ))}
+              </div>
               <p class="blog-description">{blog.data.description}</p>
-              {blog.data.tags && blog.data.tags.length > 0 && (
-                <div class="tags">
-                  {blog.data.tags.map((tag) => (
-                    <span class="tag">{tag}</span>
-                  ))}
-                </div>
-              )}
             </div>
           </Card>
         ))
@@ -63,16 +61,19 @@ const sortedBlogs = blogs
 
 .blog-post {
   .blog-title {
+    @include font-size(xl);
+    margin-bottom: 0.25rem;
+
     a {
       color: var(--blue-600);
-      text-decoration: underline;
+      line-height: 1.2;
     }
   }
 
-  .blog-date {
-    color: var(--gray-500);
+  .blog-context {
     @include font-size(sm);
-    margin-bottom: 0.75rem;
+    color: var(--gray-500);
+    margin-bottom: 0.5rem;
   }
 
   .blog-description {
@@ -117,7 +118,7 @@ const sortedBlogs = blogs
   }
 
   .blog-sidebar {
-    background-color: var(--yellow-300);
+    background-color: var(--yellow-400);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
