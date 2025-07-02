@@ -16,7 +16,7 @@ const entry = await getEntry('blogs', slug);
 
 if (!entry || !entry.data.show) throw new Error("blog not found");
 
-const { Content } = await render(entry);
+const { Content, remarkPluginFrontmatter } = await render(entry);
 ---
 
 <NavbarLayout pageTitle={entry.data.title + " | Vito Secona"}>
@@ -38,6 +38,7 @@ const { Content } = await render(entry);
               day: 'numeric'
             })}
           </time>
+          &mdash; {remarkPluginFrontmatter.minutesRead}
           {entry.data.tags.map((tag) => (
             <span> &mdash; <a href="#" class="entry-tag">#{tag}</a></span>
           ))}
