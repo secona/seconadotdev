@@ -9,7 +9,7 @@ export default defineConfig({
   site: "https://secona.dev",
   integrations: [sitemap()],
   markdown: {
-    shikiConfig: { theme: "catppuccin-mocha" },
+    shikiConfig: { theme: "github-dark-high-contrast" },
     rehypePlugins: [rehypeSlug, [rehypeAutolinkHeadings, { behavior: "wrap" }]],
   },
 });
