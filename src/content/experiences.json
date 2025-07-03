@@ -5,6 +5,7 @@
     "at": "Fasilkom UI",
     "atLink": "https://cs.ui.ac.id",
     "time": "Jul 2024 - Present",
+    "show": true,
     "description": [
       "Assisted in Programming Basics 2 using Java course, helping students understand OOP concepts and problem solving skills.",
       "Assisted in Introduction to Digital Systems course, helping students understand logic circuits and digital design."
@@ -16,6 +17,7 @@
     "at": "Open House Fasilkom UI 2024",
     "atLink": "https://oh.cs.ui.ac.id",
     "time": "Jul 2024 - Nov 2024",
+    "show": true,
     "description": [
       "Led the development of a web platform that handled 2000+ users with 1000+ online tickets registrations.",
       "Optimized service to handle 70+ concurrent users, ensuring user experience.",
@@ -28,6 +30,7 @@
     "at": "Business and Partnerships BEM Fasilkom UI",
     "atLink": "https://bem.cs.ui.ac.id",
     "time": "Jun 2024 - Jan 2025",
+    "show": true,
     "description": [
       "Mentored 6 students at SBF (Sekolah BEM Fasilkom) in software engineering.",
       "Guided students in real world software engineering challenges, including version control and collaboration workflows."
@@ -39,6 +42,7 @@
     "at": "Green Welfare Indonesia",
     "atLink": "https://www.greenwelfare.org",
     "time": "Jun 2024 - Jan 2025",
+    "show": true,
     "description": [
       "Developed the backend infrastructure using Go, Gin, and Gorm."
     ]
@@ -49,6 +53,7 @@
     "at": "COMPFEST 16",
     "atLink": "https://compfest.id",
     "time": "Feb 2024 - Sep 2024",
+    "show": true,
     "description": [
       "Assisted in organizing and executing the Software Engineering Academy (SEA).",
       "Contributed to SEA's curriculum development to improve participants' technical skills.",
@@ -62,10 +67,10 @@
     "at": "Open House Fasilkom UI 2023",
     "atLink": "https://oh.cs.ui.ac.id",
     "time": "Aug 2023 - Nov 2023",
+    "show": true,
     "description": [
       "Implemented a responsive design using Next.js and TailwindCSS.",
       "Collaborated in developing the Open House Fasilkom UI 2023 website."
     ]
   }
 ]
-

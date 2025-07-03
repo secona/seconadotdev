@@ -7,10 +7,12 @@ const projects = defineCollection({
     slug: z.string(),
     description: z.string(),
     tags: z.array(z.string()),
-    links: z.array(z.object({
-      href: z.string(),
-      label: z.string(),
-    })),
+    links: z.array(
+      z.object({
+        href: z.string(),
+        label: z.string(),
+      })
+    ),
   }),
 });
 
@@ -21,6 +23,7 @@ const experiences = defineCollection({
     at: z.string(),
     atLink: z.string().url(),
     time: z.string(),
+    show: z.boolean(),
     description: z.array(z.string()),
   }),
 });
@@ -31,10 +34,11 @@ const blogs = defineCollection({
     slug: z.string(),
     title: z.string(),
     description: z.string(),
+    show: z.boolean(),
     publishedAt: z.string().date(),
     tags: z.array(z.string()),
     show: z.boolean(),
-  })
-})
+  }),
+});
 
 export const collections = { projects, experiences, blogs };

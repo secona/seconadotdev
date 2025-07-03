@@ -15,15 +15,17 @@ const data = await getCollection("experiences");
   </div>
   <div class="experiences-list">
     {
-      data.map(({ data: { time, title, description, at, atLink }}) => (
-        <Card disableTitlebar>
-          <h1>{title} @ <a target="_blank" rel="noopener noreferrer" href={atLink}>{at}</a></h1>
-          <p id="duration">{time}</p>
-          <ul id="list">
-            {description.map((des) => <li>{des}</li>)}
-          </ul>
-        </Card>
-      ))
+      data
+        .filter(({ data: { show } }) => show)
+        .map(({ data: { time, title, description, at, atLink }}) => (
+          <Card disableTitlebar>
+            <h1>{title} @ <a target="_blank" rel="noopener noreferrer" href={atLink}>{at}</a></h1>
+            <p id="duration">{time}</p>
+            <ul id="list">
+              {description.map((des) => <li>{des}</li>)}
+            </ul>
+          </Card>
+        ))
     }
   </div>
 </section>
