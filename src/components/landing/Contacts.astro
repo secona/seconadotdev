@@ -7,26 +7,26 @@ import BlueskyIcon from '../../components/BlueskyIcon.astro';
 <section id="contacts">
   <div id="container">
     <Card title="My Socials">
-      <p id="card-p">
+      <p id="contacts-greetings">
         Let's connect! You can find me on these platforms, but I am most active
         on my Twitter (X) account where I share insights on tech, my projects,
         and what I'm currently working on. Feel free to reach out!
       </p>
     </Card>
-    <div id="links">
-      <a class="social-link github" href="https://github.com/secona" target="_blank" rel="noopener noreferrer" >
+    <div id="contacts-links">
+      <a class="contact-link github" href="https://github.com/secona" target="_blank" rel="noopener noreferrer" >
         <GithubIcon />
         <p>@secona</p>
       </a>
-      <a class="social-link linkedin" href="https://linkedin.com/in/secona" target="_blank" rel="noopener noreferrer">
+      <a class="contact-link linkedin" href="https://linkedin.com/in/secona" target="_blank" rel="noopener noreferrer">
         <LinkedinIcon />
         <p>@secona</p>
       </a>
-      <a class="social-link twitter" href="https://x.com/secona0" target="_blank" rel="noopener noreferrer">
+      <a class="contact-link twitter" href="https://x.com/secona0" target="_blank" rel="noopener noreferrer">
         <TwitterIcon />
         <p>@secona0</p>
       </a>
-      <a class="social-link bsky" href="https://bsky.app/profile/secona.dev" target="_blank" rel="noopener noreferrer">
+      <a class="contact-link bsky" href="https://bsky.app/profile/secona.dev" target="_blank" rel="noopener noreferrer">
         <BlueskyIcon />
         <p>@secona.dev</p>
       </a>
@@ -42,7 +42,7 @@ import BlueskyIcon from '../../components/BlueskyIcon.astro';
   background-color: transparent;
   padding: 0 1.5rem;
 
-  > #container {
+  #container {
     display: flex;
     gap: 1.5rem;
 
@@ -55,43 +55,43 @@ import BlueskyIcon from '../../components/BlueskyIcon.astro';
       align-items: stretch;
       flex-direction: column;
     }
+
+    #contacts-greetings {
+      max-width: 24rem;
+    }
+
+    #contacts-links {
+      display: flex;
+      flex-direction: column;
+
+      @media (min-width: 768px) {
+        gap: 1rem;
+      }
+
+      @media (max-width: 768px) {
+        gap: 0.5rem;
+      }
+
+      .contact-link {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+        color: white;
+
+        border-width: 2px;
+        border-color: black;
+        border-radius: var(--rounded);
+
+        padding: 0.5rem 1.5rem;
+
+        box-shadow: var(--hard-shadow);
+
+        &.github { background-color: #333333; }
+        &.linkedin { background-color: #0077b5; }
+        &.twitter { background-color: #1DA1F2; }
+        &.bsky { background-color: #0085ff; }
+      }
+    }
   }
-}
-
-#card-p {
-  max-width: 24rem;
-}
-
-#links {
-  display: flex;
-  flex-direction: column;
-
-  @media (min-width: 768px) {
-    gap: 1rem;
-  }
-
-  @media (max-width: 768px) {
-    gap: 0.5rem;
-  }
-}
-
-.social-link {
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
-  color: white;
-
-  border-width: 2px;
-  border-color: black;
-  border-radius: var(--rounded);
-
-  padding: 0.5rem 1.5rem;
-
-  box-shadow: var(--hard-shadow);
-
-  &.github { background-color: #333333; }
-  &.linkedin { background-color: #0077b5; }
-  &.twitter { background-color: #1DA1F2; }
-  &.bsky { background-color: #0085ff; }
 }
 </style>

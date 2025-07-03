@@ -4,7 +4,7 @@ import Card from "../../components/Card.astro"
 ---
 
 <section id="introduction">
-  <div>
+  <div id="container">
     <Card title="Introduction">
       <p>
         Hello, everyone! My name is Vito. I am a second-year undergraduate student at
@@ -18,14 +18,14 @@ import Card from "../../components/Card.astro"
         engineering career, focusing on systems development and compiler development.
       </p>
     </Card>
-    <a href="/secona-cv.pdf" target="_blank" rel="noopener noreferrer">
+    <a id="cv-link" href="/secona-cv.pdf" target="_blank" rel="noopener noreferrer">
       <span>View My CV</span> <ExternalLinkIcon />
     </a>
   </div>
 </section>
 
 <style lang="scss">
-section {
+#introduction {
   background-color: var(--yellow-300);
 
   display: grid;
@@ -35,7 +35,7 @@ section {
   border-width: 2px 0;
   border-color: black;
 
-  & > div {
+  #container {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
@@ -44,7 +44,7 @@ section {
     max-width: 64rem;
   }
 
-  & a {
+  #cv-link {
     display: flex;
     flex-direction: row;
     align-items: center;

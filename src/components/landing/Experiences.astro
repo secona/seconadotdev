@@ -6,20 +6,20 @@ const data = await getCollection("experiences");
 ---
 
 <section id="experiences">
-  <div class="experiences-sidebar">
+  <div id="experiences-sidebar">
     <Card title="My Experiences">
       Here's a sneak peek into my journey! I've been involved in many
       student-led organization and events. Beyond that, I've played a role in
       education as a teaching assistant for some CS courses at campus.
     </Card>
   </div>
-  <div class="experiences-list">
+  <div id="experiences-list">
     {
       data
         .filter(({ data: { show } }) => show)
         .map(({ data: { time, title, description, at, atLink }}) => (
           <Card disableTitlebar>
-            <h1>{title} @ <a target="_blank" rel="noopener noreferrer" href={atLink}>{at}</a></h1>
+            <h1>{title} @ <a id="at" target="_blank" rel="noopener noreferrer" href={atLink}>{at}</a></h1>
             <p id="duration">{time}</p>
             <ul id="list">
               {description.map((des) => <li>{des}</li>)}
@@ -33,29 +33,12 @@ const data = await getCollection("experiences");
 <style lang="scss">
 @use '../../styles/mixins' as *;
 
-#duration {
-  color: var(--gray-500);
-  @include font-size(sm);
-}
-
-a {
-  color: var(--blue-600);
-
-  &:hover {
-    text-decoration: underline;
-  }
-}
-
 #experiences {
   display: grid;
   grid-template-columns: 1fr;
   min-height: 100vh;
 
-  @media (min-width: 1280px) {
-    grid-template-columns: 1fr 2fr;
-  }
-
-  .experiences-sidebar {
+  #experiences-sidebar {
     background-color: var(--blue-300);
     display: flex;
     flex-direction: column;
@@ -77,16 +60,23 @@ a {
     }
   }
 
-  .experiences-list {
+  #experiences-list {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-  }
 
-  & > :not(:last-child) {
-    border-inline-start-width: 0px;
-    border-inline-end-width: 2px;
-    border-color: black;
+    #duration {
+      color: var(--gray-500);
+      @include font-size(sm);
+    }
+
+    #at {
+      color: var(--blue-600);
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 
   & > * {
@@ -94,6 +84,12 @@ a {
     padding-bottom: 5rem;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
+
+    &:not(:last-child) {
+      border-inline-start-width: 0px;
+      border-inline-end-width: 2px;
+      border-color: black;
+    }
 
     @media (min-width: 1280px) {
       padding-top: 6rem;
@@ -105,6 +101,10 @@ a {
       padding-left: 4rem;
       padding-right: 4rem;
     }
+  }
+
+  @media (min-width: 1280px) {
+    grid-template-columns: 1fr 2fr;
   }
 }
 </style>

@@ -6,7 +6,7 @@ const data = await getCollection("projects");
 ---
 
 <section id="projects">
-  <div class="projects-sidebar">
+  <div id="projects-sidebar">
     <Card title="My Projects">
       <p>
         Here's a sneak peek into some of my open source projects that I've
@@ -15,18 +15,18 @@ const data = await getCollection("projects");
       </p>
     </Card>
   </div>
-  <div class="projects-list">
+  <div id="projects-list">
     {
       data.map((d) => (
         <Card disableTitlebar>
-          <h1 class="project-title">
-            <a href={d.data.links[0].href} target="_blank" rel="noopener noreferrer">
+          <h1 id="project-title">
+            <a id="project-link" href={d.data.links[0].href} target="_blank" rel="noopener noreferrer">
               {d.id}
             </a>
           </h1>
           <p>{d.data.description}</p>
-          <div class="tags">
-            {d.data.tags.map((tag) => <p class="tags-content">{tag}</p>)}
+          <div id="project-tags">
+            {d.data.tags.map((tag) => <p id="project-tag">{tag}</p>)}
           </div>
         </Card>
       ))
@@ -37,33 +37,6 @@ const data = await getCollection("projects");
 <style lang="scss">
 @use '../../styles/mixins' as *;
 
-.project-title {
-  margin-bottom: 0.5rem;
-}
-
-a {
-  color: var(--blue-600);
-
-  &:hover {
-    text-decoration: underline;
-  }
-}
-
-.tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 1rem;
-
-  .tags-content {
-    @include font-size(sm);
-    border: 2px solid black;
-    border-radius: var(--rounded);
-    padding: 0.25rem 0.5rem;
-    background-color: var(--red-300);
-  }
-}
-
 #projects {
   display: grid;
   grid-template-columns: 1fr;
@@ -73,7 +46,7 @@ a {
     grid-template-columns: 1fr 2fr;
   }
 
-  .projects-sidebar {
+  #projects-sidebar {
     background-color: var(--red-300);
     display: flex;
     flex-direction: column;
@@ -96,16 +69,37 @@ a {
     }
   }
 
-  .projects-list {
+  #projects-list {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-  }
 
-  & > :not(:last-child) {
-    border-inline-start-width: 0px;
-    border-inline-end-width: 2px;
-    border-color: black;
+    #project-title {
+      margin-bottom: 0.5rem;
+    }
+
+    #project-link {
+      color: var(--blue-600);
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    #project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+
+      #project-tag {
+        @include font-size(sm);
+        border: 2px solid black;
+        border-radius: var(--rounded);
+        padding: 0.25rem 0.5rem;
+        background-color: var(--red-300);
+      }
+    }
   }
 
   & > * {
@@ -113,6 +107,12 @@ a {
     padding-bottom: 5rem;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
+
+    &:not(:last-child) {
+      border-inline-start-width: 0px;
+      border-inline-end-width: 2px;
+      border-color: black;
+    }
 
     @media (min-width: 1280px) {
       padding-top: 6rem;
