@@ -37,7 +37,6 @@ const blogs = defineCollection({
     show: z.boolean(),
     publishedAt: z.string().date(),
     tags: z.array(z.string()),
-    show: z.boolean(),
   }),
 });
 
