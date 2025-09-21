@@ -53,6 +53,62 @@ const { Content, remarkPluginFrontmatter } = await render(entry);
   </main>
 </NavbarLayout>
 
+<script>
+  // Add copy buttons to all code blocks
+  document.addEventListener('DOMContentLoaded', function() {
+    const codeBlocks = document.querySelectorAll('pre');
+    
+    codeBlocks.forEach((block) => {
+      // Create copy button
+      const copyButton = document.createElement('button');
+      copyButton.className = 'copy-button';
+      copyButton.textContent = 'Copy';
+      copyButton.setAttribute('aria-label', 'Copy code to clipboard');
+      
+      // Add button to the code block
+      block.appendChild(copyButton);
+      
+      // Add click event listener
+      copyButton.addEventListener('click', async function() {
+        const codeElement = block.querySelector('code');
+        const codeText = codeElement ? codeElement.textContent : block.textContent.replace('Copy', '');
+        
+        try {
+          await navigator.clipboard.writeText(codeText);
+          
+          // Visual feedback
+          copyButton.textContent = 'Copied!';
+          copyButton.classList.add('copied');
+          
+          // Reset after 2 seconds
+          setTimeout(() => {
+            copyButton.textContent = 'Copy';
+            copyButton.classList.remove('copied');
+          }, 2000);
+          
+        } catch (err) {
+          // Fallback for older browsers
+          const textArea = document.createElement('textarea');
+          textArea.value = codeText;
+          document.body.appendChild(textArea);
+          textArea.select();
+          document.execCommand('copy');
+          document.body.removeChild(textArea);
+          
+          // Visual feedback
+          copyButton.textContent = 'Copied!';
+          copyButton.classList.add('copied');
+          
+          setTimeout(() => {
+            copyButton.textContent = 'Copy';
+            copyButton.classList.remove('copied');
+          }, 2000);
+        }
+      });
+    });
+  });
+</script>
+
 <style lang="scss" is:global>
 @use '../../styles/mixins' as *;
 
@@ -62,7 +118,12 @@ main {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.5rem;
+
+  @media (max-width: 768px) {
+    padding: 4rem 1rem;
+    gap: 1rem;
+  }
 
   .blog-back {
     color: var(--blue-600);
@@ -78,21 +139,23 @@ main {
   }
 
   .entry-title-card {
-    padding: 0.5rem 0;
+    padding: 1rem 0;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 
     .entry-title {
       @include font-size(4xl);
-      margin-bottom: 0.75rem;
-      font-weight: 800;
-      line-height: 1.2;
+      margin-bottom: 1rem;
+      font-weight: 600;
+      line-height: 1.1;
+      font-family: "IBM Plex Mono", sans-serif;
     }
 
     .entry-metadata {
       @include font-size(sm);
       color: var(--gray-500);
+      line-height: 1.4;
 
       .entry-tag:hover {
         color: var(--yellow-500);
@@ -102,85 +165,89 @@ main {
 
   .entry-content {
     line-height: 1.7;
+    font-family: "Geist Mono", sans-serif;
+    color: var(--gray-800);
 
     & > * + * {
       margin-top: 1.25rem;
     }
 
+    p {
+      margin-bottom: 1rem;
+      line-height: 1.8;
+    }
+
     h1, h2, h3, h4, h5, h6 {
+      font-family: "IBM Plex Mono", sans-serif;
+      color: var(--gray-900);
+      font-weight: 600;
+      
       & > a {
         color: inherit;
         font: inherit;
         text-decoration: inherit;
-
+      }
+      
+      code {
+        background-color: var(--blue-50);
+        color: var(--blue-800);
+        border: 1px solid var(--blue-200);
+        padding: 0.125rem 0.25rem;
+        border-radius: 0.25rem;
+        font-family: "IBM Plex Mono", sans-serif;
+        font-size: inherit;
+        font-weight: inherit;
       }
     }
 
-    h1, h2 {
-      border-bottom: 2px solid var(--gray-200);
-      padding-bottom: 0.25rem;
-    }
-
     h1 {
-      @include font-size(3xl);
-      margin-top: 2.5rem;
-      font-weight: 800;
+      @include font-size(4xl);
+      margin-top: 2rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid var(--gray-300);
+      color: var(--gray-900);
+      
+      &:first-child {
+        margin-top: 0.5rem;
+      }
     }
 
     h2 {
-      @include font-size(2xl);
+      @include font-size(3xl);
       margin-top: 2rem;
-      font-weight: 700;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--gray-200);
+      color: var(--gray-900);
     }
 
     h3 {
-      @include font-size(xl);
+      @include font-size(2xl);
       margin-top: 1.75rem;
-      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--gray-800);
     }
 
     h4 {
-      @include font-size(lg);
+      @include font-size(xl);
       margin-top: 1.5rem;
-      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: var(--gray-800);
     }
 
     h5 {
-      @include font-size(base);
-      margin-top: 1.5rem;
-      font-weight: 600;
+      @include font-size(lg);
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+      color: var(--gray-700);
     }
 
     h6 {
-      @include font-size(sm);
-      margin-top: 1.5rem;
-      color: var(--gray-500);
-      font-weight: 600;
-    }
-
-    h1::before {
-      content: "# ";
-      color: var(--gray-300);
-    }
-    h2::before {
-      content: "## ";
-      color: var(--gray-300);
-    }
-    h3::before {
-      content: "### ";
-      color: var(--gray-300);
-    }
-    h4::before {
-      content: "#### ";
-      color: var(--gray-300);
-    }
-    h5::before {
-      content: "##### ";
-      color: var(--gray-300);
-    }
-    h6::before {
-      content: "###### ";
-      color: var(--gray-300);
+      @include font-size(base);
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+      color: var(--gray-600);
     }
 
     strong {
@@ -205,17 +272,42 @@ main {
     }
 
     blockquote {
-      padding: 0.5rem 1rem;
-      border-color: var(--violet-300);
-      border-style: solid;
-      border-width: 2px 2px 2px 6px;
-      background-color: var(--violet-50);
+      padding: 1.5rem;
+      border-left: 4px solid var(--green-400);
+      border-top: 2px solid var(--green-200);
+      border-right: 2px solid var(--green-200);
+      border-bottom: 2px solid var(--green-200);
+      background-color: var(--green-50);
+      margin: 1.5rem 0;
       border-radius: var(--rounded);
+      position: relative;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0.75rem;
+        left: 0.5rem;
+        font-size: 2rem;
+        color: var(--green-300);
+        font-family: serif;
+        line-height: 1;
+      }
 
       p {
         margin: 0;
-        color: var(--gray-800);
+        color: var(--green-800);
         font-style: italic;
+        line-height: 1.6;
+      }
+    }
+
+    ul, ol {
+      margin: 1.25rem 0;
+      padding-left: 2rem;
+      
+      li {
+        margin-bottom: 0.5rem;
+        line-height: 1.6;
       }
     }
 
@@ -224,6 +316,7 @@ main {
 
       ul {
         list-style-type: circle;
+        margin: 0.5rem 0;
 
         ul {
           list-style-type: square;
@@ -238,22 +331,79 @@ main {
     code:not(pre code) {
       @include font-size(sm);
       padding: 0.125rem 0.375rem;
-      background-color: var(--orange-50);
-      color: var(--orange-900);
+      background-color: var(--blue-50);
+      color: var(--blue-800);
       font-weight: 500;
-      border: 2px solid var(--orange-300);
-      border-radius: var(--rounded);
+      border: 1px solid var(--blue-200);
+      border-radius: 0.25rem;
+      font-family: "IBM Plex Mono", sans-serif;
     }
 
     pre {
       margin: 1.5rem 0;
-      padding: 1rem;
+      padding: 1.5rem;
       border-radius: var(--rounded);
-      border: 2px solid var(--gray-900);
+      border: 2px solid var(--gray-800);
+      background-color: var(--gray-900);
+      overflow-x: auto;
+      position: relative;
+      
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--blue-400), var(--green-400), var(--yellow-400), var(--red-400));
+        border-radius: var(--rounded) var(--rounded) 0 0;
+      }
+      
+      .copy-button {
+        position: absolute;
+        top: 0.75rem;
+        right: 0.75rem;
+        background-color: var(--gray-700);
+        color: var(--gray-100);
+        border: 1px solid var(--gray-600);
+        border-radius: 0.5rem;
+        padding: 0.5rem 0.75rem;
+        font-size: 0.75rem;
+        font-family: "IBM Plex Mono", sans-serif;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        z-index: 10;
+        
+        &:hover {
+          background-color: var(--gray-600);
+          border-color: var(--gray-500);
+        }
+        
+        &:active {
+          background-color: var(--green-600);
+          border-color: var(--green-500);
+        }
+        
+        &.copied {
+          background-color: var(--green-600);
+          border-color: var(--green-500);
+          color: white;
+        }
+      }
+      
+      code {
+        background: none;
+        border: none;
+        padding: 0;
+        font-family: "IBM Plex Mono", sans-serif;
+        color: var(--gray-100);
+        font-size: 0.875rem;
+        line-height: 1.6;
+      }
     }
 
     hr {
-      margin: 2rem 0;
+      margin: 1.5rem 0;
       height: 2px;
       background-color: var(--gray-300);
     }
@@ -267,27 +417,35 @@ main {
     table {
       width: 100%;
       margin: 1.5rem 0;
-      border-collapse: separate;
-      border-spacing: 0;
-      border: 2px solid var(--green-300);
+      border-collapse: collapse;
+      border: 1px solid var(--gray-300);
       border-radius: var(--rounded);
       overflow: hidden;
+      background-color: white;
 
       th, td {
         padding: 0.75rem 1rem;
         text-align: left;
-        border-bottom: 2px solid var(--green-300);
+        border-bottom: 1px solid var(--gray-200);
       }
 
       th {
-        background-color: var(--green-100);
+        background-color: var(--gray-50);
         font-weight: 600;
         color: var(--gray-900);
         font-family: "IBM Plex Mono", sans-serif;
+        @include font-size(sm);
+        border-bottom: 2px solid var(--gray-300);
       }
 
       td {
         background-color: white;
+        @include font-size(sm);
+        color: var(--gray-700);
+      }
+
+      tr:hover td {
+        background-color: var(--gray-25);
       }
 
       tr:last-child td {
