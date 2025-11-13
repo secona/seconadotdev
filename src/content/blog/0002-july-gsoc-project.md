@@ -1,6 +1,5 @@
 ---
 title: "July GSoC Progress"
-description: ""
 publishedAt: "2025-08-08"
 tags: ["gsoc", "gsoc-2025"]
 slug: "july-gsoc-project"

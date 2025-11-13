@@ -47,7 +47,6 @@ const sortedBlogs = blogs
                   <span> &mdash; <a href="#" class="entry-tag">#{tag}</a></span>
                 ))}
               </div>
-              <p class="entry-description">{blog.data.description}</p>
             </div>
           </Card>
         ))
@@ -119,7 +118,6 @@ main {
       .entry-metadata {
         @include font-size(sm);
         color: var(--gray-500);
-        margin-bottom: 0.5rem;
 
         .entry-tag:hover {
           color: var(--yellow-500);

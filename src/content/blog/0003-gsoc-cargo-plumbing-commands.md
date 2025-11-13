@@ -1,10 +1,9 @@
 ---
 title: "Cargo Plumbing Commands"
-description: ""
 publishedAt: "2025-09-06"
 tags: ["gsoc", "gsoc-2025"]
 slug: "gsoc-cargo-plumbing-commands"
-show: true
+show: false
 ---
 
 This project, undertaken during GSoC 2025, involved the initial implementation of a prototype for Cargo plumbing commands. These plumbing commands are low-level, composable tools designed to expose core Cargo functionalities, such as manifest parsing, dependency resolution, and feature selection, as distinct, scriptable steps.

@@ -1,6 +1,5 @@
 ---
 title: "Hello, World!"
-description: "A short introduction."
 publishedAt: "2025-06-09"
 tags: ["intro"]
 slug: "hello-world"
