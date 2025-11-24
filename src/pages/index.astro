@@ -81,19 +81,21 @@ const projects = await getCollection("projects");
     </div>
     <div id="projects-list">
       {
-        projects.map(({ data, id }) => (
-          <Card disableTitlebar>
-            <h1 id="project-title">
-              <a id="project-link" href={data.links[0].href} target="_blank" rel="noopener noreferrer">
-                {id}
-              </a>
-            </h1>
-            <p>{data.description}</p>
-            <div id="project-tags">
-              {data.tags.map((tag) => <p id="project-tag">{tag}</p>)}
-            </div>
-          </Card>
-        ))
+        projects
+          .filter(({ data: { show } }) => show)
+          .map(({ data, id }) => (
+            <Card disableTitlebar>
+              <h1 id="project-title">
+                <a id="project-link" href={data.links[0].href} target="_blank" rel="noopener noreferrer">
+                  {id}
+                </a>
+              </h1>
+              <p>{data.description}</p>
+              <div id="project-tags">
+                {data.tags.map((tag) => <p id="project-tag">{tag}</p>)}
+              </div>
+            </Card>
+          ))
       }
     </div>
   </section>

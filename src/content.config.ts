@@ -7,6 +7,7 @@ const projects = defineCollection({
     slug: z.string(),
     description: z.string(),
     tags: z.array(z.string()),
+    show: z.boolean(),
     links: z.array(
       z.object({
         href: z.string(),

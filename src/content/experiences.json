@@ -7,8 +7,22 @@
     "time": "Jul 2024 - Present",
     "show": true,
     "description": [
-      "Assisted in Programming Basics 2 using Java course, helping students understand OOP concepts and problem solving skills.",
-      "Assisted in Introduction to Digital Systems course, helping students understand logic circuits and digital design."
+      "Programming Foundations 1 — Fall Semester, Academic Year 2025/2026",
+      "Programming Foundations 2 — Spring Semester, Academic Year 2024/2025",
+      "Introduction to Digital Systems — Fall Semester Academic Year 2024/2025"
+    ]
+  },
+  {
+    "slug": "Google Summer of Code",
+    "title": "Open Source Developer",
+    "at": "Rust Programming Language",
+    "atLink": "https://rust-lang.org",
+    "time": "Jul 2025 - Aug 2025",
+    "show": true,
+    "description": [
+      "Exposing core Cargo functionalities as distinct, scriptable steps.",
+      "Easier maintainability and contributor approachability by isolating Cargo's architecture.",
+      "Enabling seamless integration with external build systems (e.g., Bazel, Nix) by refactoring Cargo's architecture to decouple core processes."
     ]
   },
   {
@@ -17,7 +31,7 @@
     "at": "Open House Fasilkom UI 2024",
     "atLink": "https://oh.cs.ui.ac.id",
     "time": "Jul 2024 - Nov 2024",
-    "show": true,
+    "show": false,
     "description": [
       "Led the development of a web platform that handled 2000+ users with 1000+ online tickets registrations.",
       "Optimized service to handle 70+ concurrent users, ensuring user experience.",
@@ -44,7 +58,7 @@
     "time": "Jun 2024 - Jan 2025",
     "show": true,
     "description": [
-      "Developed the backend infrastructure using Go, Gin, and Gorm."
+      "Drove a 10% performance gain and enhanced overall platform stability by engineering an optimized backend infrastructure using Go, Gin, and Gorm."
     ]
   },
   {
@@ -53,7 +67,7 @@
     "at": "COMPFEST 16",
     "atLink": "https://compfest.id",
     "time": "Feb 2024 - Sep 2024",
-    "show": true,
+    "show": false,
     "description": [
       "Assisted in organizing and executing the Software Engineering Academy (SEA).",
       "Contributed to SEA's curriculum development to improve participants' technical skills.",
@@ -67,7 +81,7 @@
     "at": "Open House Fasilkom UI 2023",
     "atLink": "https://oh.cs.ui.ac.id",
     "time": "Aug 2023 - Nov 2023",
-    "show": true,
+    "show": false,
     "description": [
       "Implemented a responsive design using Next.js and TailwindCSS.",
       "Collaborated in developing the Open House Fasilkom UI 2023 website."
