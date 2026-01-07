@@ -40,7 +40,7 @@ const { Content, remarkPluginFrontmatter } = await render(entry);
           </time>
           &mdash; {remarkPluginFrontmatter.minutesRead}
           {entry.data.tags.map((tag) => (
-            <span> &mdash; <a href="#" class="entry-tag">#{tag}</a></span>
+            <span> &mdash; <a href={`/blog?tag=${tag}`} class="entry-tag">#{tag}</a></span>
           ))}
         </div>
       </div>

@@ -7,6 +7,8 @@ const blogs = await getCollection("blogs");
 const sortedBlogs = blogs
   .filter((blog) => blog.data.show)
   .sort((a, b) => new Date(b.data.publishedAt).getTime() - new Date(a.data.publishedAt).getTime());
+
+const allTags = [...new Set(sortedBlogs.flatMap(blog => blog.data.tags))].sort();
 ---
 
 <NavbarLayout pageTitle="Vito Secona's Blog">
@@ -24,36 +26,128 @@ const sortedBlogs = blogs
           </p>
         </div>
       </Card>
+
+      <div class="blogs-filter">
+        <input type="text" id="title-filter" placeholder="Search titles..." />
+        <select id="tag-select">
+          <option value="">All Tags</option>
+          {allTags.map(tag => (
+            <option value={tag}>#{tag}</option>
+          ))}
+        </select>
+        <button id="clear-filters">Clear</button>
+      </div>
     </div>
     <div class="blogs-list">
       {
         sortedBlogs.map((blog) => (
-          <Card disableTitlebar>
-            <div class="entry">
-              <h1 class="entry-title">
-                <a href={`/blog/${blog.id}`}>
-                  {blog.data.title}
-                </a>
-              </h1>
-              <div class="entry-metadata">
-                <time>
-                  {new Date(blog.data.publishedAt).toLocaleDateString("en-US", {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric'
-                  })}
-                </time>
-                {blog.data.tags.map((tag) => (
-                  <span> &mdash; <a href="#" class="entry-tag">#{tag}</a></span>
-                ))}
+          <div class="blog-card" data-tags={JSON.stringify(blog.data.tags)} data-title={blog.data.title.toLowerCase()}>
+            <Card disableTitlebar>
+              <div class="entry">
+                <h1 class="entry-title">
+                  <a href={`/blog/${blog.id}`}>
+                    {blog.data.title}
+                  </a>
+                </h1>
+                <div class="entry-metadata">
+                  <time>
+                    {new Date(blog.data.publishedAt).toLocaleDateString("en-US", {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric'
+                    })}
+                  </time>
+                  {blog.data.tags.map((tag) => (
+                    <span> &mdash; <a href={`/blog?tag=${tag}`} class="entry-tag">#{tag}</a></span>
+                  ))}
+                </div>
               </div>
-            </div>
-          </Card>
+            </Card>
+          </div>
         ))
       }
     </div>
   </section>
 </NavbarLayout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const select = document.getElementById('tag-select') as HTMLSelectElement;
+    const titleInput = document.getElementById('title-filter') as HTMLInputElement;
+    const clearButton = document.getElementById('clear-filters') as HTMLButtonElement;
+    const blogCards = document.querySelectorAll('.blog-card');
+
+    function getUrlParams() {
+      const urlParams = new URLSearchParams(window.location.search);
+      return {
+        tag: urlParams.get('tag') || '',
+        title: urlParams.get('title') || ''
+      };
+    }
+
+    function updateUrl(tag: string, title: string) {
+      const params = new URLSearchParams();
+      if (tag) params.set('tag', tag);
+      if (title) params.set('title', title);
+      
+      const newUrl = params.toString() ? `?${params.toString()}` : window.location.pathname;
+      window.history.replaceState({ path: newUrl }, '', newUrl);
+    }
+
+    function filterBlogs() {
+      const tag = select ? select.value : '';
+      const titleQuery = titleInput ? titleInput.value.toLowerCase() : '';
+
+      blogCards.forEach((card) => {
+        const tags = JSON.parse((card as HTMLElement).dataset.tags || '[]');
+        const title = (card as HTMLElement).dataset.title || '';
+        
+        const matchesTag = !tag || tags.includes(tag);
+        const matchesTitle = !titleQuery || title.includes(titleQuery);
+
+        if (matchesTag && matchesTitle) {
+          (card as HTMLElement).style.display = 'block';
+        } else {
+          (card as HTMLElement).style.display = 'none';
+        }
+      });
+    }
+
+    // Initialize from URL
+    const { tag, title } = getUrlParams();
+    if (select) select.value = tag;
+    if (titleInput) titleInput.value = title;
+    
+    // Initial filter run
+    filterBlogs();
+
+    // Handle select change
+    if (select) {
+      select.addEventListener('change', () => {
+        updateUrl(select.value, titleInput ? titleInput.value : '');
+        filterBlogs();
+      });
+    }
+
+    // Handle title input
+    if (titleInput) {
+      titleInput.addEventListener('input', () => {
+        updateUrl(select ? select.value : '', titleInput.value);
+        filterBlogs();
+      });
+    }
+
+    // Handle clear button
+    if (clearButton) {
+      clearButton.addEventListener('click', () => {
+        if (select) select.value = '';
+        if (titleInput) titleInput.value = '';
+        updateUrl('', '');
+        filterBlogs();
+      });
+    }
+  });
+</script>
 
 <style lang="scss">
 @use '../../styles/mixins' as *;
@@ -67,35 +161,85 @@ main {
     grid-template-columns: 1fr 2fr;
   }
 
-  .blogs-sidebar {
-    background-color: var(--yellow-400);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    max-height: 100vh;
-    top: 0;
-
-    border-bottom-width: 2px;
-    border-style: solid;
-    border-color: black;
-
-    @media (max-width: 1280px) {
-      border-right: none;
-    }
-
-    @media (min-width: 1280px) {
-      position: sticky;
-      border-right: 2px solid black;
-    }
-
-    .blogs-stats {
-      margin-top: 1.5rem;
-      padding-top: 1rem;
-      border-top: 1px solid var(--gray-400);
-
-      .stats-text {
-        @include font-size(sm);
+      .blogs-sidebar {
+      background-color: var(--yellow-400);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 1.5rem;
+      max-height: 100vh;
+      top: 0;
+  
+      border-bottom-width: 2px;
+      border-style: solid;
+      border-color: black;
+  
+      @media (max-width: 1280px) {
+        border-right: none;
       }
+  
+      @media (min-width: 1280px) {
+        position: sticky;
+        border-right: 2px solid black;
+      }
+  
+      .blogs-stats {
+        margin-top: 1.5rem;
+        padding-top: 1rem;
+        border-top: 1px solid var(--gray-400);
+  
+        .stats-text {
+          @include font-size(sm);
+        }
+      }
+  
+      .blogs-filter {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        input, select {
+          width: 100%;
+          padding: 0.5rem;
+          border: 2px solid black;
+          border-radius: var(--rounded, 8px);
+          background-color: white;
+          font-family: inherit;
+          box-shadow: 2px 2px 0 0 black;
+          box-sizing: border-box;
+          
+          &:focus {
+            outline: none;
+            box-shadow: 1px 1px 0 0 black;
+            transform: translate(1px, 1px);
+          }
+        }
+        
+        select {
+            cursor: pointer;
+        }
+
+        button {
+          width: fit-content;
+          padding: 0.5rem 1rem;
+          border: 2px solid black;
+          border-radius: var(--rounded, 8px);
+          background-color: var(--red-400);
+          color: white;
+          font-family: inherit;
+          font-weight: 500;
+          cursor: pointer;
+          box-shadow: 2px 2px 0 0 black;
+          
+          &:hover {
+            background-color: var(--red-500);
+          }
+
+          &:active {
+            box-shadow: 1px 1px 0 0 black;
+            transform: translate(1px, 1px);
+          }
+        }
     }
   }
 
