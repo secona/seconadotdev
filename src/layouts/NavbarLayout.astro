@@ -1,6 +1,7 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
 
 interface Props {
   pageTitle?: string;
@@ -11,5 +12,14 @@ const { pageTitle = "Vito Secona | Software Engineer" } = Astro.props;
 
 <BaseLayout pageTitle={pageTitle}>
   <Navbar />
-  <slot />
+  <div class="content">
+    <slot />
+  </div>
+  <Footer />
 </BaseLayout>
+
+<style>
+  .content {
+    flex-grow: 1;
+  }
+</style>

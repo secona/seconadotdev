@@ -4,7 +4,6 @@ import { ExternalLinkIcon, GithubIcon, LinkedinIcon, TwitterIcon } from 'astro-f
 import NavbarLayout from '../layouts/NavbarLayout.astro';
 import BlueskyIcon from '../components/BlueskyIcon.astro';
 import Card from '../components/Card.astro';
-import Footer from '../components/Footer.astro';
 
 const experiences = await getCollection("experiences");
 const projects = await getCollection("projects");
@@ -129,8 +128,6 @@ const projects = await getCollection("projects");
       </div>
     </div>
   </section>
-
-  <Footer />
 </NavbarLayout>
 
 <style lang="scss">
