@@ -18,7 +18,7 @@ export default defineConfig({
   site: "https://secona.dev",
   integrations: [sitemap()],
   markdown: {
-    shikiConfig: { theme: "github-dark-high-contrast" },
+    shikiConfig: { theme: "github-light" },
     remarkPlugins: [remarkReadingTime],
     rehypePlugins: [rehypeSlug, [rehypeAutolinkHeadings, { behavior: "wrap" }]],
   },
