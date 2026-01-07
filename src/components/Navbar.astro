@@ -63,8 +63,15 @@ const externalLinks = [
     const linksDropdown = document.getElementById('links-dropdown');
 
     if (menuToggle && linksDropdown) {
-      menuToggle.addEventListener('click', () => {
+      menuToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
         linksDropdown.classList.toggle('is-open');
+      });
+
+      document.addEventListener('click', (event) => {
+        if (!linksDropdown.contains(event.target as Node) && !menuToggle.contains(event.target as Node)) {
+          linksDropdown.classList.remove('is-open');
+        }
       });
     }
   });
@@ -112,7 +119,12 @@ nav {
 }
 
 #links-dropdown {
-  display: none;
+  display: block;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-1rem);
+  transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out, visibility 0.2s;
+
   position: absolute;
   top: calc(100% + 0.75rem);
   left: 0;
@@ -124,7 +136,9 @@ nav {
   box-shadow: var(--hard-shadow, 4px 4px 0 0 black);
 
   &.is-open {
-    display: block;
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
   }
 
   .dropdown-section {
