@@ -1,5 +1,5 @@
 ---
-import { GithubIcon, LinkedinIcon, TwitterIcon, MenuIcon } from "astro-feather";
+import { GithubIcon, LinkedinIcon, TwitterIcon, MenuIcon, XIcon } from "astro-feather";
 
 const internalLinks = [
   { href: "#experiences", text: "Experiences" },
@@ -37,7 +37,8 @@ const externalLinks = [
   </div>
 
   <button id="menu-toggle" class="mobile" aria-label="Open menu">
-    <MenuIcon size={18} />
+    <span class="icon-menu"><MenuIcon size={18} /></span>
+    <span class="icon-close"><XIcon size={18} /></span>
   </button>
 
   <div id="links-dropdown" class="mobile">
@@ -65,12 +66,16 @@ const externalLinks = [
     if (menuToggle && linksDropdown) {
       menuToggle.addEventListener('click', (e) => {
         e.stopPropagation();
-        linksDropdown.classList.toggle('is-open');
+        const isOpen = linksDropdown.classList.toggle('is-open');
+        menuToggle.classList.toggle('is-open', isOpen);
+        menuToggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
       });
 
       document.addEventListener('click', (event) => {
         if (!linksDropdown.contains(event.target as Node) && !menuToggle.contains(event.target as Node)) {
           linksDropdown.classList.remove('is-open');
+          menuToggle.classList.remove('is-open');
+          menuToggle.setAttribute('aria-label', 'Open menu');
         }
       });
     }
@@ -116,6 +121,19 @@ nav {
   border: none;
   cursor: pointer;
   padding: 0;
+
+  .icon-close {
+    display: none;
+  }
+
+  &.is-open {
+    .icon-menu {
+      display: none;
+    }
+    .icon-close {
+      display: block;
+    }
+  }
 }
 
 #links-dropdown {
