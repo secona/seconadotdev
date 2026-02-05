@@ -16,44 +16,110 @@ const entry = await getEntry('blogs', slug);
 
 if (!entry || !entry.data.show) throw new Error("blog not found");
 
-const { Content, remarkPluginFrontmatter } = await render(entry);
+const { Content, headings, remarkPluginFrontmatter } = await render(entry);
 ---
 
 <NavbarLayout pageTitle={entry.data.title + " | Vito Secona"}>
-  <main>
-    <div class="blog-back">
-      <a href="/blog">
-        <ArrowLeftIcon />
-        <span>Back to Blogs</span>
-      </a>
-    </div>
-    <Card disableTitlebar>
-      <div class="entry-title-card">
-        <h1 class="entry-title">{entry.data.title}</h1>
-        <div class="entry-metadata">
-          <time>
-            {new Date(entry.data.publishedAt).toLocaleDateString("en-US", {
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric'
-            })}
-          </time>
-          &mdash; {remarkPluginFrontmatter.minutesRead}
-          {entry.data.tags.map((tag) => (
-            <span> &mdash; <a href={`/blog?tag=${tag}`} class="entry-tag">#{tag}</a></span>
-          ))}
+  <div class="blog-wrapper">
+    {headings.length > 0 && (
+      <aside class="toc-sidebar">
+        <Card title="Table of Contents">
+          <nav class="toc">
+            <ul>
+              {headings.map((heading) => (
+                <li class={`toc-level-${heading.depth}`}>
+                  <a href={`#${heading.slug}`} data-toc-link={heading.slug}>{heading.text}</a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </Card>
+      </aside>
+    )}
+    <main>
+      <Card disableTitlebar>
+        <div class="entry-title-card">
+          <a href="/blog" class="blog-back">
+            <ArrowLeftIcon size={16} />
+            <span>Back to Blogs</span>
+          </a>
+          <h1 class="entry-title">{entry.data.title}</h1>
+          <div class="entry-metadata">
+            <time>
+              {new Date(entry.data.publishedAt).toLocaleDateString("en-US", {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+              })}
+            </time>
+            &mdash; {remarkPluginFrontmatter.minutesRead}
+            {entry.data.tags.map((tag) => (
+              <span> &mdash; <a href={`/blog?tag=${tag}`} class="entry-tag">#{tag}</a></span>
+            ))}
+          </div>
         </div>
-      </div>
-    </Card>
-    <Card disableTitlebar>
-      <article class="entry-content">
-        <Content />
-      </article>
-    </Card>
-  </main>
+      </Card>
+      {headings.length > 0 && (
+        <div class="toc-mobile">
+          <Card title="Table of Contents">
+            <nav class="toc">
+              <ul>
+                {headings.map((heading) => (
+                  <li class={`toc-level-${heading.depth}`}>
+                    <a href={`#${heading.slug}`} data-toc-link={heading.slug}>{heading.text}</a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </Card>
+        </div>
+      )}
+      <Card disableTitlebar>
+        <article class="entry-content">
+          <Content />
+        </article>
+      </Card>
+    </main>
+  </div>
 </NavbarLayout>
 
 <script>
+  // ToC scroll tracking
+  document.addEventListener('DOMContentLoaded', function() {
+    const tocLinks = document.querySelectorAll('[data-toc-link]');
+    const headings = Array.from(tocLinks).map(link => {
+      const slug = link.getAttribute('data-toc-link');
+      return document.getElementById(slug!);
+    }).filter(Boolean) as HTMLElement[];
+
+    if (headings.length === 0) return;
+
+    function updateActiveLink() {
+      const scrollPosition = window.scrollY + 100;
+
+      let currentHeading = headings[0];
+      for (const heading of headings) {
+        if (heading.offsetTop <= scrollPosition) {
+          currentHeading = heading;
+        } else {
+          break;
+        }
+      }
+
+      tocLinks.forEach(link => {
+        const slug = link.getAttribute('data-toc-link');
+        if (slug === currentHeading?.id) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', updateActiveLink, { passive: true });
+    updateActiveLink();
+  });
+
   // Add copy buttons to all code blocks
   document.addEventListener('DOMContentLoaded', function() {
     const codeBlocks = document.querySelectorAll('pre');
@@ -112,6 +178,95 @@ const { Content, remarkPluginFrontmatter } = await render(entry);
 <style lang="scss" is:global>
 @use '../../styles/mixins' as *;
 
+.blog-wrapper {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.toc-sidebar {
+  display: none;
+  
+  @media (min-width: 1280px) {
+    display: block;
+    position: fixed;
+    left: 1rem;
+    top: 6rem;
+    width: 280px;
+    max-height: calc(100vh - 8rem);
+    overflow-y: auto;
+    padding-right: 6px;
+    padding-bottom: 6px;
+  }
+
+  @media (min-width: 1536px) {
+    left: calc((100vw - 56rem) / 2 - 300px);
+  }
+}
+
+.toc-mobile {
+  display: block;
+
+  @media (min-width: 1280px) {
+    display: none;
+  }
+}
+
+.toc {
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    margin: 0.5rem 0;
+    
+    a {
+      color: var(--gray-700);
+      text-decoration: none;
+      transition: color 0.2s ease, font-weight 0.2s ease;
+      
+      &:hover {
+        color: var(--blue-600);
+      }
+
+      &.active {
+        color: var(--blue-600);
+        font-weight: 600;
+      }
+    }
+  }
+
+  .toc-level-1 {
+    font-weight: 600;
+  }
+
+  .toc-level-2 {
+    padding-left: 1rem;
+  }
+
+  .toc-level-3 {
+    padding-left: 2rem;
+    @include font-size(sm);
+  }
+
+  .toc-level-4 {
+    padding-left: 3rem;
+    @include font-size(sm);
+  }
+
+  .toc-level-5 {
+    padding-left: 4rem;
+    @include font-size(xs);
+  }
+
+  .toc-level-6 {
+    padding-left: 5rem;
+    @include font-size(xs);
+  }
+}
+
 main {
   max-width: 56rem;
   padding: 6rem 1.5rem;
@@ -125,24 +280,20 @@ main {
     gap: 1rem;
   }
 
-  .blog-back {
-    color: var(--blue-600);
-    text-decoration: underline;
-    display: flex;
-    justify-content: flex-start;
-
-    a {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-  }
-
   .entry-title-card {
     padding: 1rem 0;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+
+    .blog-back {
+      color: var(--blue-600);
+      text-decoration: underline;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
 
     .entry-title {
       @include font-size(4xl);
