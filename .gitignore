@@ -38,3 +38,6 @@ dist
 
 # intermediate pdfs
 src/*.pdf
+
+# nix-generated
+.pre-commit-config.yaml

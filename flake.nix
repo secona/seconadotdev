@@ -5,6 +5,9 @@
 
     treefmt-nix.url = "github:numtide/treefmt-nix";
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
+
+    git-hooks-nix.url = "github:cachix/git-hooks.nix";
+    git-hooks-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -18,17 +21,29 @@
       ];
 
       imports = [
+        inputs.git-hooks-nix.flakeModule
         inputs.treefmt-nix.flakeModule
       ];
 
       perSystem =
-        { pkgs, ... }:
+        { config, pkgs, ... }:
         {
           devShells.default = pkgs.mkShell {
             buildInputs = with pkgs; [
               bun
               typst
             ];
+            shellHook = ''
+              ${config.pre-commit.installationScript}
+            '';
+          };
+
+          pre-commit = {
+            check.enable = true;
+            settings.hooks = {
+              check-merge-conflicts.enable = true;
+              treefmt.enable = true;
+            };
           };
 
           treefmt.programs = {
