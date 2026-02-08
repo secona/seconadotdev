@@ -31,8 +31,7 @@ Content collections are defined with Zod schemas in `src/content.config.ts` for 
 
 The project uses [Nix](https://nixos.org/) flakes for reproducible development environments. The `flake.nix` file defines a dev shell with all necessary dependencies:
 
-*   Node.js
-*   pnpm (package manager)
+*   Bun (JavaScript runtime and package manager)
 *   Typst (for document generation, e.g., CV)
 
 To enter the development environment, run:
@@ -45,17 +44,17 @@ This ensures all developers have the same versions of tools regardless of their 
 
 ## Building and Running
 
-The project uses `pnpm` as the package manager. The following scripts are available in `package.json`:
+The project uses [Bun](https://bun.sh/) as the JavaScript runtime and package manager. The following scripts are available in `package.json`:
 
-*   **`pnpm dev`**: Starts the development server.
-*   **`pnpm build`**: Builds the project for production. This includes type checking with `astro check`.
-*   **`pnpm preview`**: Serves the production build locally for preview.
-*   **`pnpm astro`**: Provides access to the Astro CLI for other commands.
+*   **`bun dev`**: Starts the development server.
+*   **`bun run build`**: Builds the project for production. This includes type checking with `astro check`.
+*   **`bun run preview`**: Serves the production build locally for preview.
+*   **`bun astro`**: Provides access to the Astro CLI for other commands.
 
 ### Running the Project
 
-1.  Install dependencies: `pnpm install`
-2.  Start the development server: `pnpm dev`
+1.  Install dependencies: `bun install`
+2.  Start the development server: `bun dev`
 3.  Open your browser to `http://localhost:4321`
 
 ## CV Generation
