@@ -1,0 +1,19 @@
+[
+  {
+    "id": "ui-cs",
+    "degree": "Undergraduate Computer Science",
+    "institution": "Universitas Indonesia",
+    "startDate": "Aug. 2023",
+    "endDate": "Jun. 2027",
+    "gpa": "3.92",
+    "show": true,
+    "courses": [
+      "Computer Graphics: Rasterization Algorithm, Ray Tracing Algorithm, Deep Learning in Computer Graphics, Animations",
+      "Operating Systems: GNU/Linux CLI, Scripting, Memory Management, Processes and Threads, Synchronizations, File Systems, CPU Scheduling",
+      "Embedded Systems: Real-Time Operating Systems, Arduino Programming, AVR Programming",
+      "Computer Networks: OSI Model, Network Topology Design, Socket Programming",
+      "Algorithms Design and Analysis: Algorithms Correctness and Complexity, Dynamic Programming",
+      "Numerical Analysis: Numerical Stability in Computers, Optimization Techniques in Machine Learning"
+    ]
+  }
+]

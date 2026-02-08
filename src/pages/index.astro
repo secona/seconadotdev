@@ -55,10 +55,10 @@ const projects = await getCollection("projects");
       {
         experiences
           .filter(({ data: { show } }) => show)
-          .map(({ data: { time, title, description, at, atLink }}) => (
+          .map(({ data: { startDate, endDate, title, description, employer, employerUrl }}) => (
             <Card disableTitlebar>
-              <h1>{title} @ <a id="at" target="_blank" rel="noopener noreferrer" href={atLink}>{at}</a></h1>
-              <p id="duration">{time}</p>
+              <h1>{title} @ <a id="at" target="_blank" rel="noopener noreferrer" href={employerUrl}>{employer}</a></h1>
+              <p id="duration">{startDate} - {endDate}</p>
               <ul id="list">
                 {description.map((des) => <li>{des}</li>)}
               </ul>
@@ -82,14 +82,14 @@ const projects = await getCollection("projects");
       {
         projects
           .filter(({ data: { show } }) => show)
-          .map(({ data, id }) => (
+          .map(({ data }) => (
             <Card disableTitlebar>
               <h1 id="project-title">
-                <a id="project-link" href={data.links[0].href} target="_blank" rel="noopener noreferrer">
-                  {id}
+                <a id="project-link" href={data.url} target="_blank" rel="noopener noreferrer">
+                  {data.name}
                 </a>
               </h1>
-              <p>{data.description}</p>
+              <p>{data.description[0]}</p>
               <div id="project-tags">
                 {data.tags.map((tag) => <p id="project-tag">{tag}</p>)}
               </div>

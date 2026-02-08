@@ -1,72 +1,95 @@
 [
   {
-    "slug": "Teaching Assistant @ CSUI",
+    "id": "undergraduate-researcher",
+    "title": "Undergraduate Researcher",
+    "employer": "Fakultas Ilmu Komputer, Universitas Indonesia",
+    "employerUrl": "https://cs.ui.ac.id",
+    "startDate": "Jan. 2026",
+    "endDate": "Present",
+    "show": true,
+    "description": [
+      "Main topics: Compilers and High-Performance Computing (HPC).",
+      "Architectural analysis of the OpenXLA compilation stack, focusing on the lowering pipeline from JAX to StableHLO (MLIR) to identify optimization opportunities.",
+      "Investigate MLIR and LLVM internals with the goal of contributing upstream.",
+      "Target outcome: a publishable research paper by the end of the year."
+    ]
+  },
+  {
+    "id": "gsoc-2025",
+    "title": "GSoC 2025 contributor, The Rust Foundation",
+    "employer": "Google Summer of Code",
+    "employerUrl": "https://summerofcode.withgoogle.com",
+    "startDate": "Jul. 2025",
+    "endDate": "Sep. 2025",
+    "show": true,
+    "description": [
+      "Advancing Rust's build ecosystem by contributing to the Cargo Plumbing Commands project as part of Google Summer of Code 2025.",
+      "Improving Cargo by focusing on decoupling build steps and exposing critical low-level processes.",
+      "Maintaining the `cargo-plumbing` package at `nixos/nixpkgs`."
+    ]
+  },
+  {
+    "id": "teaching-assistant",
     "title": "Teaching Assistant",
-    "at": "Fasilkom UI",
-    "atLink": "https://cs.ui.ac.id",
-    "time": "Jul 2024 - Present",
+    "employer": "Fakultas Ilmu Komputer, Universitas Indonesia",
+    "employerUrl": "https://cs.ui.ac.id",
+    "startDate": "Jun. 2024",
+    "endDate": "Present",
     "show": true,
     "description": [
-      "Programming Foundations 1 — Fall Semester, Academic Year 2025/2026",
-      "Programming Foundations 2 — Spring Semester, Academic Year 2024/2025",
-      "Introduction to Digital Systems — Fall Semester Academic Year 2024/2025"
+      "Assisting the Advanced Programming course.",
+      "Assisting Introduction to Computer Organization course.",
+      "Assisted Programming Foundations 1 course, helping students get started with Computer Science using the Python programming language.",
+      "Assisted Programming Foundations 2 course, helping students understand OOP concepts and problem solving skills.",
+      "Assisted Introduction to Digital Systems course, helping students understand logic circuits and digital design."
     ]
   },
   {
-    "slug": "Google Summer of Code",
-    "title": "Open Source Developer",
-    "at": "Rust Programming Language",
-    "atLink": "https://rust-lang.org",
-    "time": "Jul 2025 - Aug 2025",
+    "id": "lead-web-developer-ohcsui24",
+    "title": "Lead Web Developer",
+    "employer": "Open House Fasilkom UI 2024",
+    "employerUrl": "https://oh.cs.ui.ac.id",
+    "startDate": "Jun. 2024",
+    "endDate": "Nov. 2024",
     "show": true,
-    "description": [
-      "Exposing core Cargo functionalities as distinct, scriptable steps.",
-      "Easier maintainability and contributor approachability by isolating Cargo's architecture.",
-      "Enabling seamless integration with external build systems (e.g., Bazel, Nix) by refactoring Cargo's architecture to decouple core processes."
-    ]
-  },
-  {
-    "slug": "PIC ITDEV @ OHCSUI24",
-    "title": "PIC of IT Development",
-    "at": "Open House Fasilkom UI 2024",
-    "atLink": "https://oh.cs.ui.ac.id",
-    "time": "Jul 2024 - Nov 2024",
-    "show": false,
     "description": [
       "Led the development of a web platform that handled 2000+ users with 1000+ online tickets registrations.",
-      "Optimized service to handle 70+ concurrent users, ensuring user experience.",
-      "Developed participant and ambassador registration systems with an efficient workflow."
+      "Developed participant and ambassador registration systems with an efficient workflow.",
+      "Optimized service to handle 100+ concurrent users, ensuring user experience."
     ]
   },
   {
-    "slug": "SE @ BEMCSUI24",
-    "title": "Software Engineer Staff",
-    "at": "Business and Partnerships BEM Fasilkom UI",
-    "atLink": "https://bem.cs.ui.ac.id",
-    "time": "Jun 2024 - Jan 2025",
-    "show": true,
-    "description": [
-      "Mentored 6 students at SBF (Sekolah BEM Fasilkom) in software engineering.",
-      "Guided students in real world software engineering challenges, including version control and collaboration workflows."
-    ]
-  },
-  {
-    "slug": "Backend @ GWF2024",
-    "title": "Backend Developer Staff",
-    "at": "Green Welfare Indonesia",
-    "atLink": "https://www.greenwelfare.org",
-    "time": "Jun 2024 - Jan 2025",
+    "id": "backend-developer-gwf",
+    "title": "Backend Developer",
+    "employer": "Green Welfare Indonesia",
+    "employerUrl": "https://www.linkedin.com/company/greenwelfareindonesia",
+    "startDate": "Jun. 2024",
+    "endDate": "Jan. 2025",
     "show": true,
     "description": [
       "Drove a 10% performance gain and enhanced overall platform stability by engineering an optimized backend infrastructure using Go, Gin, and Gorm."
     ]
   },
   {
-    "slug": "SEA Expert Staff @ CF16",
+    "id": "se-staff-bemcsui24",
+    "title": "Software Engineer Staff",
+    "employer": "Business and Partnerships BEM Fasilkom UI",
+    "employerUrl": "https://bem.cs.ui.ac.id",
+    "startDate": "Jun. 2024",
+    "endDate": "Jan. 2025",
+    "show": false,
+    "description": [
+      "Mentored 6 students at SBF (Sekolah BEM Fasilkom) in software engineering.",
+      "Guided students in real world software engineering challenges, including version control and collaboration workflows."
+    ]
+  },
+  {
+    "id": "sea-expert-staff-cf16",
     "title": "Software Engineering Academy Expert Staff",
-    "at": "COMPFEST 16",
-    "atLink": "https://compfest.id",
-    "time": "Feb 2024 - Sep 2024",
+    "employer": "COMPFEST 16",
+    "employerUrl": "https://compfest.id",
+    "startDate": "Feb. 2024",
+    "endDate": "Sep. 2024",
     "show": false,
     "description": [
       "Assisted in organizing and executing the Software Engineering Academy (SEA).",
@@ -76,11 +99,12 @@
     ]
   },
   {
-    "slug": "ITDEV Staff @ OHCSUI23",
+    "id": "itdev-staff-ohcsui23",
     "title": "IT Development Staff",
-    "at": "Open House Fasilkom UI 2023",
-    "atLink": "https://oh.cs.ui.ac.id",
-    "time": "Aug 2023 - Nov 2023",
+    "employer": "Open House Fasilkom UI 2023",
+    "employerUrl": "https://oh.cs.ui.ac.id",
+    "startDate": "Aug. 2023",
+    "endDate": "Nov. 2023",
     "show": false,
     "description": [
       "Implemented a responsive design using Next.js and TailwindCSS.",

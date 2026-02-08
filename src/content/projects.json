@@ -1,62 +1,71 @@
 [
   {
-    "slug": "secona/belalang",
-    "description": "Belalang is a simple interpreted language written in The Rust Programming Language. Its architecture includes a compiler and a custom-built bytecode stack-based virtual machine. Belalang's syntax is inspired by Go and Python, designed to be easy to understand by a beginner coder.\n",
-    "show": true,
-    "tags": ["Rust", "Compiler", "Virtual Machine"],
-    "links": [
-      {
-        "href": "https://github.com/secona/belalang",
-        "label": "Belalang GitHub Repository"
-      }
-    ]
-  },
-  {
-    "slug": "crate-ci/cargo-plumbing",
-    "description": "Exposing core Cargo functionalities as distinct, scriptable steps. Easier maintainability and contributor approachability by isolating Cargo's architecture. Enabling seamless integration with external build systems (e.g., Bazel, Nix) by refactoring Cargo's architecture to decouple core processes. Currently vetting a long-standing system architecture design, leading to a more efficient usage of the Index.",
-    "show": true,
+    "id": "cargo-plumbing",
+    "name": "Cargo Plumbing Commands",
+    "url": "https://github.com/crate-ci/cargo-plumbing",
     "tags": ["Rust", "Cargo", "Build System"],
-    "links": [
-      {
-        "href": "https://github.com/crate-ci/cargo-plumbing",
-        "label": "Cargo Plumbing Repository"
-      }
+    "show": true,
+    "description": [
+      "Exposing core Cargo functionalities as distinct, scriptable steps.",
+      "Easier maintainability and contributor approachability by isolating Cargo's architecture.",
+      "Enabling seamless integration with external build systems (e.g., Bazel, Nix) by refactoring Cargo's architecture to decouple core processes.",
+      "Currently vetting a long-standing system architecture design, leading to a more efficient usage of the Index."
     ]
   },
   {
-    "slug": "secona/kflap",
-    "description": "(Work in Progress) KFLAP is a JFLAP clone written in C++. KFLAP aims to be fully compatible with the JFLAP format, ensuring backward compatibility while providing a modern and efficient user experience.\n",
-    "show": false,
+    "id": "belalang",
+    "name": "Belalang Programming Language",
+    "url": "https://github.com/belalang-project/belalang",
+    "tags": ["Rust", "Compiler", "Virtual Machine"],
+    "show": true,
+    "description": [
+      "A custom programming language designed that features a compiler and virtual machine written in Rust.",
+      "Developed a CLI tool to compile and execute bytecode, with a structured language pipeline including a lexer, parser, and compiler.",
+      "Implemented a stack-based virtual machine for efficient execution.",
+      "Improving memory footprint and performance by implementing the Immix Garbage Collection algorithm."
+    ]
+  },
+  {
+    "id": "tryglasses",
+    "name": "TryGlasses",
+    "url": "https://github.com/secona/tryglasses-web",
+    "tags": ["WebGL", "Machine Learning", "3D"],
+    "show": true,
+    "description": [
+      "Simulates wearing eyewear with advanced 3D rendering techniques powered by WebGL.",
+      "Leverages a machine learning-based model for head reconstruction from a single portrait image.",
+      "Incorporates an efficient pipeline to augment the input image with selected eyewear.",
+      "Delivers a realistic and immersive try-on experience using state-of-the-art technology."
+    ]
+  },
+  {
+    "id": "kflap",
+    "name": "KFLAP",
+    "url": "https://github.com/secona/kflap",
     "tags": ["C/C++", "Meson", "Nix", "Formal Language & Automata Theory"],
-    "links": [
-      {
-        "href": "https://github.com/secona/kflap",
-        "label": "KFLAP GitHub Repository"
-      }
+    "show": false,
+    "description": [
+      "Developed a custom-built clone of JFLAP using C++ to simulate formal language constructs and computational models."
     ]
   },
   {
-    "slug": "secona/neoman",
-    "description": "(Work in Progress) Neoman is an API testing tool similar to Postman, but in the terminal.\n",
-    "show": false,
+    "id": "neoman",
+    "name": "Neoman",
+    "url": "https://github.com/secona/neoman",
     "tags": ["Rust", "Postman", "TUI", "CLI"],
-    "links": [
-      {
-        "href": "https://github.com/secona/kflap",
-        "label": "KFLAP GitHub Repository"
-      }
+    "show": false,
+    "description": [
+      "(Work in Progress) Neoman is an API testing tool similar to Postman, but in the terminal."
     ]
   },
   {
-    "slug": "secona/kerang",
-    "description": "Kerang is a toy shell written in C. The goal of Kerang is for me to understand how shells work under the hood and deepen my C and Linux syscalls knowledge\n",
-    "show": false,
+    "id": "kerang",
+    "name": "Kerang",
+    "url": "https://github.com/secona/kerang",
     "tags": ["C", "Shell", "Linux"],
-    "links": [
-      {
-        "href": "https://github.com/secona/kerang",
-        "label": "Kerang GitHub Repository"
-      }
+    "show": false,
+    "description": [
+      "Kerang is a toy shell written in C. The goal of Kerang is for me to understand how shells work under the hood and deepen my C and Linux syscalls knowledge."
     ]
   }
 ]

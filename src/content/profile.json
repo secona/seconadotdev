@@ -1,0 +1,13 @@
+[
+  {
+    "id": "main",
+    "name": "Vito Secona",
+    "email": "secona00@gmail.com",
+    "linkedin": "https://linkedin.com/in/secona",
+    "github": "https://github.com/secona",
+    "website": "https://secona.dev",
+    "skills": ["Rust", "Go", "C", "C++", "MLIR"],
+    "languages": ["Bahasa Indonesia (native)", "English (fluent)"],
+    "interests": ["Compilers", "High Performance Computing"]
+  }
+]
