@@ -1,5 +1,5 @@
-import { file, glob } from "astro/loaders";
 import { defineCollection, z } from "astro:content";
+import { file, glob } from "astro/loaders";
 
 const profile = defineCollection({
   loader: file("./src/content/profile.json"),
@@ -79,4 +79,11 @@ const blogs = defineCollection({
   }),
 });
 
-export const collections = { profile, projects, experiences, education, certifications, blogs };
+export const collections = {
+  profile,
+  projects,
+  experiences,
+  education,
+  certifications,
+  blogs,
+};

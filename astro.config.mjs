@@ -1,14 +1,13 @@
-import { defineConfig } from "astro/config";
-
 import sitemap from "@astrojs/sitemap";
-import { toString } from "mdast-util-to-string";
+import { defineConfig } from "astro/config";
+import { toString as mdastToString } from "mdast-util-to-string";
 import getReadingTime from "reading-time";
-import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import rehypeSlug from "rehype-slug";
 
 export function remarkReadingTime() {
-  return function (tree, { data }) {
-    const textOnPage = toString(tree);
+  return (tree, { data }) => {
+    const textOnPage = mdastToString(tree);
     const readingTime = getReadingTime(textOnPage);
     data.astro.frontmatter.minutesRead = readingTime.text;
   };
