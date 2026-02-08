@@ -137,7 +137,7 @@ const { Content, headings, remarkPluginFrontmatter } = await render(entry);
       // Add click event listener
       copyButton.addEventListener('click', async function() {
         const codeElement = block.querySelector('code');
-        const codeText = codeElement ? codeElement.textContent : block.textContent.replace('Copy', '');
+        const codeText = (codeElement?.textContent ?? block.textContent?.replace('Copy', '')) ?? '';
         
         try {
           await navigator.clipboard.writeText(codeText);
