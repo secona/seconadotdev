@@ -54,6 +54,7 @@
               indentWidth = 2;
               indentStyle = "space";
             };
+            typos.enable = true;
           };
         };
     };

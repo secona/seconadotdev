@@ -52,7 +52,7 @@ This command reads manifests file (Cargo.toml) from disk and outputs them into a
 ### `read-lockfile`
 
 #### Overview
-This command reads a lock file (Cargo.lock) from disk and output them using a format separate from cargo's lockfile versioning. The challenging thing when implementing this command, or any lockfile-related commands for that matter, is handling older versions of lockfiles. In short, there are four lockfile versions within Cargo, with each having their separate changees. We haven't tested old lockfile handling that much.
+This command reads a lock file (Cargo.lock) from disk and output them using a format separate from cargo's lockfile versioning. The challenging thing when implementing this command, or any lockfile-related commands for that matter, is handling older versions of lockfiles. In short, there are four lockfile versions within Cargo, with each having their separate changes. We haven't tested old lockfile handling that much.
 
 #### **CLI Arguments**:
 - `--lockfile-path`: Specifies the exact path to the `Cargo.lock` file to read from. This value only accepts a file with name `Cargo.lock` (See [crate-ci/cargo-plumbing#63](https://github.com/crate-ci/cargo-plumbing/issues/63)).
