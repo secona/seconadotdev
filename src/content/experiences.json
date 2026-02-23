@@ -1,17 +1,17 @@
 [
   {
     "id": "undergraduate-researcher",
-    "title": "Undergraduate Researcher",
+    "title": "Undergraduate Student Researcher",
     "employer": "Fakultas Ilmu Komputer, Universitas Indonesia",
     "employerUrl": "https://cs.ui.ac.id",
     "startDate": "Jan. 2026",
     "endDate": "Present",
     "show": true,
     "description": [
-      "Main topics: Compilers and High-Performance Computing (HPC).",
-      "Architectural analysis of the OpenXLA compilation stack, focusing on the lowering pipeline from JAX to StableHLO (MLIR) to identify optimization opportunities.",
-      "Investigate MLIR and LLVM internals with the goal of contributing upstream.",
-      "Target outcome: a publishable research paper by the end of the year."
+      "Main topics: Sparse Tensor Compilers and HPC.",
+      "Investigate MLIR internals with the goal of contributing upstream.",
+      "Architectural analysis of the SparseTensor dialect on MLIR.",
+      "Target outcome: a publishable research paper by Summer of 2026."
     ]
   },
   {
