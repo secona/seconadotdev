@@ -56,6 +56,19 @@ const education = defineCollection({
   }),
 });
 
+const achievements = defineCollection({
+  loader: file("./src/content/achievements.json"),
+  schema: z.object({
+    id: z.string(),
+    title: z.string(),
+    issuer: z.string(),
+    startDate: z.string(),
+    endDate: z.string(),
+    show: z.boolean(),
+    description: z.string(),
+  }),
+});
+
 const certifications = defineCollection({
   loader: file("./src/content/certifications.json"),
   schema: z.object({

@@ -2,6 +2,7 @@
 #let experiences = json("content/experiences.json")
 #let projects = json("content/projects.json")
 #let education = json("content/education.json")
+#let achievements = json("content/achievements.json")
 #let certifications = json("content/certifications.json")
 
 #set document(author: profile.name, title: profile.name + "'s CV")
@@ -68,6 +69,20 @@
         #it.startDate #sym.dash.em #it.endDate \
         _Current GPA_: #it.gpa
         #it.courses.map(it => [- #it]).join()
+      ],
+    )
+    .join()
+)
+
+= Achievements
+
+#(
+  achievements
+    .filter(it => it.show)
+    .map(
+      it => [
+        *#it.title* - _ #it.issuer _ #h(1fr) #it.startDate #sym.dash.em #it.endDate \
+        - #it.description
       ],
     )
     .join()
