@@ -27,7 +27,7 @@ function getExcerpt(body: string, maxLength = 200): string {
 <NavbarLayout pageTitle="Vito Secona's Blog">
   <main>
     <div class="blogs-sidebar">
-      <Card title="My Blog">
+      <Card title="My Blog" noHover>
         <p>
           Here are some of my blogs! I mostly write about Rust and my journey
           in the software engineering world. Feel free to explore my thoughts
@@ -55,7 +55,7 @@ function getExcerpt(body: string, maxLength = 200): string {
       {
         sortedBlogs.map((blog) => (
           <div class="blog-card" data-tags={JSON.stringify(blog.data.tags)} data-title={blog.data.title.toLowerCase()}>
-            <Card disableTitlebar>
+            <Card disableTitlebar noHover>
               <div class="entry">
                 <h1 class="entry-title">
                   <a href={`/blog/${blog.id}`}>

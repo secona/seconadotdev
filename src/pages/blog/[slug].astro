@@ -23,7 +23,7 @@ const { Content, headings, remarkPluginFrontmatter } = await render(entry);
   <div class="blog-wrapper">
     {headings.length > 0 && (
       <aside class="toc-sidebar">
-        <Card title="Table of Contents">
+        <Card title="Table of Contents" noHover>
           <nav class="toc">
             <ul>
               {headings.map((heading) => (
@@ -37,7 +37,7 @@ const { Content, headings, remarkPluginFrontmatter } = await render(entry);
       </aside>
     )}
     <main>
-      <Card disableTitlebar>
+      <Card disableTitlebar noHover>
         <div class="entry-title-card">
           <a href="/blog" class="blog-back">
             <ArrowLeftIcon size={16} />
@@ -61,7 +61,7 @@ const { Content, headings, remarkPluginFrontmatter } = await render(entry);
       </Card>
       {headings.length > 0 && (
         <div class="toc-mobile">
-          <Card title="Table of Contents">
+          <Card title="Table of Contents" noHover>
             <nav class="toc">
               <ul>
                 {headings.map((heading) => (
@@ -74,7 +74,7 @@ const { Content, headings, remarkPluginFrontmatter } = await render(entry);
           </Card>
         </div>
       )}
-      <Card disableTitlebar>
+      <Card disableTitlebar noHover>
         <article class="entry-content">
           <Content />
         </article>

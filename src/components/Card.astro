@@ -2,12 +2,13 @@
 interface Props {
   title?: string;
   disableTitlebar?: boolean;
+  noHover?: boolean;
 }
 
-const { title = "", disableTitlebar = false } = Astro.props;
+const { title = "", disableTitlebar = false, noHover = false } = Astro.props;
 ---
 
-<div id="card-container">
+<div id="card-container" class:list={{ 'no-hover': noHover }}>
   {!disableTitlebar && (
     <div id="titlebar">
       <slot name="titlebar">
@@ -25,6 +26,14 @@ const { title = "", disableTitlebar = false } = Astro.props;
 div#card-container {
   box-shadow: var(--hard-shadow);
   border-radius: var(--rounded);
+
+  &:not(.no-hover) {
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: translate(-3px, -3px);
+    }
+  }
 
   & > div#titlebar {
     display: flex;
