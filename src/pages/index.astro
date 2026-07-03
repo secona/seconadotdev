@@ -17,7 +17,10 @@ const projects = await getCollection("projects");
         <h1 id="name">Vito Secona</h1>
       </Card>
       <Card disableTitlebar>
-        <p>Software Engineer</p>
+        <p id="role-sr" class="sr-only">Software Engineer, Compiler Engineer</p>
+        <p aria-hidden="true">
+          <span id="role-text">Software Engineer</span><span id="cursor">|</span>
+        </p>
       </Card>
     </div>
   </section>
@@ -132,8 +135,58 @@ const projects = await getCollection("projects");
   </section>
 </NavbarLayout>
 
+<script>
+  const roles = ["Software Engineer", "Compiler Engineer"];
+  let roleIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+
+  function typeEffect() {
+    const element = document.getElementById("role-text");
+    if (!element) return;
+
+    const currentRole = roles[roleIndex];
+
+    if (isDeleting) {
+      element.textContent = currentRole.substring(0, charIndex - 1);
+      charIndex--;
+    } else {
+      element.textContent = currentRole.substring(0, charIndex + 1);
+      charIndex++;
+    }
+
+    if (!isDeleting && charIndex === currentRole.length) {
+      isDeleting = true;
+      setTimeout(typeEffect, 2000);
+    } else if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      roleIndex = (roleIndex + 1) % roles.length;
+      setTimeout(typeEffect, 500);
+    } else {
+      const speed = isDeleting ? 50 : 100;
+      setTimeout(typeEffect, speed);
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    setTimeout(typeEffect, 1000);
+  });
+</script>
+
 <style lang="scss">
 @use '../styles/mixins' as *;
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
 
 #hero {
   display: flex;
@@ -159,12 +212,13 @@ const projects = await getCollection("projects");
     }
   }
 
-  #title {
-    padding: 0.5rem 1rem;
-    background-color: white;
-    border: 2px solid black;
-    box-shadow: var(--hard-shadow);
-    border-radius: var(--rounded);
+  #cursor {
+    animation: blink 0.7s steps(1) infinite;
+    margin-left: 2px;
+  }
+
+  @keyframes blink {
+    50% { opacity: 0; }
   }
 }
 
