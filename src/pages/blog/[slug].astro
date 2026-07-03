@@ -212,17 +212,35 @@ const { Content, headings, remarkPluginFrontmatter } = await render(entry);
   }
 }
 
-.toc {
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
+  .toc {
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      border-left: 1px solid var(--gray-200);
+    }
 
-  li {
-    margin: 0.5rem 0;
-    
-    a {
+    li {
+      position: relative;
+      margin: 0.5rem 0;
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: -1px;
+        top: 50%;
+        height: 1px;
+        background: var(--gray-200);
+        transform: translateY(-50%);
+      }
+
+      &.toc-level-2::before { width: calc(1rem - 0.5rem); }
+      &.toc-level-3::before { width: calc(2rem - 0.5rem); }
+      &.toc-level-4::before { width: calc(3rem - 0.5rem); }
+      &.toc-level-5::before { width: calc(4rem - 0.5rem); }
+      &.toc-level-6::before { width: calc(5rem - 0.5rem); }
+      
+      a {
       color: var(--gray-700);
       text-decoration: none;
       transition: color 0.2s ease, font-weight 0.2s ease;
@@ -281,7 +299,6 @@ main {
   }
 
   .entry-title-card {
-    padding: 1rem 0;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
