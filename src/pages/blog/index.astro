@@ -22,6 +22,11 @@ function getExcerpt(body: string, maxLength = 200): string {
     .trim()
     .slice(0, maxLength);
 }
+
+function estimateMinutesRead(body: string): number {
+  const words = body.trim().split(/\s+/).length;
+  return Math.max(1, Math.round(words / 200));
+}
 ---
 
 <NavbarLayout pageTitle="Vito Secona's Blog">
@@ -70,6 +75,7 @@ function getExcerpt(body: string, maxLength = 200): string {
                       day: 'numeric'
                     })}
                   </time>
+                  &mdash; {estimateMinutesRead(blog.body ?? '')} min read
                   {blog.data.tags.map((tag) => (
                     <span> &mdash; <a href={`/blog?tag=${tag}`} class="entry-tag">#{tag}</a></span>
                   ))}
