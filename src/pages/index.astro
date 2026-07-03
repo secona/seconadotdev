@@ -89,7 +89,9 @@ const projects = await getCollection("projects");
                   {data.name}
                 </a>
               </h1>
-              <p>{data.description[0]}</p>
+              <ul id="list">
+                {data.description.map((des) => <li>{des}</li>)}
+              </ul>
               <div id="project-tags">
                 {data.tags.map((tag) => <p id="project-tag">{tag}</p>)}
               </div>

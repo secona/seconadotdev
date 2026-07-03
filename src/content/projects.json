@@ -19,10 +19,12 @@
     "tags": ["Rust", "Compiler", "Virtual Machine"],
     "show": true,
     "description": [
-      "A custom programming language designed that features a compiler and virtual machine written in Rust.",
-      "Developed a CLI tool to compile and execute bytecode, with a structured language pipeline including a lexer, parser, and compiler.",
-      "Implemented a stack-based virtual machine for efficient execution.",
-      "Improving memory footprint and performance by implementing the Immix Garbage Collection algorithm."
+      "Architected a custom compiler using a Rust frontend (lexer/parser) and a C++/MLIR backend.",
+      "Designed a custom MLIR dialect and optimization passes to translate high-level semantics directly to LLVM IR.",
+      "Implemented a type-safe Rust-to-C++ FFI layer using the cxx bridge to orchestrate MLIR code generation.",
+      "Integrated the Boehm GC to build a custom heap allocator for the language runtime.",
+      "Configured a unified Bazel workspace to compile and link polyglot compiler toolchains and LLVM/MLIR source dependencies.",
+      "Established an end-to-end compiler test suite utilizing LLVM lit and FileCheck for dialect transformations."
     ]
   },
   {
