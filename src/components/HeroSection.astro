@@ -1,5 +1,6 @@
 ---
 import Card from './Card.astro';
+import ButtonLink from './ButtonLink.astro';
 ---
 
 <section id="hero">
@@ -13,8 +14,8 @@ import Card from './Card.astro';
       </p>
     </Card>
     <div id="hero-buttons">
-      <a href="#projects" class="hero-btn">Learn More</a>
-      <a href="#contacts" class="hero-btn">Contact Me</a>
+      <ButtonLink href="#projects" variant="primary">Learn More</ButtonLink>
+      <ButtonLink href="#contacts" variant="outline">Contact Me</ButtonLink>
     </div>
   </div>
 </section>
@@ -126,30 +127,6 @@ import Card from './Card.astro';
 
     @media (max-width: 400px) {
       flex-direction: column;
-    }
-  }
-
-  .hero-btn {
-    flex: 1;
-    padding: 0.5rem 1.25rem;
-    border: 2px solid black;
-    border-radius: var(--rounded);
-    box-shadow: var(--hard-shadow);
-    font-weight: 600;
-    text-decoration: none;
-    text-align: center;
-    transition: all 0.2s ease;
-
-    &:hover {
-      transform: translate(-3px, -3px);
-    }
-
-    &:first-child {
-      background-color: var(--teal-400);
-    }
-
-    &:last-child {
-      background-color: white;
     }
   }
 

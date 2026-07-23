@@ -1,6 +1,7 @@
 ---
 import { ExternalLinkIcon } from 'astro-feather';
 import Card from './Card.astro';
+import ButtonLink from './ButtonLink.astro';
 ---
 
 <section id="introduction">
@@ -18,9 +19,9 @@ import Card from './Card.astro';
         uses LLVM technologies.
       </p>
     </Card>
-    <a id="cv-link" href="/secona-cv.pdf" target="_blank" rel="noopener noreferrer">
-      <span>My CV</span> <ExternalLinkIcon />
-    </a>
+    <ButtonLink href="/secona-cv.pdf" variant="outline" target="_blank" rel="noopener noreferrer">
+      My CV <ExternalLinkIcon />
+    </ButtonLink>
   </div>
 </section>
 
@@ -38,30 +39,7 @@ import Card from './Card.astro';
     gap: 0.5rem;
     justify-content: center;
     align-items: flex-end;
-    max-width: 48rem;
-  }
-
-  #cv-link {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    padding: 0.5rem 1.25rem;
-
-    background-color: white;
-    box-shadow: var(--hard-shadow);
-    font-weight: 600;
-    text-decoration: none;
-    transition: transform 0.2s ease;
-
-    border-width: 2px;
-    border-color: black;
-    border-radius: var(--rounded);
-
-    &:hover {
-      transform: translate(-3px, -3px);
-    }
+    max-width: 38rem;
   }
 
   & > * {
