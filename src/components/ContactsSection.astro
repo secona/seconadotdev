@@ -1,12 +1,13 @@
 ---
-import { GithubIcon, LinkedinIcon, TwitterIcon } from 'astro-feather';
+import { GithubIcon, LinkedinIcon, TwitterIcon, MailIcon } from 'astro-feather';
 import BlueskyIcon from './BlueskyIcon.astro';
 import Card from './Card.astro';
+import ButtonLink from './ButtonLink.astro';
 ---
 
 <section id="contacts">
   <div id="container">
-    <Card title="My Socials">
+    <Card title="Contacts">
       <p id="contacts-greetings">
         Let's connect! You can find me on these platforms, but I am most active
         on my Twitter (X) account where I share insights on tech, my projects,
@@ -14,22 +15,26 @@ import Card from './Card.astro';
       </p>
     </Card>
     <div id="contacts-links">
-      <a class="contact-link github" href="https://github.com/secona" target="_blank" rel="noopener noreferrer" >
+      <ButtonLink href="mailto:secona00@gmail.com" bgColor="#2d6a4f" align="left">
+        <MailIcon />
+        secona00@gmail.com
+      </ButtonLink>
+      <ButtonLink href="https://github.com/secona" bgColor="#333333" target="_blank" rel="noopener noreferrer" align="left">
         <GithubIcon />
-        <p>@secona</p>
-      </a>
-      <a class="contact-link linkedin" href="https://linkedin.com/in/secona" target="_blank" rel="noopener noreferrer">
+        @secona
+      </ButtonLink>
+      <ButtonLink href="https://linkedin.com/in/secona" bgColor="#0077b5" target="_blank" rel="noopener noreferrer" align="left">
         <LinkedinIcon />
-        <p>@secona</p>
-      </a>
-      <a class="contact-link twitter" href="https://x.com/secona0" target="_blank" rel="noopener noreferrer">
+        @secona
+      </ButtonLink>
+      <ButtonLink href="https://x.com/secona0" bgColor="#1DA1F2" target="_blank" rel="noopener noreferrer" align="left">
         <TwitterIcon />
-        <p>@secona0</p>
-      </a>
-      <a class="contact-link bsky" href="https://bsky.app/profile/secona.dev" target="_blank" rel="noopener noreferrer">
+        @secona0
+      </ButtonLink>
+      <ButtonLink href="https://bsky.app/profile/secona.dev" bgColor="#0085ff" target="_blank" rel="noopener noreferrer" align="left">
         <BlueskyIcon />
-        <p>@secona.dev</p>
-      </a>
+        @secona.dev
+      </ButtonLink>
     </div>
   </div>
 </section>
@@ -65,6 +70,7 @@ import Card from './Card.astro';
     #contacts-links {
       display: flex;
       flex-direction: column;
+      color: white;
 
       @media (min-width: 768px) {
         gap: 1rem;
@@ -72,26 +78,6 @@ import Card from './Card.astro';
 
       @media (max-width: 768px) {
         gap: 0.5rem;
-      }
-
-      .contact-link {
-        display: flex;
-        flex-direction: row;
-        gap: 1rem;
-        color: white;
-
-        border-width: 2px;
-        border-color: black;
-        border-radius: var(--rounded);
-
-        padding: 0.5rem 1.5rem;
-
-        box-shadow: var(--hard-shadow);
-
-        &.github { background-color: #333333; }
-        &.linkedin { background-color: #0077b5; }
-        &.twitter { background-color: #1DA1F2; }
-        &.bsky { background-color: #0085ff; }
       }
     }
   }
