@@ -1,0 +1,104 @@
+---
+import { getCollection } from 'astro:content';
+import Card from './Card.astro';
+
+const experiences = await getCollection("experiences");
+---
+
+<section id="experiences">
+  <div id="experiences-sidebar">
+    <Card title="My Experiences">
+      Here's a sneak peek into my journey! I've been involved in many
+      student-led organization and events. Beyond that, I've played a role in
+      education as a teaching assistant for some CS courses at campus.
+    </Card>
+  </div>
+  <div id="experiences-list">
+    {
+      experiences
+        .filter(({ data: { show } }) => show)
+        .map(({ data: { startDate, endDate, title, description, employer, employerUrl }}) => (
+          <Card disableTitlebar>
+            <h1>{title} @ <a id="at" target="_blank" rel="noopener noreferrer" href={employerUrl}>{employer}</a></h1>
+            <p id="duration">{startDate} - {endDate}</p>
+            <ul id="list">
+              {description.map((des) => <li>{des}</li>)}
+            </ul>
+          </Card>
+        ))
+    }
+  </div>
+</section>
+
+<style lang="scss">
+@use '../styles/mixins' as *;
+
+#experiences {
+  display: grid;
+  grid-template-columns: 1fr;
+  min-height: 100vh;
+  max-width: 50rem;
+  margin: 0 auto;
+
+  #experiences-sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    max-height: 100vh;
+    top: 0;
+    
+    padding-top: 3rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+
+    @media (min-width: 640px) {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+
+    @media (min-width: 1280px) {
+      position: sticky;
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+    }
+  }
+
+  #experiences-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    padding-top: 1rem;
+    padding-bottom: 5rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+
+    @media (min-width: 640px) {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+
+    @media (min-width: 1280px) {
+      position: sticky;
+      padding-top: 3rem;
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+    }
+
+    #duration {
+      color: var(--gray-500);
+      @include font-size(sm);
+    }
+
+    #at {
+      color: var(--teal-600);
+    }
+
+  }
+
+  @media (min-width: 1280px) {
+    grid-template-columns: 1fr 3fr;
+    max-width: 75rem;
+  }
+}
+</style>
