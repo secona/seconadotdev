@@ -1,12 +1,16 @@
 ---
-import { ExternalLinkIcon } from 'astro-feather';
+import { ExternalLinkIcon, InfoIcon } from 'astro-feather';
 import Card from './Card.astro';
 import ButtonLink from './ButtonLink.astro';
 ---
 
 <section id="introduction">
   <div id="container">
-    <Card title="Introduction">
+    <Card>
+      <Fragment slot="titlebar">
+        <h1><InfoIcon size={16} /> Introduction</h1>
+        <span>ooo</span>
+      </Fragment>
       <p>
         Hello, everyone! My name is Vito. I am a final-year undergraduate student at
         Universitas Indonesia with a strong interest in compilers.

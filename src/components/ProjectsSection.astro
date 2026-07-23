@@ -1,4 +1,5 @@
 ---
+import { TerminalIcon } from 'astro-feather';
 import { getCollection } from 'astro:content';
 import Card from './Card.astro';
 
@@ -7,7 +8,11 @@ const projects = await getCollection("projects");
 
 <section id="projects">
   <div id="projects-sidebar">
-    <Card title="My Projects">
+    <Card>
+      <Fragment slot="titlebar">
+        <h1><TerminalIcon size={16} /> My Projects</h1>
+        <span>ooo</span>
+      </Fragment>
       <p>
         Here's a sneak peek into some of my open source projects that I've
         built! I have a strong interest in systems programming and compilers.

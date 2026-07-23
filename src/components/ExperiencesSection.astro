@@ -1,4 +1,5 @@
 ---
+import { BriefcaseIcon } from 'astro-feather';
 import { getCollection } from 'astro:content';
 import Card from './Card.astro';
 
@@ -7,7 +8,11 @@ const experiences = await getCollection("experiences");
 
 <section id="experiences">
   <div id="experiences-sidebar">
-    <Card title="My Experiences">
+    <Card>
+      <Fragment slot="titlebar">
+        <h1><BriefcaseIcon size={16} /> My Experiences</h1>
+        <span>ooo</span>
+      </Fragment>
       Here's a sneak peek into my journey! I've been involved in many
       student-led organization and events. Beyond that, I've played a role in
       education as a teaching assistant for some CS courses at campus.
