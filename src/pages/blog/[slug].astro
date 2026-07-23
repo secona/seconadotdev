@@ -243,11 +243,6 @@ const { Content, headings, remarkPluginFrontmatter } = await render(entry);
       a {
       color: var(--gray-700);
       text-decoration: none;
-      transition: color 0.2s ease, font-weight 0.2s ease;
-      
-      &:hover {
-        color: var(--blue-600);
-      }
 
       &.active {
         color: var(--blue-600);
@@ -324,10 +319,6 @@ main {
       @include font-size(sm);
       color: var(--gray-500);
       line-height: 1.4;
-
-      .entry-tag:hover {
-        color: var(--yellow-500);
-      }
     }
   }
 
@@ -432,11 +423,6 @@ main {
       text-decoration-color: var(--blue-300);
       text-decoration-thickness: 1.5px;
       text-underline-offset: 3px;
-
-      &:hover {
-        color: var(--blue-700);
-        text-decoration-color: var(--blue-600);
-      }
     }
 
     blockquote {
