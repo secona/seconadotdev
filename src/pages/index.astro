@@ -198,10 +198,24 @@ const projects = await getCollection("projects");
   min-height: 80vh;
   padding: 0 1rem;
 
+  @media (min-width: 640px) {
+    padding: 0 2rem;
+  }
+
+  @media (min-width: 768px) {
+    padding: 0 4rem;
+  }
+
+  @media (min-width: 1280px) {
+    padding: 0 6rem;
+  }
+
   #container {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
+    width: 100%;
+    max-width: 36rem;
   }
 
   #name {
@@ -219,10 +233,18 @@ const projects = await getCollection("projects");
     margin-left: 2px;
   }
 
+  #role-text {
+    white-space: nowrap;
+  }
+
   #hero-buttons {
     display: flex;
     gap: 0.75rem;
     width: 100%;
+
+    @media (max-width: 400px) {
+      flex-direction: column;
+    }
   }
 
   .hero-btn {
