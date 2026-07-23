@@ -234,14 +234,18 @@ const projects = await getCollection("projects");
     font-weight: 600;
     text-decoration: none;
     text-align: center;
-    transition: transform 0.2s ease;
+    transition: all 0.2s ease;
 
     &:hover {
       transform: translate(-3px, -3px);
     }
 
     &:first-child {
-      background-color: var(--orange-400);
+      background-color: var(--slate-200);
+
+      &:hover {
+        background-color: var(--orange-400);
+      }
     }
 
     &:last-child {
@@ -320,25 +324,14 @@ const projects = await getCollection("projects");
   min-height: 100vh;
 
   #experiences-sidebar {
-    background-color: var(--blue-300);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     max-height: 100vh;
     top: 0;
 
-    border-bottom-width: 2px;
-    border-top-width: 2px;
-    border-style: solid;
-    border-color: black;
-
-    @media (max-width: 1280px) {
-      border-right: none;
-    }
-
     @media (min-width: 1280px) {
       position: sticky;
-      border-right: 2px solid black;
     }
   }
 
@@ -367,12 +360,6 @@ const projects = await getCollection("projects");
     padding-left: 1.5rem;
     padding-right: 1.5rem;
 
-    &:not(:last-child) {
-      border-inline-start-width: 0px;
-      border-inline-end-width: 2px;
-      border-color: black;
-    }
-
     @media (min-width: 1280px) {
       padding-top: 6rem;
       padding-bottom: 6rem;
@@ -400,25 +387,14 @@ const projects = await getCollection("projects");
   }
 
   #projects-sidebar {
-    background-color: var(--red-300);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     max-height: 100vh;
     top: 0;
 
-    border-bottom-width: 2px;
-    border-style: solid;
-    border-color: black;
-
-    @media (max-width: 1280px) {
-      border-top: 2px solid black;
-      border-right: none;
-    }
-
     @media (min-width: 1280px) {
       position: sticky;
-      border-right: 2px solid black;
     }
   }
 
@@ -460,12 +436,6 @@ const projects = await getCollection("projects");
     padding-bottom: 5rem;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
-
-    &:not(:last-child) {
-      border-inline-start-width: 0px;
-      border-inline-end-width: 2px;
-      border-color: black;
-    }
 
     @media (min-width: 1280px) {
       padding-top: 6rem;

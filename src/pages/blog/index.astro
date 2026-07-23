@@ -184,7 +184,6 @@ main {
   }
 
       .blogs-sidebar {
-      background-color: var(--yellow-400);
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
@@ -192,17 +191,8 @@ main {
       max-height: 100vh;
       top: 0;
   
-      border-bottom-width: 2px;
-      border-style: solid;
-      border-color: black;
-  
-      @media (max-width: 1280px) {
-        border-right: none;
-      }
-  
       @media (min-width: 1280px) {
         position: sticky;
-        border-right: 2px solid black;
       }
   
       .blogs-stats {
@@ -297,12 +287,6 @@ main {
         line-height: 1.5;
       }
     }
-  }
-
-  & > :not(:last-child) {
-    border-inline-start-width: 0px;
-    border-inline-end-width: 2px;
-    border-color: black;
   }
 
   & > * {

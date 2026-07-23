@@ -41,11 +41,16 @@ div#card-container {
     align-items: center;
     padding: 0.5rem 1rem;
 
-    background-color: var(--orange-400);
+    background-color: var(--slate-200);
+    transition: background-color 0.2s ease;
 
     border-color: black;
     border-width: 2px;
     border-radius: var(--rounded) var(--rounded) 0 0;
+  }
+
+  &:hover > div#titlebar {
+    background-color: var(--orange-400);
   }
 
   & > div#content {
