@@ -2,6 +2,9 @@
 interface Props {
   href: string;
   variant?: 'primary' | 'outline';
+  target?: string;
+  rel?: string;
+  [key: string]: unknown;
 }
 
 const { href, variant = 'primary', ...attrs } = Astro.props;
