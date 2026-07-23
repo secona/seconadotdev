@@ -16,7 +16,7 @@
     "id": "belalang",
     "name": "Belalang Programming Language",
     "url": "https://github.com/belalang-project/belalang",
-    "tags": ["Rust", "Compiler", "Virtual Machine"],
+    "tags": ["C++", "Rust", "MLIR", "LLVM", "Compilers"],
     "show": true,
     "description": [
       "Architected a custom compiler using a Rust frontend (lexer/parser) and a C++/MLIR backend.",
