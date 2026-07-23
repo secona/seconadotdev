@@ -223,14 +223,9 @@ const projects = await getCollection("projects");
 }
 
 #introduction {
-  background-color: var(--yellow-300);
-
   display: grid;
   grid-template-columns: 1fr;
   place-items: center;
-
-  border-width: 2px 0;
-  border-color: black;
 
   #container {
     display: flex;
@@ -238,7 +233,7 @@ const projects = await getCollection("projects");
     gap: 0.5rem;
     justify-content: center;
     align-items: flex-end;
-    max-width: 64rem;
+    max-width: 48rem;
   }
 
   #cv-link {
@@ -293,6 +288,7 @@ const projects = await getCollection("projects");
     top: 0;
 
     border-bottom-width: 2px;
+    border-top-width: 2px;
     border-style: solid;
     border-color: black;
 
