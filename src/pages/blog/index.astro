@@ -1,5 +1,5 @@
 ---
-import { BookOpenIcon } from 'astro-feather';
+import { BookOpenIcon, RssIcon } from 'astro-feather';
 import { getCollection } from "astro:content";
 import NavbarLayout from "../../layouts/NavbarLayout.astro";
 import Card from "../../components/Card.astro";
@@ -43,28 +43,31 @@ function estimateMinutesRead(body: string): number {
           in the software engineering world. Feel free to explore my thoughts
           on programming, systems development, and technology.
         </p>
-        <div class="blogs-stats">
+        <!-- <div class="blogs-stats">
           <p class="stats-text">
             <strong>{sortedBlogs.length}</strong> {blogs.length === 1 ? 'post' : 'posts'} published
           </p>
-        </div>
+        </div> -->
+        <a href="/rss.xml" class="rss-link" aria-label="RSS Feed">
+          <RssIcon size={16} /> RSS Feed
+        </a>
       </Card>
 
       <div class="blogs-filter">
-        <input type="text" id="title-filter" placeholder="Search titles..." />
+        <!-- <input type="text" id="title-filter" placeholder="Search titles..." /> -->
         <select id="tag-select">
           <option value="">All Tags</option>
           {allTags.map(tag => (
             <option value={tag}>#{tag}</option>
           ))}
         </select>
-        <button id="clear-filters">Clear</button>
+        <!-- <button id="clear-filters">Clear</button> -->
       </div>
     </div>
     <div class="blogs-list">
       {
         sortedBlogs.map((blog) => (
-          <div class="blog-card" data-tags={JSON.stringify(blog.data.tags)} data-title={blog.data.title.toLowerCase()}>
+          <div class="blog-card" data-tags={JSON.stringify(blog.data.tags)}>
             <Card disableTitlebar noHover>
               <div class="entry">
                 <h1 class="entry-title">
@@ -100,76 +103,35 @@ function estimateMinutesRead(body: string): number {
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const select = document.getElementById('tag-select') as HTMLSelectElement;
-    const titleInput = document.getElementById('title-filter') as HTMLInputElement;
-    const clearButton = document.getElementById('clear-filters') as HTMLButtonElement;
     const blogCards = document.querySelectorAll('.blog-card');
 
-    function getUrlParams() {
-      const urlParams = new URLSearchParams(window.location.search);
-      return {
-        tag: urlParams.get('tag') || '',
-        title: urlParams.get('title') || ''
-      };
-    }
-
-    function updateUrl(tag: string, title: string) {
+    function updateUrl(tag: string) {
       const params = new URLSearchParams();
       if (tag) params.set('tag', tag);
-      if (title) params.set('title', title);
-      
       const newUrl = params.toString() ? `?${params.toString()}` : window.location.pathname;
       window.history.replaceState({ path: newUrl }, '', newUrl);
     }
 
     function filterBlogs() {
       const tag = select ? select.value : '';
-      const titleQuery = titleInput ? titleInput.value.toLowerCase() : '';
 
       blogCards.forEach((card) => {
         const tags = JSON.parse((card as HTMLElement).dataset.tags || '[]');
-        const title = (card as HTMLElement).dataset.title || '';
-        
         const matchesTag = !tag || tags.includes(tag);
-        const matchesTitle = !titleQuery || title.includes(titleQuery);
-
-        if (matchesTag && matchesTitle) {
-          (card as HTMLElement).style.display = 'block';
-        } else {
-          (card as HTMLElement).style.display = 'none';
-        }
+        (card as HTMLElement).style.display = matchesTag ? 'block' : 'none';
       });
     }
 
     // Initialize from URL
-    const { tag, title } = getUrlParams();
+    const urlParams = new URLSearchParams(window.location.search);
+    const tag = urlParams.get('tag') || '';
     if (select) select.value = tag;
-    if (titleInput) titleInput.value = title;
-    
-    // Initial filter run
     filterBlogs();
 
     // Handle select change
     if (select) {
       select.addEventListener('change', () => {
-        updateUrl(select.value, titleInput ? titleInput.value : '');
-        filterBlogs();
-      });
-    }
-
-    // Handle title input
-    if (titleInput) {
-      titleInput.addEventListener('input', () => {
-        updateUrl(select ? select.value : '', titleInput.value);
-        filterBlogs();
-      });
-    }
-
-    // Handle clear button
-    if (clearButton) {
-      clearButton.addEventListener('click', () => {
-        if (select) select.value = '';
-        if (titleInput) titleInput.value = '';
-        updateUrl('', '');
+        updateUrl(select.value);
         filterBlogs();
       });
     }
@@ -195,7 +157,7 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    gap: 1.5rem;
+    gap: 0.5rem;
     max-height: 100vh;
     top: 0;
 
@@ -271,6 +233,18 @@ main {
           transform: translate(1px, 1px);
         }
       }
+    }
+
+    .rss-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--teal-600);
+      font-weight: 600;
+      font-size: 0.875rem;
+      text-decoration: underline;
+
+      margin-top: 1rem;
     }
   }
 
