@@ -1,4 +1,5 @@
 ---
+import { BookOpenIcon } from 'astro-feather';
 import { getCollection } from "astro:content";
 import NavbarLayout from "../../layouts/NavbarLayout.astro";
 import Card from "../../components/Card.astro";
@@ -33,6 +34,10 @@ function estimateMinutesRead(body: string): number {
   <main>
     <div class="blogs-sidebar">
       <Card title="My Blog" noHover>
+        <Fragment slot="titlebar">
+          <h1><BookOpenIcon size={16} /> My Blog</h1>
+          <span>ooo</span>
+        </Fragment>
         <p>
           Here are some of my blogs! I mostly write about Rust and my journey
           in the software engineering world. Feel free to explore my thoughts
@@ -297,8 +302,8 @@ main {
         margin-bottom: 0.25rem;
 
         a {
-          color: var(--blue-600);
-          line-height: 1.2;
+          color: var(--teal-600);
+          font-weight: 600;
         }
       }
 
